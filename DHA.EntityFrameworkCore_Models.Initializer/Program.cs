@@ -1,0 +1,29 @@
+﻿// See https://aka.ms/new-console-template for more information
+
+using DHA.EntityFrameworkCore_Models;
+using DHA.EntityFrameworkCore_Models.Initializer;
+using DHA.EntityFrameworkCore_Models.Initializer.StaticConstructor.CV;
+
+
+Console.WriteLine("Hello, World!");
+
+// init Database Context --> EF_StaticConfiguration
+
+EF_StaticConfiguration.SQL_LITE_FILE_NAME = DHAConfig.DbFileName();
+// recréer la base à chaque fois
+EF_StaticConfiguration.EF_CORE_ENSURE_DELETED = true; 
+EF_StaticConfiguration.EF_CORE_ENSURE_CREATED = true;
+
+
+
+// Fill database
+Ref_Init.Init_SkillType();
+Ref_Init.Init_Language();
+Ref_Init.Init_City();
+Ref_Init.Init_Firm();
+RefLinked_Init.Init_Skill();
+Link_Init.Init_Link_Tab();
+Training_Init.Init_Training();
+Experience_Init.Init();
+
+RefDoc_Init.Init_Doc_Content_Type();

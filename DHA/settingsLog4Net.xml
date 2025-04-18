@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+  <!-- ConsoleLog is set to be a ConsoleAppender -->
+  <appender name="ConsoleLog" type="log4net.Appender.ConsoleAppender">
+    <layout type="log4net.Layout.PatternLayout">     
+      <conversionPattern value="[%level][%date][Thd%thread: %property{Source}][Message: %message]%newline" />
+    </layout>
+  </appender>
+
+  <!-- LOG ALL VERS DHA.log -->
+  <appender name="RollingFileMain" type="log4net.Appender.RollingFileAppender">
+    <file value="D:\\david_hartmann_eu_v5.0\\project_shared_ressources\\ALL.log" />
+    <appendToFile value="true" />
+    <maximumFileSize value="100KB" />
+    <maxSizeRollBackups value="2" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="[%level][%date][Thd%thread: %property{Source}][Message: %message]%newline" />
+    </layout>
+  </appender>
+
+  <!-- PRODUIRE UN FICHIER Request.log pour suivre la durée les requêtes HTTP -->
+  <appender name="RollingFile_Request" type="log4net.Appender.RollingFileAppender">
+    <filter type="log4net.Filter.StringMatchFilter">
+      <stringToMatch value="REQUEST_PATH"/>
+    </filter>
+    <filter type="log4net.Filter.DenyAllFilter" />
+    <file value="D:\\david_hartmann_eu_v5.0\\project_shared_ressources\\FILTER_REQUEST.log" />
+    <appendToFile value="true" />
+    <maximumFileSize value="100KB" />
+    <maxSizeRollBackups value="2" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date %message%newline" />
+    </layout>
+  </appender>
+
+  <!-- PRODUIRE UN FICHIER APP_CRASH pour les crash de l'app -->
+  <appender name="RollingFile_AppCrash" type="log4net.Appender.RollingFileAppender">
+    <filter type="log4net.Filter.StringMatchFilter">
+      <stringToMatch value="APP_CRASH"/>
+    </filter>
+    <filter type="log4net.Filter.DenyAllFilter" />
+    <file value="D:\\david_hartmann_eu_v5.0\\project_shared_ressources\\FILTER_APP_CRASH.log" />
+    <appendToFile value="true" />
+    <maximumFileSize value="100KB" />
+    <maxSizeRollBackups value="2" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="[Message: %message]%newline" />
+    </layout>
+  </appender>
+
+  <!-- PRODUIRE UN FICHIER EF pour Entity Framework -->
+  <appender name="RollingFile_EFCORE" type="log4net.Appender.RollingFileAppender">
+    <filter type="log4net.Filter.StringMatchFilter">
+      <stringToMatch value="##EFCORE##"/>
+    </filter>
+    <filter type="log4net.Filter.DenyAllFilter" />
+    <file value="D:\\david_hartmann_eu_v5.1\\project_shared_ressources\\FILTER_EF.log" />
+    <appendToFile value="true" />
+    <maximumFileSize value="100KB" />
+    <maxSizeRollBackups value="2" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="[Message: %message]%newline" />
+    </layout>
+  </appender>
+
+  <!-- Set root logger level to DEBUG and its only appender to A1 -->
+  <root>
+    <level value="DEBUG" />
+    <appender-ref ref="ConsoleLog" />
+    <appender-ref ref="RollingFileMain" />
+    <appender-ref ref="RollingFile_Request" />
+    <appender-ref ref="RollingFile_AppCrash" />
+    <appender-ref ref="RollingFile_EFCORE" />   
+  </root>
+</log4net>
+
+
+<!-- <conversionPattern value="%-4timestamp [%thread] %-5level %logger %ndc - %message%newline" />-->
