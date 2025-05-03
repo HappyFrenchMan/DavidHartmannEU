@@ -1,0 +1,2 @@
+Configure each file in /config_files/modified/.
+then click apply_config.bat to copy files to source.
