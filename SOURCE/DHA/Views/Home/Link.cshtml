@@ -1,0 +1,39 @@
+﻿@using DHA.EntityFrameworkCore_Models.CV.Entity
+@using DHA.EntityFrameworkCore_Models.DOC.Entity
+@model List<Link>;
+
+@{
+    List<string> __listCategorie = new List<string>();
+    List<Link> __listMyLink = new List<Link>();
+    foreach (Link __myLink in Model)
+    {
+        __listMyLink.Add(__myLink);
+        if (!__listCategorie.Contains(__myLink.Categorie))
+        {
+            __listCategorie.Add(__myLink.Categorie);
+        }
+    }
+}
+
+<div class="row">
+    @foreach (string __strCategorie in __listCategorie)
+    {
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    @__strCategorie
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach (Link __link in __listMyLink.Where(a => a.Categorie==__strCategorie).ToArray())
+                        {
+                            <li class="list-group-item">
+                                <h3><a href="@__link.Url" target="_blank">@__link.Description</a></h3>
+                            </li>
+                        }
+                    </ul>
+                </div>               
+            </div>
+        </div>
+    }
+</div>

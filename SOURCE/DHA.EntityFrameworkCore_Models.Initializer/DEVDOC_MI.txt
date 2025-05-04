@@ -1,0 +1,6 @@
+﻿On utilisera ce projet qu'en phase de démarrage du projet.
+- Ce projet a deux usages :
+--> faire des tests unitaires de la couche data
+--> permettre de remplir la base de données au démarrage du projet.
+Une fois que la couche data est valide et que celle ci est stable on supprimera ce projet
+--> OLD

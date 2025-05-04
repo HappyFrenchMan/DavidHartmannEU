@@ -1,0 +1,31 @@
+﻿@using DHA.EntityFrameworkCore_Models.CV.Entity
+@model List<Training>;
+
+<h1>Mes Formations</h1>
+<br/>
+
+<div class="row">
+    @foreach (Training __formation in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    @__formation.Year
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach (TrainingDetail __TrainingDetail in __formation.TrainingDetails)
+                        {
+                            <li class="list-group-item">@__TrainingDetail.Detail</li>
+                        }
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    @__formation.Location.ToString()
+                </div>
+            </div>
+        </div>
+    }   
+</div>
+
+
