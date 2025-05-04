@@ -1,5 +1,7 @@
 ﻿using DHA.Common.Log4Net;
-using DHA.EntityFrameworkCore_Models;
+using DHA.DAL;
+using EFSC = DHA.EntityFrameworkCore_Models.EF_StaticConfiguration;
+using DSC = DHA.DAL.EF_StaticConfiguration;
 using System.IO;
 
 namespace DHA.Config
@@ -12,7 +14,8 @@ namespace DHA.Config
             // Read db file name for Entity Framework context
             IConfiguration _IConfig = 
                 new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            EF_StaticConfiguration.SQL_LITE_FILE_NAME = _IConfig.GetSection("DbFileName").Value;
+            EFSC.SQL_LITE_FILE_NAME = _IConfig.GetSection("DbFileName").Value;
+            DSC.SQL_LITE_FILE_NAME = _IConfig.GetSection("DbFileName").Value;
 
             // Init Log4Net with his config file
             string __strXmlFileLog4Net = Path.Combine(Directory.GetCurrentDirectory(), "settingsLog4Net.xml");

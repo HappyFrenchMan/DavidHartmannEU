@@ -7,6 +7,8 @@ using DHA.Common.Log4Net;
 using Microsoft.AspNetCore.Diagnostics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using DHA.EntityFrameworkCore_Models.DOC.DAO;
+using DAH.DAL.CV.Model;
+using DAH.DAL.CV.DA;
 
 
 namespace DHA.Controllers
@@ -27,25 +29,15 @@ namespace DHA.Controllers
             return View();
         }//Index
 
-        public IActionResult Formation()
+        public IActionResult Training()
         {
-           
-
             SetTitrePage("Mon parcours universitaire");
-
-            List<Training> __lstTraining = MyTraining.select_Training();
-            
-            
-            return View(__lstTraining);
+            return View(CVDataAdapter.readTrainingM());
         }//Formation
 
         public IActionResult Experiences()
         {
-           
-
-            SetTitrePage("Mes expériences");
-
-            
+            SetTitrePage("Mes expériences");            
             return View(MyExperience.select_experiences());
         }//Experiences
 

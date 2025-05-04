@@ -15,6 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DAH.DAL\DAH.DAL.csproj" />
     <ProjectReference Include="..\DHA.Common\DHA.Common.csproj" />
     <ProjectReference Include="..\DHA.EntityFrameworkCore_Models\DHA.EntityFrameworkCore_Models.csproj" />
   </ItemGroup>

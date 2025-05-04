@@ -1,27 +1,27 @@
-﻿@using DHA.EntityFrameworkCore_Models.CV.Entity
-@model List<Training>;
+﻿@using DAH.DAL.CV.Model
+@model List<TrainingM>;
 
 <h1>Mes Formations</h1>
 <br/>
 
 <div class="row">
-    @foreach (Training __formation in Model)
+    @foreach (TrainingM __trainingM in Model)
     {
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    @__formation.Year
+                    @__trainingM.year
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        @foreach (TrainingDetail __TrainingDetail in __formation.TrainingDetails)
+                        @foreach (string __strTrainingDetail in __trainingM.details)
                         {
-                            <li class="list-group-item">@__TrainingDetail.Detail</li>
+                            <li class="list-group-item">@__strTrainingDetail</li>
                         }
                     </ul>
                 </div>
                 <div class="card-footer">
-                    @__formation.Location.ToString()
+                    @__trainingM.location
                 </div>
             </div>
         </div>

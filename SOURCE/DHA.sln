@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHA.Common", "DHA.Common\DH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHA.Fun", "DHA.Fun\DHA.Fun.csproj", "{940F5DA6-1401-4714-9F45-4B4FB1E86F70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAH.DAL", "DAH.DAL\DAH.DAL.csproj", "{23BBFD29-97F0-4741-83D6-25EC3D11D917}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{940F5DA6-1401-4714-9F45-4B4FB1E86F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{940F5DA6-1401-4714-9F45-4B4FB1E86F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{940F5DA6-1401-4714-9F45-4B4FB1E86F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23BBFD29-97F0-4741-83D6-25EC3D11D917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23BBFD29-97F0-4741-83D6-25EC3D11D917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23BBFD29-97F0-4741-83D6-25EC3D11D917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23BBFD29-97F0-4741-83D6-25EC3D11D917}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
