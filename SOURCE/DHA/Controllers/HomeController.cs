@@ -41,15 +41,10 @@ namespace DHA.Controllers
             return View(MyExperience.select_experiences());
         }//Experiences
 
-        public IActionResult Competences()
+        public IActionResult Skills()
         {
-           
-
-            SetTitrePage("Mes compétences");
-            List<Tuple<string, TimeSpan, string>> __tupleSkills = MyStatistic.select_skill_by_duration();
-
-            
-            return View(__tupleSkills);
+            SetTitrePage("Mes compétences");            
+            return View(CVDataAdapter.readSkillStat());
         }//Competences
 
         public IActionResult About()

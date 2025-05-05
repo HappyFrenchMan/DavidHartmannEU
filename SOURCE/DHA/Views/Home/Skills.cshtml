@@ -1,7 +1,5 @@
-﻿@using DHA.Common;
-
-@model List<Tuple<string, TimeSpan, string>>;
-
+﻿@using DAH.DAL.CV.Model
+@model List<SkillStatM>;
 
 <h1>Mes Compétences</h1>
 <br />
@@ -13,7 +11,7 @@
 }
 
 <div class="accordion accordion-flush" id="accordionExample">
-    @foreach (Tuple<string, TimeSpan, string> __tuple in Model)
+    @foreach (SkillStatM __SkillStatM in Model)
     {
 
         __noLigne = __noLigne + 1;
@@ -25,13 +23,13 @@
             <h2 class="accordion-header" id="@__strHeading">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="@__strCollapse2" aria-expanded="true" aria-controls="@__strCollapse">
                     <b>
-                        @__tuple.Item1.Split("[##]")[0]
+                        @__SkillStatM.skill
                     </b>
                     &nbsp;-&nbsp;
-                    @__tuple.Item1.Split("[##]")[1]
+                    @__SkillStatM.skilltype
                     &nbsp;-&nbsp;
                     <i>
-                            @ToolsTime.ToYearsMonthsAndDays(__tuple.Item2);
+                            @__SkillStatM.skilldurationToString
                     </i>              
                 </button>
             </h2>
@@ -40,7 +38,7 @@
                     <br />
                     <u>Expériences :</u>&nbsp;
                     <br /><br />
-                    @foreach (string __strInfo in __tuple.Item3.Split("##"))
+                    @foreach (string __strInfo in __SkillStatM.associatedexperience)
                     {
                         @__strInfo
                         <br />

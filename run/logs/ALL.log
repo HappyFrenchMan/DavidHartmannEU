@@ -1,191 +1,28 @@
-[INFO][2025-05-03 19:28:51,701][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1516121]
-[DEBUG][2025-05-03 19:28:57,743][Thd14: DHA_Db_Context.Log][Message: ##EFCORE##info: 03/05/2025 19:28:57.742 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."TRA_Id", "c"."FK_CityId", "c"."TRA_Year", "c0"."CTY_Id", "c1"."TRD_Id", "c1"."TRD_Detail", "c1"."FK_TrainingId", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode"
-      FROM "CV.T_Training" AS "c"
-      LEFT JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      LEFT JOIN "CV.T_TrainingDetail" AS "c1" ON "c"."TRA_Id" = "c1"."FK_TrainingId"
-      ORDER BY "c"."TRA_Id", "c0"."CTY_Id"]
-[INFO][2025-05-03 19:28:57,803][Thd14: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Formation ] End : 00:00:01.8401460]
-[DEBUG][2025-05-03 19:28:59,781][Thd10: DHA_Db_Context.Log][Message: ##EFCORE##info: 03/05/2025 19:28:59.781 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart", "c0"."CTY_Id", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode", "c1"."FIR_Id", "c1"."FIR_Key", "c1"."FIR_Name", "c1"."FIR_Sector", "t0"."ACT_id", "t0"."ACT_Code", "t0"."FK_ExperienceId", "t0"."FK_JobId", "t0"."ACT_ProjectName", "t0"."ACT_SubProjectName", "t0"."JOB_Id", "t0"."FK_ContratTypeKey", "t0"."JOB_JobName", "t0"."ACD_Id", "t0"."FK_ActivityId", "t0"."ACD_Detail", "t0"."ACS_Id", "t0"."FK_ActivityId0", "t0"."FK_SkillId", "t0"."SKI_Id", "t0"."SKI_Detail", "t0"."SKI_Key", "t0"."SKI_Name", "t0"."FK_SkillType_Id"
-      FROM "CV.T_Experience" AS "c"
-      INNER JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      INNER JOIN "CV.T_Ref_Firm" AS "c1" ON "c"."FK_FirmId" = "c1"."FIR_Id"
-      LEFT JOIN (
-          SELECT "c2"."ACT_id", "c2"."ACT_Code", "c2"."FK_ExperienceId", "c2"."FK_JobId", "c2"."ACT_ProjectName", "c2"."ACT_SubProjectName", "c3"."JOB_Id", "c3"."FK_ContratTypeKey", "c3"."JOB_JobName", "c4"."ACD_Id", "c4"."FK_ActivityId", "c4"."ACD_Detail", "t"."ACS_Id", "t"."FK_ActivityId" AS "FK_ActivityId0", "t"."FK_SkillId", "t"."SKI_Id", "t"."SKI_Detail", "t"."SKI_Key", "t"."SKI_Name", "t"."FK_SkillType_Id"
-          FROM "CV.T_Activity" AS "c2"
-          INNER JOIN "CV.T_Jobs" AS "c3" ON "c2"."FK_JobId" = "c3"."JOB_Id"
-          LEFT JOIN "CV.T_ActivityDetail" AS "c4" ON "c2"."ACT_id" = "c4"."FK_ActivityId"
-          LEFT JOIN (
-              SELECT "c5"."ACS_Id", "c5"."FK_ActivityId", "c5"."FK_SkillId", "c6"."SKI_Id", "c6"."SKI_Detail", "c6"."SKI_Key", "c6"."SKI_Name", "c6"."FK_SkillType_Id"
-              FROM "CV.J_ActivitySkill" AS "c5"
-              INNER JOIN "CV.T_Ref_Skill" AS "c6" ON "c5"."FK_SkillId" = "c6"."SKI_Id"
-          ) AS "t" ON "c2"."ACT_id" = "t"."FK_ActivityId"
-      ) AS "t0" ON "c"."EXP_Id" = "t0"."FK_ExperienceId"
-      ORDER BY "c"."EXP_Id", "c0"."CTY_Id", "c1"."FIR_Id", "t0"."ACT_id", "t0"."JOB_Id", "t0"."ACD_Id", "t0"."ACS_Id"]
-[INFO][2025-05-03 19:28:59,899][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Experiences ] End : 00:00:00.2242162]
-[INFO][2025-05-04 09:37:09,319][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1267494]
-[INFO][2025-05-04 09:37:09,405][Thd25: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image2.jpg ] End : 00:00:00.0817569]
-[INFO][2025-05-04 09:37:09,405][Thd22: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /DHA.styles.css ] End : 00:00:00.0817339]
-[INFO][2025-05-04 09:37:09,405][Thd26: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /js/site.js ] End : 00:00:00.0530335]
-[INFO][2025-05-04 09:37:09,405][Thd27: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image3.jpg ] End : 00:00:00.0655567]
-[INFO][2025-05-04 09:37:09,405][Thd28: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image1.jpg ] End : 00:00:00.0818419]
-[INFO][2025-05-04 09:37:09,415][Thd16: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /css/site.css ] End : 00:00:00.0919794]
-[INFO][2025-05-04 09:37:09,418][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/jquery/dist/jquery.min.js ] End : 00:00:00.0860560]
-[INFO][2025-05-04 09:37:09,418][Thd24: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/js/bootstrap.bundle.min.js ] End : 00:00:00.0724664]
-[INFO][2025-05-04 09:37:09,420][Thd20: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/css/bootstrap.min.css ] End : 00:00:00.0966859]
-[INFO][2025-05-04 09:37:09,503][Thd27: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /favicon.ico ] End : 00:00:00.0038873]
-[DEBUG][2025-05-04 09:37:15,427][Thd19: DHA_Db_Context.Log][Message: ##EFCORE##info: 04/05/2025 09:37:15.425 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart", "c0"."CTY_Id", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode", "c1"."FIR_Id", "c1"."FIR_Key", "c1"."FIR_Name", "c1"."FIR_Sector", "t0"."ACT_id", "t0"."ACT_Code", "t0"."FK_ExperienceId", "t0"."FK_JobId", "t0"."ACT_ProjectName", "t0"."ACT_SubProjectName", "t0"."JOB_Id", "t0"."FK_ContratTypeKey", "t0"."JOB_JobName", "t0"."ACD_Id", "t0"."FK_ActivityId", "t0"."ACD_Detail", "t0"."ACS_Id", "t0"."FK_ActivityId0", "t0"."FK_SkillId", "t0"."SKI_Id", "t0"."SKI_Detail", "t0"."SKI_Key", "t0"."SKI_Name", "t0"."FK_SkillType_Id"
-      FROM "CV.T_Experience" AS "c"
-      INNER JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      INNER JOIN "CV.T_Ref_Firm" AS "c1" ON "c"."FK_FirmId" = "c1"."FIR_Id"
-      LEFT JOIN (
-          SELECT "c2"."ACT_id", "c2"."ACT_Code", "c2"."FK_ExperienceId", "c2"."FK_JobId", "c2"."ACT_ProjectName", "c2"."ACT_SubProjectName", "c3"."JOB_Id", "c3"."FK_ContratTypeKey", "c3"."JOB_JobName", "c4"."ACD_Id", "c4"."FK_ActivityId", "c4"."ACD_Detail", "t"."ACS_Id", "t"."FK_ActivityId" AS "FK_ActivityId0", "t"."FK_SkillId", "t"."SKI_Id", "t"."SKI_Detail", "t"."SKI_Key", "t"."SKI_Name", "t"."FK_SkillType_Id"
-          FROM "CV.T_Activity" AS "c2"
-          INNER JOIN "CV.T_Jobs" AS "c3" ON "c2"."FK_JobId" = "c3"."JOB_Id"
-          LEFT JOIN "CV.T_ActivityDetail" AS "c4" ON "c2"."ACT_id" = "c4"."FK_ActivityId"
-          LEFT JOIN (
-              SELECT "c5"."ACS_Id", "c5"."FK_ActivityId", "c5"."FK_SkillId", "c6"."SKI_Id", "c6"."SKI_Detail", "c6"."SKI_Key", "c6"."SKI_Name", "c6"."FK_SkillType_Id"
-              FROM "CV.J_ActivitySkill" AS "c5"
-              INNER JOIN "CV.T_Ref_Skill" AS "c6" ON "c5"."FK_SkillId" = "c6"."SKI_Id"
-          ) AS "t" ON "c2"."ACT_id" = "t"."FK_ActivityId"
-      ) AS "t0" ON "c"."EXP_Id" = "t0"."FK_ExperienceId"
-      ORDER BY "c"."EXP_Id", "c0"."CTY_Id", "c1"."FIR_Id", "t0"."ACT_id", "t0"."JOB_Id", "t0"."ACD_Id", "t0"."ACS_Id"]
-[INFO][2025-05-04 09:37:15,644][Thd7: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/SCPP.png ] End : 00:00:00.0194457]
-[INFO][2025-05-04 09:37:15,648][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/METSO.png ] End : 00:00:00.0194580]
-[INFO][2025-05-04 09:37:15,648][Thd16: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/MH.png ] End : 00:00:00.0212670]
-[INFO][2025-05-04 09:37:15,650][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/AJILON.png ] End : 00:00:00.0245247]
-[INFO][2025-05-04 09:37:15,653][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/LMSP.png ] End : 00:00:00.0261527]
-[INFO][2025-05-04 09:37:15,663][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/SERVANTES.png ] End : 00:00:00.0391687]
-[INFO][2025-05-04 09:37:15,665][Thd27: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/MM.png ] End : 00:00:00.0373699]
-[INFO][2025-05-04 09:37:15,669][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/AGAP2.png ] End : 00:00:00.0110438]
-[INFO][2025-05-04 09:37:15,677][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/W4.png ] End : 00:00:00.0524468]
-[INFO][2025-05-04 09:37:15,677][Thd22: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/BNPP.png ] End : 00:00:00.0509275]
-[INFO][2025-05-04 09:37:15,679][Thd18: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Experiences ] End : 00:00:02.4172170]
-[INFO][2025-05-04 09:43:46,241][Thd14: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1160832]
-[INFO][2025-05-04 09:43:46,310][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /css/site.css ] End : 00:00:00.0600246]
-[INFO][2025-05-04 09:43:46,310][Thd18: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image2.jpg ] End : 00:00:00.0476975]
-[INFO][2025-05-04 09:43:46,310][Thd7: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /DHA.styles.css ] End : 00:00:00.0606564]
-[INFO][2025-05-04 09:43:46,310][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/css/bootstrap.min.css ] End : 00:00:00.0600212]
-[INFO][2025-05-04 09:43:46,310][Thd17: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image1.jpg ] End : 00:00:00.0529911]
-[INFO][2025-05-04 09:43:46,310][Thd19: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image3.jpg ] End : 00:00:00.0037542]
-[INFO][2025-05-04 09:43:46,313][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/js/bootstrap.bundle.min.js ] End : 00:00:00.0001580]
-[INFO][2025-05-04 09:43:46,313][Thd20: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/jquery/dist/jquery.min.js ] End : 00:00:00.0001603]
-[INFO][2025-05-04 09:43:46,318][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /js/site.js ] End : 00:00:00.0001675]
-[DEBUG][2025-05-04 09:43:59,722][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 04/05/2025 09:43:59.720 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart", "c0"."CTY_Id", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode", "c1"."FIR_Id", "c1"."FIR_Key", "c1"."FIR_Name", "c1"."FIR_Sector", "t0"."ACT_id", "t0"."ACT_Code", "t0"."FK_ExperienceId", "t0"."FK_JobId", "t0"."ACT_ProjectName", "t0"."ACT_SubProjectName", "t0"."JOB_Id", "t0"."FK_ContratTypeKey", "t0"."JOB_JobName", "t0"."ACD_Id", "t0"."FK_ActivityId", "t0"."ACD_Detail", "t0"."ACS_Id", "t0"."FK_ActivityId0", "t0"."FK_SkillId", "t0"."SKI_Id", "t0"."SKI_Detail", "t0"."SKI_Key", "t0"."SKI_Name", "t0"."FK_SkillType_Id"
-      FROM "CV.T_Experience" AS "c"
-      INNER JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      INNER JOIN "CV.T_Ref_Firm" AS "c1" ON "c"."FK_FirmId" = "c1"."FIR_Id"
-      LEFT JOIN (
-          SELECT "c2"."ACT_id", "c2"."ACT_Code", "c2"."FK_ExperienceId", "c2"."FK_JobId", "c2"."ACT_ProjectName", "c2"."ACT_SubProjectName", "c3"."JOB_Id", "c3"."FK_ContratTypeKey", "c3"."JOB_JobName", "c4"."ACD_Id", "c4"."FK_ActivityId", "c4"."ACD_Detail", "t"."ACS_Id", "t"."FK_ActivityId" AS "FK_ActivityId0", "t"."FK_SkillId", "t"."SKI_Id", "t"."SKI_Detail", "t"."SKI_Key", "t"."SKI_Name", "t"."FK_SkillType_Id"
-          FROM "CV.T_Activity" AS "c2"
-          INNER JOIN "CV.T_Jobs" AS "c3" ON "c2"."FK_JobId" = "c3"."JOB_Id"
-          LEFT JOIN "CV.T_ActivityDetail" AS "c4" ON "c2"."ACT_id" = "c4"."FK_ActivityId"
-          LEFT JOIN (
-              SELECT "c5"."ACS_Id", "c5"."FK_ActivityId", "c5"."FK_SkillId", "c6"."SKI_Id", "c6"."SKI_Detail", "c6"."SKI_Key", "c6"."SKI_Name", "c6"."FK_SkillType_Id"
-              FROM "CV.J_ActivitySkill" AS "c5"
-              INNER JOIN "CV.T_Ref_Skill" AS "c6" ON "c5"."FK_SkillId" = "c6"."SKI_Id"
-          ) AS "t" ON "c2"."ACT_id" = "t"."FK_ActivityId"
-      ) AS "t0" ON "c"."EXP_Id" = "t0"."FK_ExperienceId"
-      ORDER BY "c"."EXP_Id", "c0"."CTY_Id", "c1"."FIR_Id", "t0"."ACT_id", "t0"."JOB_Id", "t0"."ACD_Id", "t0"."ACS_Id"]
-[INFO][2025-05-04 09:56:59,081][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1165777]
-[INFO][2025-05-04 09:56:59,108][Thd19: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image2.jpg ] End : 00:00:00.0030961]
-[INFO][2025-05-04 09:56:59,110][Thd7: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image1.jpg ] End : 00:00:00.0179431]
-[INFO][2025-05-04 09:56:59,110][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /DHA.styles.css ] End : 00:00:00.0179531]
-[INFO][2025-05-04 09:56:59,110][Thd12: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/css/bootstrap.min.css ] End : 00:00:00.0179563]
-[INFO][2025-05-04 09:56:59,110][Thd16: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /css/site.css ] End : 00:00:00.0178843]
-[INFO][2025-05-04 09:56:59,110][Thd18: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/jquery/dist/jquery.min.js ] End : 00:00:00.0091219]
-[INFO][2025-05-04 09:56:59,113][Thd20: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image3.jpg ] End : 00:00:00.0003611]
-[INFO][2025-05-04 09:56:59,119][Thd21: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/js/bootstrap.bundle.min.js ] End : 00:00:00.0001794]
-[INFO][2025-05-04 09:56:59,126][Thd22: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /js/site.js ] End : 00:00:00.0002399]
-[DEBUG][2025-05-04 09:57:05,321][Thd18: DHA_Db_Context.Log][Message: ##EFCORE##info: 04/05/2025 09:57:05.319 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+[INFO][2025-05-05 08:29:39,965][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /css/site.css ] End : 00:00:00.0421482]
+[INFO][2025-05-05 08:29:39,965][Thd7: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/css/bootstrap.min.css ] End : 00:00:00.0421865]
+[INFO][2025-05-05 08:29:39,965][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1796792]
+[INFO][2025-05-05 08:29:39,969][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /js/site.js ] End : 00:00:00.0001883]
+[INFO][2025-05-05 08:29:39,964][Thd14: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /DHA.styles.css ] End : 00:00:00.0405502]
+[INFO][2025-05-05 08:29:39,965][Thd16: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image2.jpg ] End : 00:00:00.0404858]
+[INFO][2025-05-05 08:29:39,964][Thd18: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/jquery/dist/jquery.min.js ] End : 00:00:00.0367337]
+[INFO][2025-05-05 08:29:39,965][Thd19: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/js/bootstrap.bundle.min.js ] End : 00:00:00.0004230]
+[INFO][2025-05-05 08:29:39,965][Thd20: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image1.jpg ] End : 00:00:00.0001102]
+[INFO][2025-05-05 08:29:39,970][Thd21: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image3.jpg ] End : 00:00:00.0010909]
+[DEBUG][2025-05-05 08:29:46,527][Thd25: DHA_Db_Context.Log][Message: ##EFCORE##info: 05/05/2025 08:29:46.524 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
       Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."TRA_Id", "c"."FK_CityId", "c"."TRA_Year", "c0"."CTY_Id", "c1"."TRD_Id", "c1"."TRD_Detail", "c1"."FK_TrainingId", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode"
-      FROM "CV.T_Training" AS "c"
-      LEFT JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      LEFT JOIN "CV.T_TrainingDetail" AS "c1" ON "c"."TRA_Id" = "c1"."FK_TrainingId"
-      ORDER BY "c"."TRA_Id", "c0"."CTY_Id"]
-[INFO][2025-05-04 09:57:05,430][Thd18: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Formation ] End : 00:00:01.2329582]
-[INFO][2025-05-04 16:08:46,463][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1516903]
-[INFO][2025-05-04 16:08:46,488][Thd7: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/css/bootstrap.min.css ] End : 00:00:00.0156997]
-[INFO][2025-05-04 16:08:46,488][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /css/site.css ] End : 00:00:00.0158120]
-[INFO][2025-05-04 16:08:46,488][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image1.jpg ] End : 00:00:00.0158008]
-[INFO][2025-05-04 16:08:46,488][Thd14: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /DHA.styles.css ] End : 00:00:00.0180588]
-[INFO][2025-05-04 16:08:46,488][Thd17: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image2.jpg ] End : 00:00:00.0111672]
-[INFO][2025-05-04 16:08:46,491][Thd18: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/jquery/dist/jquery.min.js ] End : 00:00:00.0019947]
-[INFO][2025-05-04 16:08:46,495][Thd20: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image3.jpg ] End : 00:00:00.0001024]
-[INFO][2025-05-04 16:08:46,500][Thd21: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/js/bootstrap.bundle.min.js ] End : 00:00:00.0001260]
-[INFO][2025-05-04 16:08:46,506][Thd22: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /js/site.js ] End : 00:00:00.0002365]
-[INFO][2025-05-04 16:48:09,209][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1214249]
-[INFO][2025-05-04 16:48:11,901][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Training ] End : 00:00:00.0020831]
-[INFO][2025-05-04 16:48:40,178][Thd17: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /DHA.styles.css ] End : 00:00:00.0042441]
-[INFO][2025-05-04 16:48:40,178][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1149682]
-[DEBUG][2025-05-04 16:48:44,973][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 04/05/2025 16:48:44.971 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."TRA_Id", "c"."FK_CityId", "c"."TRA_Year", "c0"."CTY_Id", "c1"."TRD_Id", "c1"."TRD_Detail", "c1"."FK_TrainingId", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode"
-      FROM "CV.T_Training" AS "c"
-      LEFT JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      LEFT JOIN "CV.T_TrainingDetail" AS "c1" ON "c"."TRA_Id" = "c1"."FK_TrainingId"
-      ORDER BY "c"."TRA_Id", "c0"."CTY_Id"]
-[INFO][2025-05-04 16:48:45,040][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Training ] End : 00:00:01.8257177]
-[INFO][2025-05-04 16:49:20,673][Thd16: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image1.jpg ] End : 00:00:00.0238467]
-[INFO][2025-05-04 16:49:20,674][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image2.jpg ] End : 00:00:00.0228194]
-[INFO][2025-05-04 16:49:20,674][Thd7: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1288172]
-[INFO][2025-05-04 16:49:20,674][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/css/bootstrap.min.css ] End : 00:00:00.0214161]
-[INFO][2025-05-04 16:49:20,674][Thd14: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /css/site.css ] End : 00:00:00.0238382]
-[INFO][2025-05-04 16:49:20,673][Thd18: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/jquery/dist/jquery.min.js ] End : 00:00:00.0146997]
-[INFO][2025-05-04 16:49:20,673][Thd19: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image3.jpg ] End : 00:00:00.0100051]
-[INFO][2025-05-04 16:49:20,673][Thd20: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/js/bootstrap.bundle.min.js ] End : 00:00:00.0030774]
-[INFO][2025-05-04 16:49:20,673][Thd21: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /js/site.js ] End : 00:00:00.0001418]
-[INFO][2025-05-04 16:49:22,409][Thd22: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Contact ] End : 00:00:00.0091376]
-[DEBUG][2025-05-04 16:49:24,675][Thd7: DHA_Db_Context.Log][Message: ##EFCORE##info: 04/05/2025 16:49:24.674 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart", "c0"."CTY_Id", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode", "c1"."FIR_Id", "c1"."FIR_Key", "c1"."FIR_Name", "c1"."FIR_Sector", "t0"."ACT_id", "t0"."ACT_Code", "t0"."FK_ExperienceId", "t0"."FK_JobId", "t0"."ACT_ProjectName", "t0"."ACT_SubProjectName", "t0"."JOB_Id", "t0"."FK_ContratTypeKey", "t0"."JOB_JobName", "t0"."ACD_Id", "t0"."FK_ActivityId", "t0"."ACD_Detail", "t0"."ACS_Id", "t0"."FK_ActivityId0", "t0"."FK_SkillId", "t0"."SKI_Id", "t0"."SKI_Detail", "t0"."SKI_Key", "t0"."SKI_Name", "t0"."FK_SkillType_Id"
-      FROM "CV.T_Experience" AS "c"
-      INNER JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      INNER JOIN "CV.T_Ref_Firm" AS "c1" ON "c"."FK_FirmId" = "c1"."FIR_Id"
-      LEFT JOIN (
-          SELECT "c2"."ACT_id", "c2"."ACT_Code", "c2"."FK_ExperienceId", "c2"."FK_JobId", "c2"."ACT_ProjectName", "c2"."ACT_SubProjectName", "c3"."JOB_Id", "c3"."FK_ContratTypeKey", "c3"."JOB_JobName", "c4"."ACD_Id", "c4"."FK_ActivityId", "c4"."ACD_Detail", "t"."ACS_Id", "t"."FK_ActivityId" AS "FK_ActivityId0", "t"."FK_SkillId", "t"."SKI_Id", "t"."SKI_Detail", "t"."SKI_Key", "t"."SKI_Name", "t"."FK_SkillType_Id"
-          FROM "CV.T_Activity" AS "c2"
-          INNER JOIN "CV.T_Jobs" AS "c3" ON "c2"."FK_JobId" = "c3"."JOB_Id"
-          LEFT JOIN "CV.T_ActivityDetail" AS "c4" ON "c2"."ACT_id" = "c4"."FK_ActivityId"
-          LEFT JOIN (
-              SELECT "c5"."ACS_Id", "c5"."FK_ActivityId", "c5"."FK_SkillId", "c6"."SKI_Id", "c6"."SKI_Detail", "c6"."SKI_Key", "c6"."SKI_Name", "c6"."FK_SkillType_Id"
-              FROM "CV.J_ActivitySkill" AS "c5"
-              INNER JOIN "CV.T_Ref_Skill" AS "c6" ON "c5"."FK_SkillId" = "c6"."SKI_Id"
-          ) AS "t" ON "c2"."ACT_id" = "t"."FK_ActivityId"
-      ) AS "t0" ON "c"."EXP_Id" = "t0"."FK_ExperienceId"
-      ORDER BY "c"."EXP_Id", "c0"."CTY_Id", "c1"."FIR_Id", "t0"."ACT_id", "t0"."JOB_Id", "t0"."ACD_Id", "t0"."ACS_Id"]
-[INFO][2025-05-04 16:49:39,242][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1131730]
-[DEBUG][2025-05-04 16:49:43,479][Thd11: DHA_Db_Context.Log][Message: ##EFCORE##info: 04/05/2025 16:49:43.478 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."TRA_Id", "c"."FK_CityId", "c"."TRA_Year", "c0"."CTY_Id", "c1"."TRD_Id", "c1"."TRD_Detail", "c1"."FK_TrainingId", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode"
-      FROM "CV.T_Training" AS "c"
-      LEFT JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      LEFT JOIN "CV.T_TrainingDetail" AS "c1" ON "c"."TRA_Id" = "c1"."FK_TrainingId"
-      ORDER BY "c"."TRA_Id", "c0"."CTY_Id"]
-[INFO][2025-05-04 16:49:43,548][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Training ] End : 00:00:00.8442496]
-[DEBUG][2025-05-04 16:50:20,517][Thd18: DHA_Db_Context.Log][Message: ##EFCORE##info: 04/05/2025 16:50:20.517 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart", "c0"."CTY_Id", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode", "c1"."FIR_Id", "c1"."FIR_Key", "c1"."FIR_Name", "c1"."FIR_Sector", "t0"."ACT_id", "t0"."ACT_Code", "t0"."FK_ExperienceId", "t0"."FK_JobId", "t0"."ACT_ProjectName", "t0"."ACT_SubProjectName", "t0"."JOB_Id", "t0"."FK_ContratTypeKey", "t0"."JOB_JobName", "t0"."ACD_Id", "t0"."FK_ActivityId", "t0"."ACD_Detail", "t0"."ACS_Id", "t0"."FK_ActivityId0", "t0"."FK_SkillId", "t0"."SKI_Id", "t0"."SKI_Detail", "t0"."SKI_Key", "t0"."SKI_Name", "t0"."FK_SkillType_Id"
-      FROM "CV.T_Experience" AS "c"
-      INNER JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
-      INNER JOIN "CV.T_Ref_Firm" AS "c1" ON "c"."FK_FirmId" = "c1"."FIR_Id"
-      LEFT JOIN (
-          SELECT "c2"."ACT_id", "c2"."ACT_Code", "c2"."FK_ExperienceId", "c2"."FK_JobId", "c2"."ACT_ProjectName", "c2"."ACT_SubProjectName", "c3"."JOB_Id", "c3"."FK_ContratTypeKey", "c3"."JOB_JobName", "c4"."ACD_Id", "c4"."FK_ActivityId", "c4"."ACD_Detail", "t"."ACS_Id", "t"."FK_ActivityId" AS "FK_ActivityId0", "t"."FK_SkillId", "t"."SKI_Id", "t"."SKI_Detail", "t"."SKI_Key", "t"."SKI_Name", "t"."FK_SkillType_Id"
-          FROM "CV.T_Activity" AS "c2"
-          INNER JOIN "CV.T_Jobs" AS "c3" ON "c2"."FK_JobId" = "c3"."JOB_Id"
-          LEFT JOIN "CV.T_ActivityDetail" AS "c4" ON "c2"."ACT_id" = "c4"."FK_ActivityId"
-          LEFT JOIN (
-              SELECT "c5"."ACS_Id", "c5"."FK_ActivityId", "c5"."FK_SkillId", "c6"."SKI_Id", "c6"."SKI_Detail", "c6"."SKI_Key", "c6"."SKI_Name", "c6"."FK_SkillType_Id"
-              FROM "CV.J_ActivitySkill" AS "c5"
-              INNER JOIN "CV.T_Ref_Skill" AS "c6" ON "c5"."FK_SkillId" = "c6"."SKI_Id"
-          ) AS "t" ON "c2"."ACT_id" = "t"."FK_ActivityId"
-      ) AS "t0" ON "c"."EXP_Id" = "t0"."FK_ExperienceId"
-      ORDER BY "c"."EXP_Id", "c0"."CTY_Id", "c1"."FIR_Id", "t0"."ACT_id", "t0"."JOB_Id", "t0"."ACD_Id", "t0"."ACS_Id"]
+      SELECT "c"."SKI_Id", "c"."SKI_Detail", "c"."SKI_Key", "c"."SKI_Name", "c"."FK_SkillType_Id", "c0"."SKT_Id", "c0"."SKT_Description", "c0"."SKT_Key"
+      FROM "CV.T_Ref_Skill" AS "c"
+      INNER JOIN "CV.T_Ref_SkillType" AS "c0" ON "c"."FK_SkillType_Id" = "c0"."SKT_Id"]
+[DEBUG][2025-05-05 08:29:46,614][Thd25: DHA_Db_Context.Log][Message: ##EFCORE##info: 05/05/2025 08:29:46.614 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "c"."ACS_Id", "c"."FK_ActivityId", "c"."FK_SkillId"
+      FROM "CV.J_ActivitySkill" AS "c"]
+[DEBUG][2025-05-05 08:29:46,638][Thd25: DHA_Db_Context.Log][Message: ##EFCORE##info: 05/05/2025 08:29:46.638 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "c"."ACT_id", "c"."ACT_Code", "c"."FK_ExperienceId", "c"."FK_JobId", "c"."ACT_ProjectName", "c"."ACT_SubProjectName"
+      FROM "CV.T_Activity" AS "c"]
+[DEBUG][2025-05-05 08:29:46,672][Thd25: DHA_Db_Context.Log][Message: ##EFCORE##info: 05/05/2025 08:29:46.672 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart"
+      FROM "CV.T_Experience" AS "c"]
+[INFO][2025-05-05 08:29:46,735][Thd25: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Skills ] End : 00:00:02.5482097]
