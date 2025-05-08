@@ -21,11 +21,7 @@ namespace DHA.Controllers
 
         public IActionResult Index()
         {
-           
-
-            SetTitrePage("Accueil");
-
-            
+            SetTitrePage("Accueil");            
             return View();
         }//Index
 
@@ -35,45 +31,33 @@ namespace DHA.Controllers
             return View(CVDataAdapter.readTrainingM());
         }//Formation
 
-        public IActionResult Experiences()
+        public IActionResult Experience()
         {
             SetTitrePage("Mes expériences");            
-            return View(MyExperience.select_experiences());
+            return View(CVDataAdapter.readExperienceM());
         }//Experiences
 
-        public IActionResult Skills()
+        public IActionResult Skill()
         {
             SetTitrePage("Mes compétences");            
-            return View(CVDataAdapter.readSkillStat());
+            return View(CVDataAdapter.readSkillStatM());
         }//Competences
 
         public IActionResult About()
         {
-           
-
-            SetTitrePage("About");
-
-            
+            SetTitrePage("About");            
             return View();
         }
 
         public IActionResult Contact()
         {
-           
-
-            SetTitrePage("Contact");
-
-            
+            SetTitrePage("Contact");            
             return View();
         }   
 
         public IActionResult Link()
         {
-           
-
-            SetTitrePage("Mes Liens");
-
-            
+            SetTitrePage("Mes Liens");            
             return View(MyLinks.select_all_link());
         }
 

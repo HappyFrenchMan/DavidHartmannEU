@@ -14,9 +14,7 @@ EF_StaticConfiguration.SQL_LITE_FILE_NAME = DHAConfig.DbFileName();
 EF_StaticConfiguration.EF_CORE_ENSURE_DELETED = true; 
 EF_StaticConfiguration.EF_CORE_ENSURE_CREATED = true;
 
-
-
-// Fill database
+// Fill database CV **********************************
 Ref_Init.Init_ContractType();
 Ref_Init.Init_KeyRole();
 Ref_Init.Init_SkillType();
@@ -28,4 +26,6 @@ Link_Init.Init_Link_Tab();
 Training_Init.Init_Training();
 Experience_Init.Init();
 
-RefDoc_Init.Init_Doc_Content_Type();
+
+// Document ******************************************
+RefDoc_Init.Init_Doc_Ref();

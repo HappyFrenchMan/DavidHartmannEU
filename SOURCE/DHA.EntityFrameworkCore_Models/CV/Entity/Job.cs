@@ -22,7 +22,7 @@ namespace DHA.EntityFrameworkCore_Models.CV.Entity
 
         public ICollection<JobKeyRole> JobKeyRoles { get; }  = new List<JobKeyRole>();
 
-        private string JobKeyRolesToString()
+        public string JobKeyRolesToString()
         {
             string lStrResult = string.Empty;
             foreach (JobKeyRole jkr in JobKeyRoles)
@@ -34,7 +34,9 @@ namespace DHA.EntityFrameworkCore_Models.CV.Entity
 
         public override string ToString()
         {
-            return $"{Name}-{ContractType.Name}/{JobKeyRolesToString}";
+            return $"{Name}";
+            //-{ContractType.Name}";
+            //{JobKeyRolesToString}";
         }//ToString
     }//class
 }//namespace

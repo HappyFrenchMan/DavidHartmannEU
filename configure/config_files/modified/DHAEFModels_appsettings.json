@@ -6,5 +6,5 @@
     }
   },
   "AllowedHosts": "*",
-  "DbFileName": "F:\\git_repository\\DavidHartmannEU\\run\\database\\davidhartmann_eu.db"
+  "DbFileName": "D:\\git_repository\\DavidHartmannEU\\run\\database\\davidhartmann_eu.db"
 }

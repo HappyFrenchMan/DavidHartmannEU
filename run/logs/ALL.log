@@ -1,28 +1,656 @@
-[INFO][2025-05-05 08:29:39,965][Thd5: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /css/site.css ] End : 00:00:00.0421482]
-[INFO][2025-05-05 08:29:39,965][Thd7: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/css/bootstrap.min.css ] End : 00:00:00.0421865]
-[INFO][2025-05-05 08:29:39,965][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1796792]
-[INFO][2025-05-05 08:29:39,969][Thd11: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /js/site.js ] End : 00:00:00.0001883]
-[INFO][2025-05-05 08:29:39,964][Thd14: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /DHA.styles.css ] End : 00:00:00.0405502]
-[INFO][2025-05-05 08:29:39,965][Thd16: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image2.jpg ] End : 00:00:00.0404858]
-[INFO][2025-05-05 08:29:39,964][Thd18: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/jquery/dist/jquery.min.js ] End : 00:00:00.0367337]
-[INFO][2025-05-05 08:29:39,965][Thd19: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /lib/bootstrap/dist/js/bootstrap.bundle.min.js ] End : 00:00:00.0004230]
-[INFO][2025-05-05 08:29:39,965][Thd20: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image1.jpg ] End : 00:00:00.0001102]
-[INFO][2025-05-05 08:29:39,970][Thd21: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/portrait/image3.jpg ] End : 00:00:00.0010909]
-[DEBUG][2025-05-05 08:29:46,527][Thd25: DHA_Db_Context.Log][Message: ##EFCORE##info: 05/05/2025 08:29:46.524 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."SKI_Id", "c"."SKI_Detail", "c"."SKI_Key", "c"."SKI_Name", "c"."FK_SkillType_Id", "c0"."SKT_Id", "c0"."SKT_Description", "c0"."SKT_Key"
-      FROM "CV.T_Ref_Skill" AS "c"
-      INNER JOIN "CV.T_Ref_SkillType" AS "c0" ON "c"."FK_SkillType_Id" = "c0"."SKT_Id"]
-[DEBUG][2025-05-05 08:29:46,614][Thd25: DHA_Db_Context.Log][Message: ##EFCORE##info: 05/05/2025 08:29:46.614 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."ACS_Id", "c"."FK_ActivityId", "c"."FK_SkillId"
-      FROM "CV.J_ActivitySkill" AS "c"]
-[DEBUG][2025-05-05 08:29:46,638][Thd25: DHA_Db_Context.Log][Message: ##EFCORE##info: 05/05/2025 08:29:46.638 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."ACT_id", "c"."ACT_Code", "c"."FK_ExperienceId", "c"."FK_JobId", "c"."ACT_ProjectName", "c"."ACT_SubProjectName"
-      FROM "CV.T_Activity" AS "c"]
-[DEBUG][2025-05-05 08:29:46,672][Thd25: DHA_Db_Context.Log][Message: ##EFCORE##info: 05/05/2025 08:29:46.672 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart"
-      FROM "CV.T_Experience" AS "c"]
-[INFO][2025-05-05 08:29:46,735][Thd25: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Skills ] End : 00:00:02.5482097]
+[INFO][2025-05-06 07:32:18,408][Thd7: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1160841]
+[DEBUG][2025-05-06 07:32:28,623][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:32:28.622 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (22ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart", "c0"."CTY_Id", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode", "c1"."FIR_Id", "c1"."FIR_Key", "c1"."FIR_Name", "c1"."FIR_Sector", "t0"."ACT_id", "t0"."ACT_Code", "t0"."FK_ExperienceId", "t0"."FK_JobId", "t0"."ACT_ProjectName", "t0"."ACT_SubProjectName", "t0"."ACD_Id", "t0"."FK_ActivityId", "t0"."ACD_Detail", "t0"."ACS_Id", "t0"."FK_ActivityId0", "t0"."FK_SkillId", "t0"."SKI_Id", "t0"."SKI_Detail", "t0"."SKI_Key", "t0"."SKI_Name", "t0"."FK_SkillType_Id"
+      FROM "CV.T_Experience" AS "c"
+      INNER JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
+      INNER JOIN "CV.T_Ref_Firm" AS "c1" ON "c"."FK_FirmId" = "c1"."FIR_Id"
+      LEFT JOIN (
+          SELECT "c2"."ACT_id", "c2"."ACT_Code", "c2"."FK_ExperienceId", "c2"."FK_JobId", "c2"."ACT_ProjectName", "c2"."ACT_SubProjectName", "c3"."ACD_Id", "c3"."FK_ActivityId", "c3"."ACD_Detail", "t"."ACS_Id", "t"."FK_ActivityId" AS "FK_ActivityId0", "t"."FK_SkillId", "t"."SKI_Id", "t"."SKI_Detail", "t"."SKI_Key", "t"."SKI_Name", "t"."FK_SkillType_Id"
+          FROM "CV.T_Activity" AS "c2"
+          LEFT JOIN "CV.T_ActivityDetail" AS "c3" ON "c2"."ACT_id" = "c3"."FK_ActivityId"
+          LEFT JOIN (
+              SELECT "c4"."ACS_Id", "c4"."FK_ActivityId", "c4"."FK_SkillId", "c5"."SKI_Id", "c5"."SKI_Detail", "c5"."SKI_Key", "c5"."SKI_Name", "c5"."FK_SkillType_Id"
+              FROM "CV.J_ActivitySkill" AS "c4"
+              INNER JOIN "CV.T_Ref_Skill" AS "c5" ON "c4"."FK_SkillId" = "c5"."SKI_Id"
+          ) AS "t" ON "c2"."ACT_id" = "t"."FK_ActivityId"
+      ) AS "t0" ON "c"."EXP_Id" = "t0"."FK_ExperienceId"
+      ORDER BY "c"."EXP_Id", "c0"."CTY_Id", "c1"."FIR_Id", "t0"."ACT_id", "t0"."ACD_Id", "t0"."ACS_Id"]
+[DEBUG][2025-05-06 07:33:00,230][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:00.229 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:16,614][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:16.614 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,372][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.372 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,375][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.375 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,377][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.377 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,378][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.378 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,380][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.380 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,382][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.382 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,384][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.384 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,385][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.385 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,386][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.386 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,388][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.388 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,390][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.390 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,392][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.392 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,394][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.394 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,395][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.395 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,396][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.396 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,398][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.398 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:33:19,400][Thd5: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:33:19.400 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[INFO][2025-05-06 07:33:19,424][Thd16: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Experience ] End : 00:00:58.4318975]
+[INFO][2025-05-06 07:33:19,494][Thd19: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/W4.png ] End : 00:00:00.0472258]
+[INFO][2025-05-06 07:33:19,494][Thd13: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/SCPP.png ] End : 00:00:00.0370229]
+[INFO][2025-05-06 07:33:19,494][Thd21: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/SERVANTES.png ] End : 00:00:00.0472346]
+[INFO][2025-05-06 07:33:19,514][Thd15: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/AJILON.png ] End : 00:00:00.0139046]
+[INFO][2025-05-06 07:33:19,526][Thd19: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/MM.png ] End : 00:00:00.0153360]
+[INFO][2025-05-06 07:33:19,526][Thd21: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/BNPP.png ] End : 00:00:00.0180973]
+[INFO][2025-05-06 07:33:19,563][Thd13: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/LMSP.png ] End : 00:00:00.0142750]
+[INFO][2025-05-06 07:33:19,566][Thd15: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/MH.png ] End : 00:00:00.0140654]
+[INFO][2025-05-06 07:33:19,566][Thd16: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/METSO.png ] End : 00:00:00.0136137]
+[INFO][2025-05-06 07:33:19,581][Thd19: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /img/firm/AGAP2.png ] End : 00:00:00.0130215]
+[INFO][2025-05-06 07:39:17,104][Thd10: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ / ] End : 00:00:00.1682486]
+[DEBUG][2025-05-06 07:40:02,300][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.299 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "c"."EXP_Id", "c"."FK_CityId", "c"."EXP_Description", "c"."FK_FirmId", "c"."EXP_Name", "c"."EXP_MonthEnd", "c"."EXP_MonthStart", "c"."EXP_YearEnd", "c"."EXP_YearStart", "c0"."CTY_Id", "c0"."CTY_Area", "c0"."CTY_CityName", "c0"."CTY_Department", "c0"."CTY_PostalCode", "c1"."FIR_Id", "c1"."FIR_Key", "c1"."FIR_Name", "c1"."FIR_Sector", "t0"."ACT_id", "t0"."ACT_Code", "t0"."FK_ExperienceId", "t0"."FK_JobId", "t0"."ACT_ProjectName", "t0"."ACT_SubProjectName", "t0"."ACD_Id", "t0"."FK_ActivityId", "t0"."ACD_Detail", "t0"."ACS_Id", "t0"."FK_ActivityId0", "t0"."FK_SkillId", "t0"."SKI_Id", "t0"."SKI_Detail", "t0"."SKI_Key", "t0"."SKI_Name", "t0"."FK_SkillType_Id"
+      FROM "CV.T_Experience" AS "c"
+      INNER JOIN "CV.T_Ref_City" AS "c0" ON "c"."FK_CityId" = "c0"."CTY_Id"
+      INNER JOIN "CV.T_Ref_Firm" AS "c1" ON "c"."FK_FirmId" = "c1"."FIR_Id"
+      LEFT JOIN (
+          SELECT "c2"."ACT_id", "c2"."ACT_Code", "c2"."FK_ExperienceId", "c2"."FK_JobId", "c2"."ACT_ProjectName", "c2"."ACT_SubProjectName", "c3"."ACD_Id", "c3"."FK_ActivityId", "c3"."ACD_Detail", "t"."ACS_Id", "t"."FK_ActivityId" AS "FK_ActivityId0", "t"."FK_SkillId", "t"."SKI_Id", "t"."SKI_Detail", "t"."SKI_Key", "t"."SKI_Name", "t"."FK_SkillType_Id"
+          FROM "CV.T_Activity" AS "c2"
+          LEFT JOIN "CV.T_ActivityDetail" AS "c3" ON "c2"."ACT_id" = "c3"."FK_ActivityId"
+          LEFT JOIN (
+              SELECT "c4"."ACS_Id", "c4"."FK_ActivityId", "c4"."FK_SkillId", "c5"."SKI_Id", "c5"."SKI_Detail", "c5"."SKI_Key", "c5"."SKI_Name", "c5"."FK_SkillType_Id"
+              FROM "CV.J_ActivitySkill" AS "c4"
+              INNER JOIN "CV.T_Ref_Skill" AS "c5" ON "c4"."FK_SkillId" = "c5"."SKI_Id"
+          ) AS "t" ON "c2"."ACT_id" = "t"."FK_ActivityId"
+      ) AS "t0" ON "c"."EXP_Id" = "t0"."FK_ExperienceId"
+      ORDER BY "c"."EXP_Id", "c0"."CTY_Id", "c1"."FIR_Id", "t0"."ACT_id", "t0"."ACD_Id", "t0"."ACS_Id"]
+[DEBUG][2025-05-06 07:40:02,443][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.443 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,504][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.504 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,507][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.507 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,510][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.510 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,512][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.512 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,515][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.515 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,517][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.517 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,519][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.519 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,521][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.521 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,522][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.522 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,524][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.524 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,526][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.526 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,529][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.529 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,531][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.531 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,533][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.533 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,535][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.535 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,537][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.537 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,538][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.538 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[DEBUG][2025-05-06 07:40:02,539][Thd12: DHA_Db_Context.Log][Message: ##EFCORE##info: 06/05/2025 07:40:02.539 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__pIntJobId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT "t"."JOB_Id", "t"."FK_ContratTypeKey", "t"."JOB_JobName", "t"."CTY_Key", "t"."CTY_Name", "t0"."JRO_Id", "t0"."FK_JobId", "t0"."FK_KeyRoleKey", "t0"."KRO_Key", "t0"."KRO_Name"
+      FROM (
+          SELECT "c"."JOB_Id", "c"."FK_ContratTypeKey", "c"."JOB_JobName", "c0"."CTY_Key", "c0"."CTY_Name"
+          FROM "CV.T_Jobs" AS "c"
+          INNER JOIN "CV.T_Ref_ContratType" AS "c0" ON "c"."FK_ContratTypeKey" = "c0"."CTY_Key"
+          WHERE "c"."JOB_Id" = @__pIntJobId_0
+          LIMIT 1
+      ) AS "t"
+      LEFT JOIN (
+          SELECT "c1"."JRO_Id", "c1"."FK_JobId", "c1"."FK_KeyRoleKey", "c2"."KRO_Key", "c2"."KRO_Name"
+          FROM "CV.J_JobKeyRole" AS "c1"
+          INNER JOIN "CV.T_Ref_KeyRole" AS "c2" ON "c1"."FK_KeyRoleKey" = "c2"."KRO_Key"
+      ) AS "t0" ON "t"."JOB_Id" = "t0"."FK_JobId"
+      ORDER BY "t"."JOB_Id", "t"."CTY_Key", "t0"."JRO_Id"]
+[INFO][2025-05-06 07:40:02,566][Thd20: RequestDurationMiddleWare.InvokeAsync][Message: REQUEST_PATH:[ /Home/Experience ] End : 00:00:25.7523671]

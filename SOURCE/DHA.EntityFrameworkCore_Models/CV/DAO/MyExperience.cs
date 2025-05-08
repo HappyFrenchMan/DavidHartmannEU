@@ -85,7 +85,7 @@ namespace DHA.EntityFrameworkCore_Models.CV.DAO
             }//using
         }//add_activity
 
-        public static List<Experience> select_experiences()
+        public static List<Experience> select_experiences_with_activities()
         {
             using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
             {
@@ -93,15 +93,12 @@ namespace DHA.EntityFrameworkCore_Models.CV.DAO
                     lDHA_Db_Context.Experiences
                     .Include(exp => exp.City)
                     .Include(exp => exp.Firm)
-                    .Include(exp => exp.Activities)                    
-                    .ThenInclude(act => act.Job)
                     .Include(exp => exp.Activities)
                     .ThenInclude(act => act.ActivityDetails)
                     .Include(exp => exp.Activities)
                     .ThenInclude(act => act.ActivitySkills)
                     .ThenInclude(sk => sk.Skill)
                     .ToList();
-
 
                 return __lstExp;
             }//using

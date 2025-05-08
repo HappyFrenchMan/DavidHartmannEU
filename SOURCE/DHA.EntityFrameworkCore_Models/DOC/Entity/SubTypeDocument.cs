@@ -29,7 +29,7 @@ namespace DHA.EntityFrameworkCore_Models.DOC.Entity
 
         [Column("FK_SubTypeDocParent")]
         public int SubTypeDocumentId { get; set; }
-        public SubTypeDocument Parent { get; set; } = null!;
+        public SubTypeDocument? Parent { get; set; } = null!;
 
     }
 }
