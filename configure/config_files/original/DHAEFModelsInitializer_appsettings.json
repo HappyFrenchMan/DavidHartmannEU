@@ -6,5 +6,5 @@
     }
   },
   "AllowedHosts": "*",
-  "DbFileName": "davidhartmann_eu.db"
+  "DbFileName": "##DIRECTORYDATABASE##davidhartmann_eu.db"
 }

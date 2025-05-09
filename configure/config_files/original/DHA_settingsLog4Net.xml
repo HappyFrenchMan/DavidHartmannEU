@@ -9,7 +9,7 @@
 
   <!-- LOG ALL VERS DHA.log -->
   <appender name="RollingFileMain" type="log4net.Appender.RollingFileAppender">
-    <file value="D:\\david_hartmann_eu_v5.0\\project_shared_ressources\\ALL.log" />
+    <file value="##DIRECTORYLOGS##ALL.log" />
     <appendToFile value="true" />
     <maximumFileSize value="100KB" />
     <maxSizeRollBackups value="2" />
@@ -24,7 +24,7 @@
       <stringToMatch value="REQUEST_PATH"/>
     </filter>
     <filter type="log4net.Filter.DenyAllFilter" />
-    <file value="D:\\david_hartmann_eu_v5.0\\project_shared_ressources\\FILTER_REQUEST.log" />
+    <file value="##DIRECTORYLOGS##FILTER_REQUEST.log" />
     <appendToFile value="true" />
     <maximumFileSize value="100KB" />
     <maxSizeRollBackups value="2" />
@@ -39,7 +39,7 @@
       <stringToMatch value="APP_CRASH"/>
     </filter>
     <filter type="log4net.Filter.DenyAllFilter" />
-    <file value="D:\\david_hartmann_eu_v5.0\\project_shared_ressources\\FILTER_APP_CRASH.log" />
+    <file value="##DIRECTORYLOGS##FILTER_APP_CRASH.log" />
     <appendToFile value="true" />
     <maximumFileSize value="100KB" />
     <maxSizeRollBackups value="2" />
@@ -54,7 +54,7 @@
       <stringToMatch value="##EFCORE##"/>
     </filter>
     <filter type="log4net.Filter.DenyAllFilter" />
-    <file value="F:\git\davidhartmannEU\\project_shared_ressources\\FILTER_EF.log" />
+    <file value="##DIRECTORYLOGS##FILTER_EF.log" />
     <appendToFile value="true" />
     <maximumFileSize value="100KB" />
     <maxSizeRollBackups value="2" />

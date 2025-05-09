@@ -6,5 +6,5 @@
       "Microsoft.EntityFrameworkCore.Database.Command": "Information"
     }
   },
-  "DbFileName": "F:\\git\\davidhartmannEU\\project_shared_ressources\\davidhartmann_eu.db"
+  "DbFileName": "##DIRECTORYDATABASE##davidhartmann_eu.db"
 }
