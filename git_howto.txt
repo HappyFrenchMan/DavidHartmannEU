@@ -1,4 +1,8 @@
+-- preparer son environnement
 git reset
 git checkout .
 git fetch
 git pull
+
+-- connaitre les elements a pousser
+git status
