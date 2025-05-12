@@ -1,24 +1,26 @@
 ﻿using DAL.Repository;
+using System.Collections.Generic;
 
 namespace DAL
 {
     public class MyDb
     {
         private Db_Context _context;
-        private CityRepository _cityRepository;
-        private FirmRepository _firmRepository;
+        private Lazy<CityRepository> _LazyCityRepository;
+        private Lazy<FirmRepository> _LazyFirmRepository;
 
         public MyDb()
         {
             _context = new Db_Context();
+            _LazyCityRepository = new Lazy<CityRepository>(() => new CityRepository(_context) );
+            _LazyFirmRepository = new Lazy<FirmRepository>(() => new FirmRepository(_context) );
         }//MyDatabase
 
         public CityRepository cityRepo
         {
             get
-            {
-                if (_cityRepository == null) { _cityRepository = new CityRepository(_context); }
-                return _cityRepository;
+            {            
+                return _LazyCityRepository.Value;
             }
         }//cityRepo
 
@@ -26,8 +28,7 @@ namespace DAL
         {
             get
             {
-                if (_firmRepository == null) { _firmRepository = new FirmRepository(_context); }
-                return _firmRepository;
+                return _LazyFirmRepository.Value;
             }
         }//firmRepo
 
