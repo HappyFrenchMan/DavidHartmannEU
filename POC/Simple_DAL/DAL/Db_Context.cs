@@ -3,6 +3,7 @@ using DAL.Entity;
 using System.Data;
 using System.Diagnostics;
 using DAL.Repository;
+using sln_conf = Util.appSettings.AppSettingsReader;
 
 namespace DAL
 {
@@ -17,7 +18,7 @@ namespace DAL
             base()
         {
 
-            if (Db_Config.EF_CORE_ENSURE_DELETED)
+            if (sln_conf.ReadBool(sln_conf.EN_APPS_KEY.DAL_BOOL_EF_CORE_ENSURE_DELETED))
             {
                 if (!IS_DB_INIT)
                 {
@@ -25,7 +26,7 @@ namespace DAL
                 }
             }
 
-            if (Db_Config.EF_CORE_ENSURE_CREATED)
+            if (sln_conf.ReadBool(sln_conf.EN_APPS_KEY.DAL_BOOL_EF_CORE_ENSURE_CREATED))
             {
                 if (!IS_DB_INIT)
                 {
@@ -38,7 +39,7 @@ namespace DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite($"Data Source={Db_Config.SQL_LITE_FILE_NAME}");
+            options.UseSqlite($"{sln_conf.Read(sln_conf.EN_APPS_KEY.DAL_STR_DATABASE_CONNECTION_STRING)}");
 
         }//OnConfiguring
     }//class

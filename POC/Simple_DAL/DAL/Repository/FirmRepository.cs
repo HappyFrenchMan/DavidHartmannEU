@@ -12,5 +12,5 @@ namespace DAL.Repository
     public class FirmRepository : Repository<Firm>
     {
         public FirmRepository(Db_Context pDb_Context) : base(pDb_Context) { }//CityRepository
-    }
-}
+    }//class
+}//namespace

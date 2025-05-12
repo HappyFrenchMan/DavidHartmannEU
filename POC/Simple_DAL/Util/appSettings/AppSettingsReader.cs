@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace Util.appSettings
@@ -14,23 +16,34 @@ namespace Util.appSettings
     // NAME : Project Name in UpperCase + '_' + TYPE + '_' +Name in uppercase
     // ex for string KEY  : DAL_STR_DATABASE_CONNECTION_STRING
     // ex for boolean KEY : DAL_BOOL_EF_CORE_ENSURE_CREATED (TRUE or FALSE)
-    internal class AppSettingsReader
+    public class AppSettingsReader
     {
         private const string APP_SETTINGS_FILE_NAME = "appSettings.json";
 
-        public enum ENUM_AS_KEY
+        public enum EN_APPS_KEY
         {
             DAL_STR_DATABASE_CONNECTION_STRING,
             DAL_BOOL_EF_CORE_ENSURE_CREATED,
             DAL_BOOL_EF_CORE_ENSURE_DELETED
         }
 
-        public static void ReadAppSettings(ENUM_AS_KEY eNUM_AS_KEY)
+        public static string Read(EN_APPS_KEY eNUM_AS_KEY)
         {
+            // read app settings file content
+            string fileName = $"{System.IO.Directory.GetCurrentDirectory()}/{APP_SETTINGS_FILE_NAME}";
+            string __strAppSettingsFileText = File.ReadAllText(fileName);
 
+            // send text stream to Json Parser
+            JsonNode __jsonNodeGlobal = JsonNode.Parse(__strAppSettingsFileText);
 
-        }//ReadAppSettings
+            // read JSON Element 
+            return __jsonNodeGlobal[eNUM_AS_KEY.ToString()].ToString();
+        }//Read
 
-
+        public static bool ReadBool(EN_APPS_KEY eNUM_AS_KEY)
+        {
+            string __strValue = Read(eNUM_AS_KEY);
+            return __strValue  == "TRUE" || __strValue =="1";
+        }//ReadBool
     }
 }

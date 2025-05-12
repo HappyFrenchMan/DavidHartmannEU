@@ -13,22 +13,23 @@ namespace DAL
             _context = new Db_Context();
         }//MyDatabase
 
-        private CityRepository cityRepo
+        public CityRepository cityRepo
         {
             get
             {
                 if (_cityRepository == null) { _cityRepository = new CityRepository(_context); }
                 return _cityRepository;
             }
-        }
-        private FirmRepository firmRepo
+        }//cityRepo
+
+        public FirmRepository firmRepo
         {
             get
             {
                 if (_firmRepository == null) { _firmRepository = new FirmRepository(_context); }
                 return _firmRepository;
             }
-        }
+        }//firmRepo
 
     }//class
 }//namespace

@@ -36,7 +36,7 @@ namespace DAL.Entity
 
         [Column("FK_FirmId")]
         public int CityId { get; set; }
-        public Firm City { get; set; } = null;
+        public City City { get; set; } = null;
 
         public override string ToString()
         {
