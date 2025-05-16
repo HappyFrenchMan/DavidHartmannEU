@@ -1,4 +1,4 @@
-﻿using DHA.Common.Log4Net;
+﻿using DHA.UTIL.Log4Net;
 
 namespace DHA.Fun
 {

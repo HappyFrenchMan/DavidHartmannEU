@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DHA.Common\DHA.Common.csproj" />
+    <ProjectReference Include="..\DHA.UTIL\DHA.UTIL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
