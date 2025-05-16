@@ -1,0 +1,91 @@
+﻿@using DHA.DAL.CV.Model
+@model List<ExperienceM>;
+
+<h1>Mes Expériences</h1>
+<br />
+
+@{
+    int __noLigne =0;
+    string __strHeading;
+    string __strCollapse, __strCollapse2;
+}
+
+<div class="accordion accordion-flush" id="accordionExample">
+    @foreach (ExperienceM __experienceM in Model)
+    {
+
+        __noLigne = __noLigne + 1;
+        __strHeading = $"heading{__noLigne}";
+        __strCollapse = $"collaspe{__noLigne}";
+        __strCollapse2 = $"#collaspe{__noLigne}";
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="@__strHeading">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="@__strCollapse2" aria-expanded="true" aria-controls="@__strCollapse">
+                    <img src="~/img/firm/@(__experienceM.firmkey).png" width="50" />&nbsp;&nbsp;
+                    <b>
+                        <i>
+                            @__experienceM.period
+                        </i>
+                    </b>
+                    &nbsp;&nbsp;
+                    @__experienceM.duration
+                    &nbsp;
+                    -&nbsp;
+                    <b>@__experienceM.desc</b>&nbsp;
+                    -
+                    @__experienceM.firmname
+                    / @__experienceM.firmsector  
+                </button>
+            </h2>
+            <div id="@__strCollapse" class="accordion-collapse collapse" aria-labelledby="@__strHeading" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <br />
+                    <u>Durée :</u>&nbsp;@__experienceM.period<br /><br />
+                    <u>Lieu :</u>&nbsp;@__experienceM.cityinfo<br /><br />
+                    <u>Client ou Employeur :</u>&nbsp;@__experienceM.firmname<br /><br />
+                    @foreach (ExperienceM_Activities __activite in __experienceM.tabActivities)
+                    {
+                        <div class="card">
+                            <div class="card-header">
+                                <strong><u>PROJET :</u> @__activite.proj &nbsp;@__activite.subproj</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <u>Poste Occupé :</u>&nbsp;@__activite.job.ToString()<br/><br/>
+                                    <u>Contrat :</u>&nbsp;@__activite.contract<br /><br />
+                                    <u>Fonctions :</u>&nbsp;@__activite.keyrole<br /><br />
+                                    <u>Activités :</u><br/>
+                                    @foreach (string __strActivityDetail in __activite.tabStrDetail)
+                                    {
+                                        @__strActivityDetail
+                                        <br/>
+                                    }
+                                </p>
+                            </div>
+                            <div class="card-footer text-muteds">
+                                <u>Compétences :</u><br/>
+
+                                @{
+                                    string[] __tabSkillName = __activite.tabStrSkills;
+                                    for (var i = 0; i < __tabSkillName.Length;i++)
+                                    {
+                                        @__tabSkillName[i]
+                                        if (i != __tabSkillName.Length-1)
+                                        {
+                                            <font>&nbsp;/&nbsp;</font>
+                                        }
+                                    }
+                                  }
+
+                                </div>
+                            </div>         
+                            <br/>                       
+                        }                                        
+                </div>
+            </div>          
+        </div>
+    }
+</div>
+
+

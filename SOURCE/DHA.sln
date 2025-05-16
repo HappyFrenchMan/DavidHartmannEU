@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DHA", "DHA\DHA.csproj", "{6ACD27BF-B9D1-4C3E-B48D-F3FC955D3099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DHA.FRONT.MVC", "DHA.FRONT.MVC\DHA.FRONT.MVC.csproj", "{6ACD27BF-B9D1-4C3E-B48D-F3FC955D3099}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DHA.EntityFrameworkCore_Models", "DHA.EntityFrameworkCore_Models\DHA.EntityFrameworkCore_Models.csproj", "{6122479D-0460-4370-BF8D-F7929EDC30A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DHA.DAL", "DHA.DAL\DHA.DAL.csproj", "{6122479D-0460-4370-BF8D-F7929EDC30A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHA.EntityFrameworkCore_Models.Initializer", "DHA.EntityFrameworkCore_Models.Initializer\DHA.EntityFrameworkCore_Models.Initializer.csproj", "{F54088E4-61D1-486C-AD58-6760E1B696EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHA.DAL.Initializer", "DHA.DAL.Initializer\DHA.DAL.Initializer.csproj", "{F54088E4-61D1-486C-AD58-6760E1B696EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHA.Common", "DHA.Common\DHA.Common.csproj", "{0060B2F0-2AEB-4932-8BF6-01D99AFB6E61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHA.UTIL", "DHA.UTIL\DHA.UTIL.csproj", "{0060B2F0-2AEB-4932-8BF6-01D99AFB6E61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHA.Fun", "DHA.Fun\DHA.Fun.csproj", "{940F5DA6-1401-4714-9F45-4B4FB1E86F70}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAH.DAL", "DAH.DAL\DAH.DAL.csproj", "{23BBFD29-97F0-4741-83D6-25EC3D11D917}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHA.FUN", "DHA.FUN\DHA.FUN.csproj", "{940F5DA6-1401-4714-9F45-4B4FB1E86F70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
