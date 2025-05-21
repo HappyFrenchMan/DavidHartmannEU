@@ -6,7 +6,7 @@ namespace DHA.DAL.DOC.DAO
     {
         public static void add(string pStrCategorie, string pStrDescription, string pStrURL)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 Link lMyLinkNew = new Link()
                 {
@@ -23,7 +23,7 @@ namespace DHA.DAL.DOC.DAO
         
         public static List<Link> select_all_link()
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return lDHA_Db_Context.Links.ToList();
             }//using

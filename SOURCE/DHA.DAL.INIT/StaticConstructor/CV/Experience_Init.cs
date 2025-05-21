@@ -1,5 +1,5 @@
 ﻿using DHA.DAL.CV.DAO;
-using DHA.DAL.CV.Entity;
+using DHA.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -45,7 +45,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static int Init_Experience_Servantes_DUT()
         {
-            Firm? lFirmServantes = Get_Firm("SERVANTES");
+            CV_Firm? lFirmServantes = Get_Firm("SERVANTES");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -79,7 +79,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_MIAGE()
         {
-            Firm? lFirmServantes = Get_Firm("SERVANTES");
+            CV_Firm? lFirmServantes = Get_Firm("SERVANTES");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -127,7 +127,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_W4()
         {
-            Firm? lFirm = Get_Firm("W4");
+            CV_Firm? lFirm = Get_Firm("W4");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -152,7 +152,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_SCPP()
         {
-            Firm? lFirm = Get_Firm("SCPP");
+            CV_Firm? lFirm = Get_Firm("SCPP");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -177,7 +177,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         private static void Init_Experience_ORDRE_AVOCATS()
         {
-            Firm? lFirm = Get_Firm("AJILON");
+            CV_Firm? lFirm = Get_Firm("AJILON");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -201,7 +201,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_BNPP()
         {
-            Firm? lFirm = Get_Firm("BNPP");
+            CV_Firm? lFirm = Get_Firm("BNPP");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -227,7 +227,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_MEDIAMOBILE()
         {
-            Firm? lFirm = Get_Firm("MM");
+            CV_Firm? lFirm = Get_Firm("MM");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -253,7 +253,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_MAYOLY_SPINDLER()
         {
-            Firm? lFirm = Get_Firm("LMSP");
+            CV_Firm? lFirm = Get_Firm("LMSP");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -294,7 +294,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_HUMANIS_DGCD()
         {
-            Firm? lFirm = Get_Firm("MH");
+            CV_Firm? lFirm = Get_Firm("MH");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -318,7 +318,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_METSO()
         {
-            Firm? lFirm = Get_Firm("METSO");
+            CV_Firm? lFirm = Get_Firm("METSO");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -340,7 +340,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_HUMANIS_FSS()
         {
-            Firm? lFirm = Get_Firm("MH");
+            CV_Firm? lFirm = Get_Firm("MH");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -364,7 +364,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         public static void Init_Experience_HUMANIS_AGD()
         {
-            Firm? lFirm = Get_Firm("MH");
+            CV_Firm? lFirm = Get_Firm("MH");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -386,7 +386,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
 		public static void Init_Experience_AGAP2()
 		{
-			Firm? lFirm = Get_Firm("AGAP2");
+			CV_Firm? lFirm = Get_Firm("AGAP2");
 
             int lIntExperienceID =
                 MyExperience.add(
@@ -406,9 +406,9 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
 		}//Init_Experience_AGAP2
 
-        static Firm Get_Firm(string pStrFirmCode)
+        static CV_Firm Get_Firm(string pStrFirmCode)
         {
-            Firm? lFirm = MyCatalog.select_firm(pStrFirmCode);
+            CV_Firm? lFirm = MyCatalog.select_firm(pStrFirmCode);
 
             if (lFirm == null)
             {

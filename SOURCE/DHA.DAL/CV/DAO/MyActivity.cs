@@ -1,4 +1,4 @@
-﻿using DHA.DAL.CV.Entity;
+﻿using DHA.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,16 +17,16 @@ namespace DHA.DAL.CV.DAO
         public static int add_activity(
             int pIntExperienceId,
             int pIntJobId,            
-            string pStrCode,
+            string pStrCode, 
             string pStrProjectName,
             string pStrSubProjectName,      
             params string[] pStrActivityDetail)
         {
             //First add Activity
             int lIntActivityID = -1;
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                Activity lActivity = new Activity()
+                CV_Activity lActivity = new CV_Activity()
                 {
                     Code = pStrCode,
                     ProjectName = pStrProjectName,
@@ -50,12 +50,12 @@ namespace DHA.DAL.CV.DAO
             params string[] pStrActivityDetail)
         {
             //Then Add Activity Detail
-            List<ActivityDetail> lLstAD = new List<ActivityDetail>();
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            List<CV_ActivityDetail> lLstAD = new List<CV_ActivityDetail>();
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 foreach (string lStrDetail in pStrActivityDetail)
                 {
-                    ActivityDetail lActivityDetail = new ActivityDetail();
+                    CV_ActivityDetail lActivityDetail = new CV_ActivityDetail();
                     lActivityDetail.Detail = lStrDetail;
                     lActivityDetail.ActivityId = pIntActivityId;
                     lDHA_Db_Context.ActivitiesDetail.Add(lActivityDetail);
@@ -69,14 +69,14 @@ namespace DHA.DAL.CV.DAO
         public static void add_skills(int pIntActivityId, 
             params string [] pStrTabSkillCode)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                Activity?
+                CV_Activity?
                     lActivity = select_activity(pIntActivityId);
                 
                 foreach (string lStrSkillCode in pStrTabSkillCode)
                 {
-                    Skill? lSkill = MyCatalog.select_skill(lStrSkillCode);
+                    CV_Skill? lSkill = MyCatalog.select_skill(lStrSkillCode);
                
                     if (lActivity == null || lSkill == null)
                     {
@@ -84,8 +84,8 @@ namespace DHA.DAL.CV.DAO
                             $"add_skill / ActivityId : {pIntActivityId} - SkillCode : {lStrSkillCode}");
                     }//if
 
-                    ActivitySkill lActivitySkill =
-                        new ActivitySkill();
+                    CV_ActivitySkill lActivitySkill =
+                        new CV_ActivitySkill();
                     lActivitySkill.ActivityId = pIntActivityId;
                     lActivitySkill.SkillId = lSkill.ID;
                     lDHA_Db_Context.ActivitySkills.Add(lActivitySkill);
@@ -95,9 +95,9 @@ namespace DHA.DAL.CV.DAO
             }//using
         }//add_skill
 
-        public static Activity? select_activity(int pIntActiviyId)
+        public static CV_Activity? select_activity(int pIntActiviyId)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.Activities.Where(

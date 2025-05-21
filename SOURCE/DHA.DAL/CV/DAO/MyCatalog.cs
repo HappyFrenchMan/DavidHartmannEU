@@ -1,4 +1,4 @@
-﻿using DHA.DAL.CV.Entity;
+﻿using DHA.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,13 +16,13 @@ namespace DHA.DAL.CV.DAO
             string pStrName,
             string pStrDetail="")
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                Skill_Type? lSkillType =
+                CV_SkillType? lSkillType =
                     select_skill_type(pStrSkillTypeKey);
-                lDHA_Db_Context.Attach<Skill_Type>(lSkillType);
+                lDHA_Db_Context.Attach<CV_SkillType>(lSkillType);
 
-                Skill lSkill = new Skill()
+                CV_Skill lSkill = new CV_Skill()
                 {
                     Key = pStrSkillKey,
                     Type = lSkillType,
@@ -37,9 +37,9 @@ namespace DHA.DAL.CV.DAO
 
         public static void add_keyrole(string pStrKey, string pStrName)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                KeyRole lKR = new KeyRole()
+                CV_KeyRole lKR = new CV_KeyRole()
                 {
                     Key = pStrKey,
                     Name = pStrName
@@ -52,9 +52,9 @@ namespace DHA.DAL.CV.DAO
 
         public static void add_contract_type(string pStrKey, string pStrName)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                ContractType lContractType = new ContractType()
+                CV_ContractType lContractType = new CV_ContractType()
                 {
                     Key = pStrKey,
                     Name = pStrName
@@ -67,9 +67,9 @@ namespace DHA.DAL.CV.DAO
 
         public static void add_skill_type(string pStrKey, string pStrDescription)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                Skill_Type lMySkill_Type = new Skill_Type()
+                CV_SkillType lMySkill_Type = new CV_SkillType()
                 {                    
                     Key = pStrKey,
                     Description = pStrDescription
@@ -80,9 +80,9 @@ namespace DHA.DAL.CV.DAO
             }
         }//add_skill_type
 
-        public static Skill_Type? select_skill_type(string pStrKey)
+        public static CV_SkillType? select_skill_type(string pStrKey)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.Skill_Types.Where(
@@ -93,9 +93,9 @@ namespace DHA.DAL.CV.DAO
 
         public static void add_language(string pStrCode, string pStrLanguage)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                LanguageSpoken lLanguage = new LanguageSpoken()
+                CV_LanguageSpoken lLanguage = new CV_LanguageSpoken()
                 {
                     Code = pStrCode,
                     Name = pStrLanguage
@@ -112,9 +112,9 @@ namespace DHA.DAL.CV.DAO
             string pStrArea,
             string pStrDepartment)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                City lCity = new City()
+                CV_City lCity = new CV_City()
                 {
                     PostalCode = pIntCP,
                     CityName = pStrCity,
@@ -127,9 +127,9 @@ namespace DHA.DAL.CV.DAO
             }
         }//add_cities
 
-        public static City? select_city(int pIntPostalCode)
+        public static CV_City? select_city(int pIntPostalCode)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return 
                     lDHA_Db_Context.Cities.Where(
@@ -142,9 +142,9 @@ namespace DHA.DAL.CV.DAO
                                     string pStrName,
                                     string pStrSector)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                Firm lFirm = new Firm()
+                CV_Firm lFirm = new CV_Firm()
                 {
                     Key = pStrKey,
                     Name = pStrName,
@@ -156,9 +156,9 @@ namespace DHA.DAL.CV.DAO
             }
         }//add_firm
 
-        public static Firm? select_firm(string pStrFirmKey)
+        public static CV_Firm? select_firm(string pStrFirmKey)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.Firms.Where(
@@ -167,9 +167,9 @@ namespace DHA.DAL.CV.DAO
             }//using
         }//select_firm
 
-        public static Firm? select_firm(int pIntFirmId)
+        public static CV_Firm? select_firm(int pIntFirmId)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.Firms.Where(
@@ -178,9 +178,9 @@ namespace DHA.DAL.CV.DAO
             }//using
         }//select_firm
 
-        public static Skill? select_skill(int pStrSkillCode)
+        public static CV_Skill? select_skill(int pStrSkillCode)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.Skills.Where(
@@ -189,9 +189,9 @@ namespace DHA.DAL.CV.DAO
             }//using
         }//select_skill
 
-        public static Skill? select_skill(string pStrKey)
+        public static CV_Skill? select_skill(string pStrKey)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.Skills.Where(
@@ -200,18 +200,18 @@ namespace DHA.DAL.CV.DAO
             }//using
         }//select_skill
 
-        public static KeyRole? select_keyrole(string pStrKey)
+        public static CV_KeyRole? select_keyrole(string pStrKey)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.KeyRoles.Where(p => p.Key.Equals(pStrKey)).FirstOrDefault();
             }//using
         }//select_keyrole
 
-        public static ContractType? select_contractType(string pStrKey)
+        public static CV_ContractType? select_contractType(string pStrKey)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.ContractTypes.Where(p => p.Key.Equals(pStrKey)).FirstOrDefault();

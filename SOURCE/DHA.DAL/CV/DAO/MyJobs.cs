@@ -1,8 +1,8 @@
 ﻿using DHA.DAL;
-using DHA.DAL.CV.Entity;
+using DHA.DAL.Entity;
 using log4net.Core;
 using Microsoft.EntityFrameworkCore;
-using static DHA.DAL.CV.Entity.Job;
+using static DHA.DAL.Entity.CV_Job;
 
 namespace DHA.DAL.CV.DAO
 {
@@ -13,16 +13,16 @@ namespace DHA.DAL.CV.DAO
                               string pStrContractTypeKey,
                               params string[] pStrTabKeyRole)
         {
-            ContractType? lContractType = MyCatalog.select_contractType(pStrContractTypeKey);
+            CV_ContractType? lContractType = MyCatalog.select_contractType(pStrContractTypeKey);
             if (lContractType == null)
             {
                 throw new Exception($"add / JobName : {pStrJobName} - ContractType : {pStrContractTypeKey}");
             }//if
 
             int lIntJobId = -1;
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                Job lJob = new Job()
+                CV_Job lJob = new CV_Job()
                 {
                     Name = pStrJobName,
                     ContractTypeKey = lContractType.Key
@@ -40,20 +40,20 @@ namespace DHA.DAL.CV.DAO
 
         public static void add_keyrole(int pIntJobId, params string[] pStrTabKeyRole)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                Job? lJob = select_job(pIntJobId);
+                CV_Job? lJob = select_job(pIntJobId);
 
                 foreach (string lStrkeyRole in pStrTabKeyRole)
                 {
-                    KeyRole? lKeyRole = MyCatalog.select_keyrole(lStrkeyRole);
+                    CV_KeyRole? lKeyRole = MyCatalog.select_keyrole(lStrkeyRole);
 
                     if (lKeyRole == null || lKeyRole == null)
                     {
                         throw new Exception($"add_keyrole / JobId : {pIntJobId} - SkillCode : {lStrkeyRole}");
                     }//if
 
-                    JobKeyRole lJobKeyRole = new JobKeyRole();
+                    CV_JobKeyRole lJobKeyRole = new CV_JobKeyRole();
                     lJobKeyRole.JobId = pIntJobId;
                     lJobKeyRole.KeyRoleKey = lKeyRole.Key;
                     
@@ -65,9 +65,9 @@ namespace DHA.DAL.CV.DAO
         }//add_skill
 
 
-        public static Job? select_job(int pIntJobId)
+        public static CV_Job? select_job(int pIntJobId)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return lDHA_Db_Context.Jobs
                     .Include(c => c.ContractType)

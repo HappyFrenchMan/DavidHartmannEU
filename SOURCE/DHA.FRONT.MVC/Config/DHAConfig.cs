@@ -1,7 +1,7 @@
 ﻿using DHA.UTIL.Log4Net;
 using DHA.DAL;
-using EFSC = DHA.DAL.EF_StaticConfiguration;
-using DSC = DHA.DAL.EF_StaticConfiguration;
+//using EFSC = DHA.DAL.EF_StaticConfiguration;
+//using DSC = DHA.DAL.EF_StaticConfiguration;
 using System.IO;
 
 namespace DHA.FRONT.MVC.Config

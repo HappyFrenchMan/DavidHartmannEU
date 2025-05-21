@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DHA.DAL.Initializer.StaticConstructor.CV
+﻿namespace DHA.DAL.INIT.StaticConstructor.CV
 {
     public class Ref_Init_Const
     {

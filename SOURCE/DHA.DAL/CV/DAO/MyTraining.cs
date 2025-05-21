@@ -1,5 +1,5 @@
 ﻿using DHA.DAL;
-using DHA.DAL.CV.Entity;
+using DHA.DAL.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace DHA.DAL.CV.DAO
@@ -11,18 +11,18 @@ namespace DHA.DAL.CV.DAO
             int  pIntYear,
             params string [] pStrTabDetail)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
-                City lCity = MyCatalog.select_city(pIntCodePostal);
-                lDHA_Db_Context.Attach<City>(lCity);
+                CV_City lCity = MyCatalog.select_city(pIntCodePostal);
+                lDHA_Db_Context.Attach<CV_City>(lCity);
 
-                Training lTraining = new Training();
+                CV_Training lTraining = new CV_Training();
                 lTraining.Year = pIntYear;                
                 lTraining.Location = lCity;
 
                 foreach (string lStrDetail in pStrTabDetail)
                 {
-                    TrainingDetail lTrainingDetail = new TrainingDetail();
+                    CV_TrainingDetail lTrainingDetail = new CV_TrainingDetail();
                     lTrainingDetail.Detail = lStrDetail;
 
                     lTraining.TrainingDetails.Add(lTrainingDetail);
@@ -33,9 +33,9 @@ namespace DHA.DAL.CV.DAO
             }//using 
         }//class
 
-        public static List<Training> select_Training()
+        public static List<CV_Training> select_Training()
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return lDHA_Db_Context.Trainings
                     .Include(x => x.TrainingDetails)

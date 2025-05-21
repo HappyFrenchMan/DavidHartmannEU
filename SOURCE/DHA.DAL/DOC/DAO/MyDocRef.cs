@@ -7,7 +7,7 @@ namespace DHA.DAL.DOC.DAO
     {
         public static bool add_docContentType(string pStrCode,string pStrLabel)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 lDHA_Db_Context.DocContentTypes.Add(
                     new DocContentType()
@@ -21,7 +21,7 @@ namespace DHA.DAL.DOC.DAO
 
         public static bool add_TypeDocument(string pStrCode,string pStrLabel)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 lDHA_Db_Context.TypeDocuments.Add(
                     new TypeDocument()
@@ -36,7 +36,7 @@ namespace DHA.DAL.DOC.DAO
         public static bool add_SubTypeDocument(string pStrCode, string pStrLabel, string pStrTypeDocumentCode, 
             int pSubTypeDocId=-1)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 SubTypeDocument __std = new SubTypeDocument()
                 {
@@ -56,7 +56,7 @@ namespace DHA.DAL.DOC.DAO
 
         public static DocContentType? select_DocContentType(string pStrCode)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.DocContentTypes.Where(p => p.Code.Equals(pStrCode)).FirstOrDefault();
@@ -65,7 +65,7 @@ namespace DHA.DAL.DOC.DAO
 
         public static TypeDocument? select_TypeDocument(string pStrCode)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.TypeDocuments.Where(p => p.Code.Equals(pStrCode)).FirstOrDefault();
@@ -74,7 +74,7 @@ namespace DHA.DAL.DOC.DAO
 
         public static SubTypeDocument? select_SubTypeDocument(string pStrCode)
         {
-            using (DHA_Db_Context lDHA_Db_Context = new DHA_Db_Context())
+            using (Db_Context lDHA_Db_Context = new Db_Context())
             {
                 return
                     lDHA_Db_Context.SubTypeDocuments.Where(p => p.Code.Equals(pStrCode)).FirstOrDefault();
