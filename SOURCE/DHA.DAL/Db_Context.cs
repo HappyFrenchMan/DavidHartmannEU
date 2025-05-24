@@ -20,26 +20,26 @@ namespace DHA.DAL
         public DbSet<CV_City> Cities { get; set; }
         public DbSet<CV_SkillType> Skill_Types { get; set; }
         public DbSet<CV_Skill> Skills { get; set; }
-        // CV Fact
-        //public DbSet<Link> Links { get; set; }
-        //public DbSet<CV_Training> Trainings { get; set; }
-        //public DbSet<CV_TrainingDetail> TrainingDetails { get; set; }
-        //public DbSet<CV_Firm> Firms { get; set; }
-        //public DbSet<CV_Job> Jobs { get; set; }
-        //public DbSet<CV_KeyRole> KeyRoles { get; set; }        
+        // CV Fact        
+        public DbSet<CV_Training> Trainings { get; set; }
+        public DbSet<CV_TrainingDetail> TrainingDetails { get; set; }
+        public DbSet<CV_Firm> Firms { get; set; }
+        public DbSet<CV_Job> Jobs { get; set; }
+        public DbSet<CV_KeyRole> KeyRoles { get; set; }        
         public DbSet<CV_ContractType> ContractTypes { get; set; }
-        //public DbSet<CV_Activity> Activities { get; set; }        
-        //public DbSet<CV_Experience> Experiences { get; set; }
-        //public DbSet<CV_ActivityDetail> ActivitiesDetail { get; set; }
+        public DbSet<CV_Activity> Activities { get; set; }        
+        public DbSet<CV_Experience> Experiences { get; set; }
+        public DbSet<CV_ActivityDetail> ActivitiesDetail { get; set; }
         // Join Table
         public DbSet<CV_ActivitySkill> ActivitySkills { get; set; }
         public DbSet<CV_JobKeyRole> JobKeyRoles { get; set; }
         // DOC 
-        //public DbSet<DocContentType> DocContentTypes { get; set; }
-        //public DbSet<WebDocument> WebDocuments { get; set; }
-        //public DbSet<DocumentContent> DocumentContents { get; set; }
-        //public DbSet<SubTypeDocument> SubTypeDocuments { get; set; }
-        //public DbSet<TypeDocument> TypeDocuments { get; set; }
+        public DbSet<DOC_Link> Links { get; set; }
+        public DbSet<DOC_DocContentType> DocContentTypes { get; set; }
+        public DbSet<DOC_WebDocument> WebDocuments { get; set; }
+        public DbSet<DOC_DocumentContent> DocumentContents { get; set; }
+        public DbSet<DOC_SubTypeDocument> SubTypeDocuments { get; set; }
+        public DbSet<DOC_TypeDocument> TypeDocuments { get; set; }
         // Role
         public DbSet<USR_Role> Role { get; set; }
         public DbSet<USR_User> User { get; set; }

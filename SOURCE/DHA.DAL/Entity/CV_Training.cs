@@ -13,10 +13,10 @@ namespace DHA.DAL.Entity
         public int Year { get; set; }
 
         [Column("FK_CityId")]
-        public int? CityId { get; set; }
-        public CV_City? Location { get; set; }
+        public int? CV_CityId { get; set; }
+        public CV_City? CV_City { get; set; }
 
-        public ICollection<CV_TrainingDetail> TrainingDetails { get; }
+        public ICollection<CV_TrainingDetail> TrainingDetails { get; set; }
             = new List<CV_TrainingDetail>();
     }//Training
 }//namespace

@@ -1,4 +1,5 @@
 ﻿using DHA.DAL;
+using DHA.DAL.CrossRepo;
 using DHA.DAL.Repository;
 using System.Collections.Generic;
 
@@ -7,6 +8,8 @@ namespace DAH.DAL
     public class MyDb
     {
         private Db_Context _context;
+
+        //repo
         private Lazy<CV_ActivityDetailRepository> _lazy_CV_ActivityDetailRepository;
         private Lazy<CV_ActivityRepository> _lazy_CV_ActivityRepository;
         private Lazy<CV_ActivitySkillRepository> _lazy_CV_ActivitySkillRepository;
@@ -21,6 +24,7 @@ namespace DAH.DAL
         private Lazy<CV_LanguageSpokenRepository> _lazy_CV_LanguageSpokenRepository;
         private Lazy<CV_SkillRepository> _lazy_CV_SkillRepository;
         private Lazy<CV_SkillTypeRepository> _lazy_CV_SkillTypeRepository;
+        private Lazy<CV_TrainingRepository> _lazy_CV_TrainingRepository;
         private Lazy<CV_TrainingDetailRepository> _lazy_CV_TrainingDetailRepository;
         private Lazy<DOC_DocContentTypeRepository> _lazy_DOC_DocContentTypeRepository;
         private Lazy<DOC_DocumentContentRepository> _lazy_DOC_DocumentContentRepository;
@@ -31,11 +35,14 @@ namespace DAH.DAL
         private Lazy<USR_RoleRepository> _lazy_USR_RoleRepository;
         private Lazy<USR_UserRepository> _lazy_USR_UserRepository;
 
+        //crossrepo
+        private Lazy<CV_FeedCR> _lazy_CVFeedCR;
 
         public MyDb()
         {
             _context = new Db_Context();
 
+            //repo
             _lazy_CV_ActivityDetailRepository = new Lazy<CV_ActivityDetailRepository>(() => new CV_ActivityDetailRepository(_context));
             _lazy_CV_ActivityRepository = new Lazy<CV_ActivityRepository>(() => new CV_ActivityRepository(_context));
             _lazy_CV_ActivitySkillRepository = new Lazy<CV_ActivitySkillRepository>(() => new CV_ActivitySkillRepository(_context));
@@ -51,6 +58,7 @@ namespace DAH.DAL
             _lazy_CV_SkillRepository = new Lazy<CV_SkillRepository>(() => new CV_SkillRepository(_context));
             _lazy_CV_SkillTypeRepository = new Lazy<CV_SkillTypeRepository>(() => new CV_SkillTypeRepository(_context));
             _lazy_CV_TrainingDetailRepository = new Lazy<CV_TrainingDetailRepository>(() => new CV_TrainingDetailRepository(_context));
+            _lazy_CV_TrainingRepository = new Lazy<CV_TrainingRepository>(() => new CV_TrainingRepository(_context));
             _lazy_DOC_DocContentTypeRepository = new Lazy<DOC_DocContentTypeRepository>(() => new DOC_DocContentTypeRepository(_context));
             _lazy_DOC_DocumentContentRepository = new Lazy<DOC_DocumentContentRepository>(() => new DOC_DocumentContentRepository(_context));
             _lazy_DOC_LinkRepository = new Lazy<DOC_LinkRepository>(() => new DOC_LinkRepository(_context));
@@ -60,9 +68,11 @@ namespace DAH.DAL
             _lazy_USR_RoleRepository = new Lazy<USR_RoleRepository>(() => new USR_RoleRepository(_context));
             _lazy_USR_UserRepository = new Lazy<USR_UserRepository>(() => new USR_UserRepository(_context));
 
-
+            //crossrepo
+            _lazy_CVFeedCR = new Lazy<CV_FeedCR>(() => new CV_FeedCR(this));
         }//MyDatabase
 
+        //repo
         public CV_ActivityDetailRepository CVActivityDetailRepository { get { return _lazy_CV_ActivityDetailRepository.Value; } }
         public CV_ActivityRepository CVActivityRepository { get { return _lazy_CV_ActivityRepository.Value; } }
         public CV_ActivitySkillRepository CVActivitySkillRepository { get { return _lazy_CV_ActivitySkillRepository.Value; } }
@@ -77,6 +87,7 @@ namespace DAH.DAL
         public CV_LanguageSpokenRepository CVLanguageSpokenRepository { get { return _lazy_CV_LanguageSpokenRepository.Value; } }
         public CV_SkillRepository CVSkillRepository { get { return _lazy_CV_SkillRepository.Value; } }
         public CV_SkillTypeRepository CVSkillTypeRepository { get { return _lazy_CV_SkillTypeRepository.Value; } }
+        public CV_TrainingRepository CVTrainingRepository { get { return _lazy_CV_TrainingRepository.Value; } }
         public CV_TrainingDetailRepository CVTrainingDetailRepository { get { return _lazy_CV_TrainingDetailRepository.Value; } }
         public DOC_DocContentTypeRepository DOCDocContentTypeRepository { get { return _lazy_DOC_DocContentTypeRepository.Value; } }
         public DOC_DocumentContentRepository DOCDocumentContentRepository { get { return _lazy_DOC_DocumentContentRepository.Value; } }
@@ -86,6 +97,9 @@ namespace DAH.DAL
         public DOC_WebDocumentRepository DOCWebDocumentRepository { get { return _lazy_DOC_WebDocumentRepository.Value; } }
         public USR_RoleRepository USRRoleRepository { get { return _lazy_USR_RoleRepository.Value; } }
         public USR_UserRepository USRUserRepository { get { return _lazy_USR_UserRepository.Value; } }
+
+        //crossrepo
+        public CV_FeedCR  CVFeedCR { get { return _lazy_CVFeedCR.Value; } }
 
     }//class
 }//namespace

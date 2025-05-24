@@ -1,6 +1,6 @@
 ﻿namespace DHA.DAL.INIT.StaticConstructor.CV
 {
-    public class Ref_Init_Const
+    public class CV_Ref_Init_Const
     {
         public const string CT_STAGIAIRE_CODE = "S";
         public const string CT_STAGIAIRE_LBL = "Stagiaire";

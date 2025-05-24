@@ -17,8 +17,8 @@ namespace DHA.DAL.Entity
         public string Name { get; set; }
 
         [Column("FK_ContratTypeKey")]
-        public string ContractTypeKey { get; set; }
-        public CV_ContractType ContractType { get; set; }
+        public string CV_ContractTypeKey { get; set; }
+        public CV_ContractType CV_ContractType { get; set; }
 
         public ICollection<CV_JobKeyRole> JobKeyRoles { get; }  = new List<CV_JobKeyRole>();
 

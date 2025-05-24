@@ -1,11 +1,11 @@
 ﻿using DAH.DAL;
 using DHA.DAL.Entity;
 //using DHA.DAL.CV.DAO;
-using c= DHA.DAL.INIT.StaticConstructor.CV.Ref_Init_Const;
+using c= DHA.DAL.INIT.StaticConstructor.CV.CV_Ref_Init_Const;
 
 namespace DHA.DAL.Initializer.StaticConstructor.CV
 {
-    class Ref_Init
+    class CV_Ref_Init
     {
         public static void Init_ContractType(MyDb pMyDB)
         {
@@ -72,7 +72,11 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
             foreach (string __strLanguage in __tabLanguage)
             {
                 pMyDB.CVLanguageSpokenRepository.Add(
-                    new CV_LanguageSpoken() { Code= __strLanguage.Split(';')[0] ,Name=__strLanguage.Split(';')[1] })
+                    new CV_LanguageSpoken()
+                    {
+                        Code = __strLanguage.Split(';')[0],
+                        Name = __strLanguage.Split(';')[1]
+                    });
               
             }
         }//Init_Language
@@ -116,7 +120,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                         PostalCode = lIntCP,
                         CityName = lTabCity[3],
                         Area = lTabCity[2],
-                        Department = lTabCity[3]; 
+                        Department = lTabCity[3] 
                     });
             }
         }//Init_City
@@ -146,6 +150,8 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                     });
             }//foreach
         }//Init_Firm
+
+
 
     }//class
 }//namespace
