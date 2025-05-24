@@ -15,12 +15,6 @@
     <Compile Remove="CV\DAO\MyTraining.cs" />
     <Compile Remove="DOC\DAO\MyDocRef.cs" />
     <Compile Remove="DOC\DAO\MyLinks.cs" />
-    <Compile Remove="DOC\Entity\DocContentType.cs" />
-    <Compile Remove="DOC\Entity\DocumentContent.cs" />
-    <Compile Remove="DOC\Entity\Link.cs" />
-    <Compile Remove="DOC\Entity\SubTypeDocument.cs" />
-    <Compile Remove="DOC\Entity\TypeDocument.cs" />
-    <Compile Remove="DOC\Entity\WebDocument.cs" />
   </ItemGroup>
 
   <ItemGroup>

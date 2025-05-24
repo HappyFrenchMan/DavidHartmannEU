@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DHA.DAL.DOC.Entity
+namespace DHA.DAL.Entity
 {
     [Table("CV.T_Link")]
-    public class Link
+    public class DOC_Link
     {
         [Column("LNK_Id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

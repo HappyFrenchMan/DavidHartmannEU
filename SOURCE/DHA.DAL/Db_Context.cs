@@ -1,5 +1,4 @@
 ﻿using DHA.UTIL.Log4Net;
-using DHA.DAL.USER.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -42,8 +41,8 @@ namespace DHA.DAL
         //public DbSet<SubTypeDocument> SubTypeDocuments { get; set; }
         //public DbSet<TypeDocument> TypeDocuments { get; set; }
         // Role
-        public DbSet<Role> Role { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<USR_Role> Role { get; set; }
+        public DbSet<USR_User> User { get; set; }
 
         public Db_Context() : 
             base( )

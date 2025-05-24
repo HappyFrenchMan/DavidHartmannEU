@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace DHA.DAL.DOC.Entity
+namespace DHA.DAL.Entity
 {
     [Table("doc.T_Ref_TypeDocument")]
-    public class TypeDocument
+    public class DOC_TypeDocument
     {
         // On met un code en clé car sa valeur n'est pas sensé changer
         // valeur prévues : BLOG ou HOWTO

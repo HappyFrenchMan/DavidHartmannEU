@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace DHA.DAL.DOC.Entity
+namespace DHA.DAL.Entity
 {
     [Table("doc.T_WebDocument")]
-    public class WebDocument
+    public class DOC_WebDocument
     {
         [Column("DOC_Id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,7 +24,7 @@ namespace DHA.DAL.DOC.Entity
 
         [Column("FK_SubTypeDoc")]
         public int SubTypeDocumentId { get; set; }
-        public SubTypeDocument Parent { get; set; }
+        public DOC_SubTypeDocument Parent { get; set; }
 
     }
 }

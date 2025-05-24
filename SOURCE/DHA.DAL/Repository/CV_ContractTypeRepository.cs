@@ -10,7 +10,7 @@ namespace DHA.DAL.Repository
 {
     public class CV_ContractTypeRepository : Repository<CV_ContractType>
     {
-        public CV_ContractTypeRepository(Db_Context pDb_Context) : base(pDb_Context) { }//CV_ContractTypeRepository
+        public CV_ContractTypeRepository(Db_Context pDb_Context) : base(pDb_Context) { }
     }//class
 
 }

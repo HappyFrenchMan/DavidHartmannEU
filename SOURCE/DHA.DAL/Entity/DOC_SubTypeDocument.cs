@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace DHA.DAL.DOC.Entity
+namespace DHA.DAL.Entity
 {
     [Table("doc.T_Ref_SubTypeDocument")]
-    public class SubTypeDocument
+    public class DOC_SubTypeDocument
     {
         [Column("STD_Id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -25,11 +25,11 @@ namespace DHA.DAL.DOC.Entity
 
         [Column("FK_TypeDocument")]
         public string TypeDocumentCode { get; set; }
-        public TypeDocument TypeDocument { get; set; } = null!;
+        public DOC_TypeDocument TypeDocument { get; set; } = null!;
 
         [Column("FK_SubTypeDocParent")]
         public int SubTypeDocumentId { get; set; }
-        public SubTypeDocument? Parent { get; set; } = null!;
+        public DOC_SubTypeDocument? Parent { get; set; } = null!;
 
     }
 }

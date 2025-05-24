@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace DHA.DAL.DOC.Entity
+namespace DHA.DAL.Entity
 {
     [Table("doc.T_DocumentContent")]
-    public class DocumentContent
+    public class DOC_DocumentContent
     {
         [Column("DCC_Id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,10 +23,10 @@ namespace DHA.DAL.DOC.Entity
 
         [Column("FK_DocId")]
         public int WebDocumentId { get; set; }
-        public WebDocument WebDocument { get; set; }
+        public DOC_WebDocument WebDocument { get; set; }
 
         [Column("FK_DocContentTypeCode")]
         public string DocContentTypeCode { get; set; }
-        public DocContentType DocContentType { get; set; }
+        public DOC_DocContentType DocContentType { get; set; }
     }
 }

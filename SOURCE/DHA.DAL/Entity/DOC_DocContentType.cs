@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace DHA.DAL.DOC.Entity
+namespace DHA.DAL.Entity
 {
     [Table("doc.T_Ref_DocContentType")]
-    public class DocContentType
+    public class DOC_DocContentType
     {
         //LINK, H1, H2.....
 

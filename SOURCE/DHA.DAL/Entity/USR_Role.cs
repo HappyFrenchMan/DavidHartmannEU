@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DHA.DAL.USER.Entity
+namespace DHA.DAL.Entity
 {
     [Table("USR.T_Ref_Role")]
-    public class Role
+    public class USR_Role
     {
         [Column("ROL_Id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

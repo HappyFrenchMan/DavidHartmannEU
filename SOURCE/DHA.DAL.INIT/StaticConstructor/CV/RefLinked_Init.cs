@@ -1,4 +1,5 @@
-﻿using DHA.DAL.CV.DAO;
+﻿using DAH.DAL;
+using DHA.DAL.CV.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,9 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 {
     class RefLinked_Init
     {
-        public static void Init_Skill()
+        public static void Init_Skill(MyDb pMyDB)
         {         
+            pMyDB.CVSkillRepository.Add(new Entity.CV_SkillType)
             MyCatalog.add_skill("W2000","OS","Windows 2000","" );
             MyCatalog.add_skill("WXP","OS","Windows XP","" );
             MyCatalog.add_skill("SQLS","DEVSQL","Sql Server","" );
@@ -40,5 +42,30 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
             MyCatalog.add_skill("AZURE", "CLOUD", "Microsoft Azure Platform");
 
         }//Init_Skill
-    }//class
+
+        public static void add_skill(
+    string pStrSkillKey,
+    string pStrSkillTypeKey,
+    string pStrName,
+    string pStrDetail = "")
+        {
+
+            Skill_Type? lSkillType =
+                  Repository.(pStrSkillTypeKey);
+
+            lDHA_Db_Context.Attach<Skill_Type>(lSkillType);
+
+            Skill lSkill = new Skill()
+            {
+                Key = pStrSkillKey,
+                Type = lSkillType,
+                Name = pStrName,
+                Detail = pStrDetail
+            };
+
+            lDHA_Db_Context.Skills.Add(lSkill);
+            lDHA_Db_Context.SaveChanges();
+        }//using
+    }//add_skill
+}//class
 }//namespace

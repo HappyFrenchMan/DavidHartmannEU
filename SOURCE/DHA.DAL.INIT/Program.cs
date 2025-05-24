@@ -15,12 +15,13 @@ MyDb __myDb = new MyDb();
 
 // Fill database CV **********************************
 Ref_Init.Init_ContractType(__myDb);
-//Ref_Init.Init_KeyRole();
-//Ref_Init.Init_SkillType();
-//Ref_Init.Init_Language();
-//Ref_Init.Init_City();
-//Ref_Init.Init_Firm();
-//RefLinked_Init.Init_Skill();
+Ref_Init.Init_KeyRole(__myDb);
+Ref_Init.Init_SkillType(__myDb);
+Ref_Init.Init_Language(__myDb);
+Ref_Init.Init_City(__myDb);
+Ref_Init.Init_Firm(__myDb);
+
+RefLinked_Init.Init_Skill(__myDb);
 //Link_Init.Init_Link_Tab();
 //Training_Init.Init_Training();
 //Experience_Init.Init();
