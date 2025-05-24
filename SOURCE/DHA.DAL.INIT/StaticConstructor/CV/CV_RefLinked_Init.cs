@@ -1,5 +1,5 @@
 ﻿using DAH.DAL;
-
+using DHA.DAL.INIT.StaticConstructor.CV;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +68,59 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
         }//Init_Training
 
+        public static int Init_Job_Stagiaire_DEV_ASP(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Stagiaire Développeur ASP",
+                CV_Ref_Init_Const.CT_STAGIAIRE_CODE,
+                CV_Ref_Init_Const.KR_DEVELOPPEUR_CODE);
+        }//Init_Job_Stagiaire_DEV_ASP
+
+        public static int Init_Job_Stagiaire_DEV(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Stagiaire Développeur",
+                CV_Ref_Init_Const.CT_STAGIAIRE_CODE,
+                CV_Ref_Init_Const.KR_DEVELOPPEUR_CODE);
+        }//Init_Job_Stagiaire_DEV
+
+
+        public static int Init_Job_Developpeur_Alternant(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Développeur ( Contrat d'apprentissage en alternance )",
+                CV_Ref_Init_Const.CT_ALTERNANT_CODE,
+                CV_Ref_Init_Const.KR_DEVELOPPEUR_CODE);
+        }//Init_Job_Developpeur_Alternant
+
+        public static int Init_Job_Dev_Expert_Technique_Prestataire(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Développeur et Expert Technique",
+                CV_Ref_Init_Const.CT_PRESTA_CODE,
+                CV_Ref_Init_Const.KR_DEVELOPPEUR_CODE,
+                CV_Ref_Init_Const.KR_EXPERTTECH_CODE);
+        }//Init_Job_Dev_Expert_Technique_Prestataire
+
+        public static int Init_Job_Dev_Analyse_Prestataire(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Développeur et Analyste",
+                CV_Ref_Init_Const.CT_PRESTA_CODE,
+                CV_Ref_Init_Const.KR_DEVELOPPEUR_CODE,
+                CV_Ref_Init_Const.KR_ANALYST_CODE);
+        }//Init_Job_Dev_Analyse_Prestataire
+
+
+        public static int Init_Job_Expert_Technique_Interne(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Expert Technique Interne",
+                CV_Ref_Init_Const.CT_EMPLOYE_CODE,
+                CV_Ref_Init_Const.KR_DEVELOPPEUR_CODE,
+                CV_Ref_Init_Const.KR_ANALYST_CODE,
+                CV_Ref_Init_Const.KR_EXPERTTECH_CODE);
+        }//Init_Job_Expert_Technique_Interne
 
     }//class
 }//namespace

@@ -59,39 +59,31 @@ namespace DHA.DAL.CrossRepo
                 throw new Exception($"add / JobName : {pStrJobName} - ContractType : {pStrContractTypeKey}");
             }//if
 
-            int lIntJobId = -1;
             CV_Job __Cv_Job = new CV_Job()
             {
                 Name = pStrJobName,
                 CV_ContractTypeKey = lContractType.Key
             };
             _myDbRef.CVJobRepository.Add(__Cv_Job);
-
-            add_keyrole(__Cv_Job.ID, pStrTabKeyRole);
-
-            return lIntJobId;
-        }//add
-
-        public void add_keyrole(int pIntJobId, params string[] pStrTabKeyRole)
-        {
+            
             foreach (string lStrkeyRole in pStrTabKeyRole)
             {
-                KeyRole? lKeyRole = MyCatalog.select_keyrole(lStrkeyRole);
+                CV_KeyRole? lKeyRole = _myDbRef.CVKeyRoleRepository.FindOne(a => a.Key==lStrkeyRole);
 
                 if (lKeyRole == null || lKeyRole == null)
                 {
-                    throw new Exception($"add_keyrole / JobId : {pIntJobId} - SkillCode : {lStrkeyRole}");
+                    throw new Exception($"add_keyrole / JobId : {__Cv_Job.ID} - SkillCode : {lStrkeyRole}");
                 }//if
 
-                JobKeyRole lJobKeyRole = new JobKeyRole();
-                lJobKeyRole.JobId = pIntJobId;
-                lJobKeyRole.KeyRoleKey = lKeyRole.Key;
+                CV_JobKeyRole __cvJobKeyRole = new CV_JobKeyRole();
+                __cvJobKeyRole.JobId = __Cv_Job.ID;
+                __cvJobKeyRole.KeyRoleKey = lKeyRole.Key;
 
-                lDHA_Db_Context.JobKeyRoles.Add(lJobKeyRole);
+                _myDbRef.CVJobKeyRoleRepository.Add(__cvJobKeyRole);
             }//foreach
 
-            lDHA_Db_Context.SaveChanges();
 
+            return __Cv_Job.ID;
         }//add_keyrole
 
     }//class
