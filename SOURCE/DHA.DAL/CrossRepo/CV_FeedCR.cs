@@ -84,7 +84,78 @@ namespace DHA.DAL.CrossRepo
 
 
             return __Cv_Job.ID;
-        }//add_keyrole
+        }//add_job
+
+        public int add_activity(
+             int pIntExperienceId,
+             int pIntJobId,
+             string pStrCode,
+             string pStrProjectName,
+             string pStrSubProjectName,
+             params string[] pStrActivityDetail)
+        {
+            //First add Activity
+            CV_Activity lActivity = new CV_Activity()
+            {
+                Code = pStrCode,
+                ProjectName = pStrProjectName,
+                SubProjectName = pStrSubProjectName,
+                ExperienceId = pIntExperienceId,
+                JobId = pIntJobId
+            };
+            _myDbRef.CVActivityRepository.Add(lActivity);
+
+            add_activity_detail(lActivity.ID, pStrActivityDetail);
+
+            return lActivity.ID;
+        }//add_activity
+
+        private void add_activity_detail(
+            int pIntActivityId,
+            params string[] pStrActivityDetail)
+        {
+            //Then Add Activity Detail
+            List<CV_ActivityDetail> lLstAD = new List<CV_ActivityDetail>();
+
+                foreach (string lStrDetail in pStrActivityDetail)
+                {
+                    CV_ActivityDetail lActivityDetail = new CV_ActivityDetail();
+                    lActivityDetail.Detail = lStrDetail;
+                    lActivityDetail.ActivityId = pIntActivityId;
+                    lDHA_Db_Context.ActivitiesDetail.Add(lActivityDetail);
+                    lLstAD.Add(lActivityDetail);
+                }//foreach
+
+        }//add_activity_detail
+
+        public static void add_skills(int pIntActivityId,
+            params string[] pStrTabSkillCode)
+        {
+            using (Db_Context lDHA_Db_Context = new Db_Context())
+            {
+                CV_Activity?
+                    lActivity = select_activity(pIntActivityId);
+
+                foreach (string lStrSkillCode in pStrTabSkillCode)
+                {
+                    CV_Skill? lSkill = MyCatalog.select_skill(lStrSkillCode);
+
+                    if (lActivity == null || lSkill == null)
+                    {
+                        throw new Exception(
+                            $"add_skill / ActivityId : {pIntActivityId} - SkillCode : {lStrSkillCode}");
+                    }//if
+
+                    CV_ActivitySkill lActivitySkill =
+                        new CV_ActivitySkill();
+                    lActivitySkill.ActivityId = pIntActivityId;
+                    lActivitySkill.SkillId = lSkill.ID;
+                    lDHA_Db_Context.ActivitySkills.Add(lActivitySkill);
+                }//foreach
+
+                lDHA_Db_Context.SaveChanges();
+            }//using
+        }//add_skill
 
     }//class
 

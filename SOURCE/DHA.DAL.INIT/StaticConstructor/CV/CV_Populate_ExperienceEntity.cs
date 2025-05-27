@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAH.DAL;
+using DHA.DAL.Entity;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DHA.DAL.INIT.StaticConstructor.CV
 {
-    internal class CV_Experience_Init
+    internal class CV_Populate_ExperienceEntity
     {           
         public static int S_Int_JobID_StaigiaireDevASP;
         public static int S_Int_JobID_DevAlternant;
@@ -16,16 +18,16 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
         public static int S_Int_JobID_DevAnalystePresta;
         public static int S_Int_JobID_Expert_Technique_Interne;
 
-        public static void Init()
+        public static void Init(MyDb pMyDb)
         {
-            S_Int_JobID_StaigiaireDevASP = Job_Init.Init_Job_Stagiaire_DEV_ASP();
-            S_Int_JobID_DevAlternant = Job_Init.Init_Job_Developpeur_Alternant();
-            S_Int_JobID_DevStagiaire = Job_Init.Init_Job_Stagiaire_DEV();
-            S_Int_JobID_DevExpertTechPresta = Job_Init.Init_Job_Dev_Expert_Technique_Prestataire();
-            S_Int_JobID_DevAnalystePresta = Job_Init.Init_Job_Dev_Analyse_Prestataire();
-            S_Int_JobID_Expert_Technique_Interne = Job_Init.Init_Job_Expert_Technique_Interne();
+            S_Int_JobID_StaigiaireDevASP = Init_Job_Stagiaire_DEV_ASP(pMyDb);
+            S_Int_JobID_DevAlternant = Init_Job_Developpeur_Alternant(pMyDb);
+            S_Int_JobID_DevStagiaire = Init_Job_Stagiaire_DEV(pMyDb);
+            S_Int_JobID_DevExpertTechPresta = Init_Job_Dev_Expert_Technique_Prestataire(pMyDb);
+            S_Int_JobID_DevAnalystePresta = Init_Job_Dev_Analyse_Prestataire(pMyDb);
+            S_Int_JobID_Expert_Technique_Interne = Init_Job_Expert_Technique_Interne(pMyDb);
 
-            Init_Experience_Servantes_DUT();
+            Init_Experience_Servantes_DUT(pMyDb);
             Init_Experience_MIAGE();
             Init_Experience_W4();
             Init_Experience_SCPP();
@@ -41,30 +43,92 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
 
         }//Init
 
-        public static int Init_Experience_Servantes_DUT()
+        public static int Init_Job_Stagiaire_DEV_ASP(MyDb pMyDb)
         {
-            Firm? lFirmServantes = Get_Firm("SERVANTES");
+            return pMyDb.CVFeedCR.add_job(
+                "Stagiaire Développeur ASP",
+                CV_DAL_Const.CT_STAGIAIRE_CODE,
+                CV_DAL_Const.KR_DEVELOPPEUR_CODE);
+        }//Init_Job_Stagiaire_DEV_ASP
 
-            int lIntExperienceID =
-                MyExperience.add(
-               "SERVANTES",
-               "Stage de DUT",
-                78220,
-                lFirmServantes.ID,
-                2001, 3,
-                2001, 9);
-            int lIntActivityId =
-                MyActivity.add_activity(lIntExperienceID, S_Int_JobID_StaigiaireDevASP,
-                "ELECTRE", "Réalisation d’un site intranet de gestion des congés Payés.", "",
-                    "Apprentissage de l'ASP.");
-            MyActivity.add_skills(lIntActivityId, "SQLS", "W2000", "ASP");
-            lIntActivityId =
-                      MyActivity.add_activity(lIntExperienceID, S_Int_JobID_StaigiaireDevASP,
-                      "PROJ", "Réalisation d'un site intranet pour la gestion de projet", "",
-                          "Définition des besoins.",
-                          "Réalisation de la charte graphique.",
-                          "Maintenance et évolution.");
-            MyActivity.add_skills(lIntActivityId, "SQLS", "W2000", "ASP");
+        public static int Init_Job_Stagiaire_DEV(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Stagiaire Développeur",
+                CV_DAL_Const.CT_STAGIAIRE_CODE,
+                CV_DAL_Const.KR_DEVELOPPEUR_CODE);
+        }//Init_Job_Stagiaire_DEV
+
+        public static int Init_Job_Developpeur_Alternant(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Développeur ( Contrat d'apprentissage en alternance )",
+                CV_DAL_Const.CT_ALTERNANT_CODE,
+                CV_DAL_Const.KR_DEVELOPPEUR_CODE);
+        }//Init_Job_Developpeur_Alternant
+
+        public static int Init_Job_Dev_Expert_Technique_Prestataire(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Développeur et Expert Technique",
+                CV_DAL_Const.CT_PRESTA_CODE,
+                CV_DAL_Const.KR_DEVELOPPEUR_CODE,
+                CV_DAL_Const.KR_EXPERTTECH_CODE);
+        }//Init_Job_Dev_Expert_Technique_Prestataire
+
+        public static int Init_Job_Dev_Analyse_Prestataire(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Développeur et Analyste",
+                CV_DAL_Const.CT_PRESTA_CODE,
+                CV_DAL_Const.KR_DEVELOPPEUR_CODE,
+                CV_DAL_Const.KR_ANALYST_CODE);
+        }//Init_Job_Dev_Analyse_Prestataire
+
+        public static int Init_Job_Expert_Technique_Interne(MyDb pMyDb)
+        {
+            return pMyDb.CVFeedCR.add_job(
+                "Expert Technique Interne",
+                CV_DAL_Const.CT_EMPLOYE_CODE,
+                CV_DAL_Const.KR_DEVELOPPEUR_CODE,
+                CV_DAL_Const.KR_ANALYST_CODE,
+                CV_DAL_Const.KR_EXPERTTECH_CODE);
+        }//Init_Job_Expert_Technique_Interne
+
+        public static int Init_Experience_Servantes_DUT(MyDb pMyDB)
+        {
+            CV_Firm? lFirmServantes = pMyDB.CVFirmRepository.FindOne(a => a.Name=="SERVANTES");
+
+            CV_ExperiencePeriod __cvExpPeriod =
+                new CV_ExperiencePeriod() { YearStart = 2001, YearEnd = 2001, MonthStart = 3, MonthEnd = 9 };
+            pMyDB.CVExperiencePeriodRepository.Add(__cvExpPeriod);
+
+            //int lIntExperienceID =
+            //    pMyDB.CVExperienceRepository.Add(
+            //        new CV_Experience()
+            //        {
+            //            FirmId = lFirmServantes.ID,
+            //            Name = "Stage de DUT",
+                        
+            //        });
+            //   "SERVANTES",
+            //   ,
+            //    78220,
+            //    lFirmServantes.ID,
+            //    2001, 3,
+            //    2001, 9);
+            //int lIntActivityId =
+            //    MyActivity.add_activity(lIntExperienceID, S_Int_JobID_StaigiaireDevASP,
+            //    "ELECTRE", "Réalisation d’un site intranet de gestion des congés Payés.", "",
+            //        "Apprentissage de l'ASP.");
+            //MyActivity.add_skills(lIntActivityId, "SQLS", "W2000", "ASP");
+            //lIntActivityId =
+            //          MyActivity.add_activity(lIntExperienceID, S_Int_JobID_StaigiaireDevASP,
+            //          "PROJ", "Réalisation d'un site intranet pour la gestion de projet", "",
+            //              "Définition des besoins.",
+            //              "Réalisation de la charte graphique.",
+            //              "Maintenance et évolution.");
+            //MyActivity.add_skills(lIntActivityId, "SQLS", "W2000", "ASP");
 
 
             return 0;

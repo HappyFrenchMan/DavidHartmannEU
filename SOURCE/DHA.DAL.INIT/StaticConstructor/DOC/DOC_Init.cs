@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DHA.DAL.INIT.StaticConstructor.CV
+namespace DHA.DAL.INIT.StaticConstructor.DOC
 {
     internal class DOC_Init
     {

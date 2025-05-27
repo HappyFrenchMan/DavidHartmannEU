@@ -2,7 +2,7 @@
 
 using DAH.DAL;
 using DHA.DAL;
-using DHA.DAL.INIT.StaticConstructor.CV;
+using DHA.DAL.INIT.StaticConstructor.DOC;
 using DHA.DAL.Initializer;
 using DHA.DAL.Initializer.StaticConstructor.CV;
 
@@ -17,14 +17,14 @@ MyDb __myDb = new MyDb();
 // Doc Tablespace
 DOC_Init.Init_Link_Tab(__myDb);
 // CV TableSpace
- CV_Ref_Init.Init_ContractType(__myDb);
-CV_Ref_Init.Init_KeyRole(__myDb);
-CV_Ref_Init.Init_SkillType(__myDb);
-CV_Ref_Init.Init_Language(__myDb);
-CV_Ref_Init.Init_City(__myDb);
-CV_Ref_Init.Init_Firm(__myDb);
-CV_RefLinked_Init.Init_Skill(__myDb);
-CV_RefLinked_Init.Init_Training(__myDb);
+CV_Populate_ZeroLinkEntity.Init_ContractType(__myDb);
+CV_Populate_ZeroLinkEntity.Init_KeyRole(__myDb);
+CV_Populate_ZeroLinkEntity.Init_SkillType(__myDb);
+CV_Populate_ZeroLinkEntity.Init_LanguageSpoken(__myDb);
+CV_Populate_ZeroLinkEntity.Init_City(__myDb);
+CV_Populate_ZeroLinkEntity.Init_Firm(__myDb);
+CV_Populate_OneLinkEntity.Init_Skill(__myDb);
+CV_Populate_OneLinkEntity.Init_Training(__myDb);
 //Experience_Init.Init();
 
 

@@ -1,12 +1,49 @@
 ﻿using DAH.DAL;
 using DHA.DAL.Entity;
 //using DHA.DAL.CV.DAO;
-using c= DHA.DAL.INIT.StaticConstructor.CV.CV_Ref_Init_Const;
+using c= DHA.DAL.INIT.StaticConstructor.CV.CV_DAL_Const;
 
 namespace DHA.DAL.Initializer.StaticConstructor.CV
 {
-    class CV_Ref_Init
+    class CV_Populate_ZeroLinkEntity
     {
+        public static void Init_SkillType(MyDb pMyDB)
+        {
+            Dictionary<string, string> __dico = new Dictionary<string, string>()
+            {
+                {c.SK_DB_CODE, c.SK_DB_LBL },
+                {c.SK_DEV_CODE, c.SK_DEV_LBL },
+                {c.SK_DEVCL_CODE, c.SK_DEVCL_LBL },
+                {c.SK_DEVSQL_CODE, c.SK_DEVSQL_LBL },
+                {c.SK_DEVSRC_CODE, c.SK_DEVSRC_LBL },
+                {c.SK_DEVW_CODE , c.SK_DEVW_LBL },
+                {c.SK_ERP_CODE, c.SK_ERP_LBL },
+                {c.SK_OS_CODE, c.SK_OS_LBL },
+                {c.SK_CLOUD_CODE, c.SK_CLOUD_LBL }
+            };
+            foreach (KeyValuePair<string, string> keyValuePair in __dico)
+            {
+                pMyDB.CVSkillTypeRepository.Add(
+                    new CV_SkillType() { Key = keyValuePair.Key, Description = keyValuePair.Value });
+            }//foreach
+        }//Init_SkillType
+
+        public static void Init_KeyRole(MyDb pMyDB)
+        {
+            Dictionary<string, string> __dico = new Dictionary<string, string>()
+            {
+                {c.KR_ANALYST_CODE, c.KR_ANALYST_LBL },
+                {c.KR_DEVELOPPEUR_CODE, c.KR_DEVELOPPEUR_LBL },
+                {c.KR_EXPERTTECH_CODE, c.KR_EXTPERTTECH_LBL }
+            };
+
+            foreach (KeyValuePair<string, string> keyValuePair in __dico)
+            {
+                pMyDB.CVKeyRoleRepository.Add(
+                   new CV_KeyRole() { Key = keyValuePair.Key, Name = keyValuePair.Value });
+            }//foreach
+        }//Init_KeyRole
+
         public static void Init_ContractType(MyDb pMyDB)
         {
             Dictionary<string, string> __dico = new Dictionary<string, string>()
@@ -22,63 +59,22 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                 pMyDB.CVContractTypeRepository.Add(
                     new CV_ContractType() { Key = keyValuePair.Key, Name = keyValuePair.Value });
             }//foreach
-        }//Init_ContractType
+        }//Init_ContractType      
 
-        public static void Init_KeyRole(MyDb pMyDB)
+        public static void Init_LanguageSpoken(MyDb pMyDB)
         {
-            Dictionary<string, string> __dico = new Dictionary<string, string>()
-            {
-                {c.KR_ANALYST_CODE, c.KR_ANALYST_LBL },
-                {c.KR_DEVELOPPEUR_CODE, c.KR_DEVELOPPEUR_LBL },
-                {c.KR_EXPERTTECH_CODE, c.KR_EXTPERTTECH_LBL }
-            };
-
-            foreach (KeyValuePair<string, string> keyValuePair in __dico)
-            {
-                pMyDB.CVKeyRoleRepository.Add(
-                   new CV_KeyRole() { Key=keyValuePair.Key, Name=keyValuePair.Value});
-            }//foreach
-        }//Init_KeyRole
-
-
-        public static void Init_SkillType(MyDb pMyDB)
-        {
-            string[] __tabSkill =
-            {
-                    "DB;BASE_DE_DONNEES",
-                    "DEV;DEVELOPPEMENT",
-                    "DEVW;DEVELOPPEMENT_WEB",
-                    "DEVCL;DEVELOPPEMENT_CLIENT_LOURD",
-                    "DEVSQL;DEVELOPPEMENT_SQL",
-                    "DEVSOURCE;LOGICIEL_DE_GESTION_DE_VERSIONS",
-                    "ERP;ERP_PROGICIEL_DE_GESTION_INTÉGRÉ",
-                    "OS;SYSTEME_EXPLOITATION",
-                    "CLOUD;INFRA CLOUD "
-                };
-            foreach (string __strSkill in __tabSkill)
-            {
-                pMyDB.CVSkillTypeRepository.Add(
-                    new CV_SkillType() {  Key = __strSkill.Split(';')[0] , Description= __strSkill.Split(';')[1] });
-            }
-        }//Init_SkillType
-
-        public static void Init_Language(MyDb pMyDB)
-        {
-            string[] __tabLanguage =
-            {
-                    "EN;Anglais",
-                    "DE;Allemand"
-                };
-            foreach (string __strLanguage in __tabLanguage)
-            {
-                pMyDB.CVLanguageSpokenRepository.Add(
+            pMyDB.CVLanguageSpokenRepository.Add(
                     new CV_LanguageSpoken()
                     {
-                        Code = __strLanguage.Split(';')[0],
-                        Name = __strLanguage.Split(';')[1]
+                        Code = c.LG_ENGLISH_CODE,
+                        Name = c.LG_ENGLISH_LBL
                     });
-              
-            }
+            pMyDB.CVLanguageSpokenRepository.Add(
+                    new CV_LanguageSpoken()
+                    {
+                        Code = c.LG_GERMAN_CODE,
+                        Name = c.LG_GERMAN_LBL
+                    });
         }//Init_Language
 
         public static void Init_City(MyDb pMyDB)
@@ -128,16 +124,16 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
         public static void Init_Firm(MyDb pMyDB)
         {
             string[] lStrTabFirm = new string[] {
-                    "SERVANTES;SERVANTES;ESN" ,
-                    "BNPP;BNP PARIBAS;IT" ,
-                    "W4;W4;Editeur de logiciel",
-                    "SCPP;SCPP;Droits musicaux" ,
-                    "MM;MEDIAMOBILE;TELECOM",
-                    "AJILON;AJILON;ESN",
-                    "LMSP;Laboratoires Mayoly Spindler;Industrie Pharma." ,
-                    "MH;Malakoff Humanis;Groupe de Protection sociale",
-                    "METSO;METSO;Technologies pour l'Industrie Minière",
-                     "AGAP2;AGAP2;ESN"};
+                    c.FI_SERVANTES_CODE+";SERVANTES;ESN" ,
+                    c.FI_BNPP_CODE+";BNP PARIBAS;IT" ,
+                    c.FI_W4_CODE+";W4;Editeur de logiciel",
+                    c.FI_SCPP_CODE+";SCPP;Droits musicaux" ,
+                    c.FI_MM_CODE+";MEDIAMOBILE;TELECOM",
+                    c.FI_AJILON_CODE+";AJILON;ESN",
+                    c.FI_LMSP_CODE+";Laboratoires Mayoly Spindler;Industrie Pharma." ,
+                    c.FI_MH_CODE+";Malakoff Humanis;Groupe de Protection sociale",
+                    c.FI_METSO_CODE+";METSO;Technologies pour l'Industrie Minière",
+                     c.FI_AGAP2_CODE+";AGAP2;ESN"};
             foreach (string lStrFirm in lStrTabFirm)
             {
                 string[] lTabFirm = lStrFirm.Split(";");
@@ -150,8 +146,6 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                     });
             }//foreach
         }//Init_Firm
-
-
 
     }//class
 }//namespace
