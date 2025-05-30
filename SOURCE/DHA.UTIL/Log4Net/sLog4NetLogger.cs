@@ -1,18 +1,36 @@
 ﻿using log4net;
 using log4net.Config;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 
 namespace DHA.UTIL.Log4Net
 {
     public static class sLog4NetLogger
     {
+        const string CONST_LOG4NET_FILENAME = "settingsLog4Net.xml";
 
-        // Mandatory for Logger to Work
-        public static void sInitConfig(FileInfo pFileInfoConfigFile)
+        public static string? S_CONFIG_FILE = null;
+
+        private static bool s_boolInit = false;
+
+        /// <summary>
+        /// Mandatory for Logger to Work 
+        /// by default use %CURRENT_DIR%CONST_LOG4NET_FILENAME
+        /// </summary>
+        public static void sInitConfig()
         {
-            XmlConfigurator.Configure(pFileInfoConfigFile);
-        }
+            FileInfo __fileInfoFileLog4Net;
+            if (S_CONFIG_FILE == null)
+            {
+                S_CONFIG_FILE = Path.Combine(Directory.GetCurrentDirectory(), CONST_LOG4NET_FILENAME);
+            }//if
+
+            __fileInfoFileLog4Net = new FileInfo(S_CONFIG_FILE);                
+            XmlConfigurator.Configure(__fileInfoFileLog4Net);
+
+            s_boolInit = true;
+        }//sInitConfig
 
         // get logger
         private static readonly Lazy<LogSingletonWrapper> _logger = new Lazy<LogSingletonWrapper>();
@@ -21,6 +39,12 @@ namespace DHA.UTIL.Log4Net
             public ILog Log { get; set; }
             public LogSingletonWrapper()
             {
+                if (!s_boolInit)
+                {
+                    sInitConfig();
+                    s_boolInit= true;
+                }//if
+
                 Log = LogManager.GetLogger(GetType());
             }
         }

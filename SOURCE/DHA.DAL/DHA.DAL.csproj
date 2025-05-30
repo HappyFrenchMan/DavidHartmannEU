@@ -7,17 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CV\DAO\MyActivity.cs" />
-    <Compile Remove="CV\DAO\MyCatalog.cs" />
-    <Compile Remove="CV\DAO\MyExperience.cs" />
-    <Compile Remove="CV\DAO\MyJobs.cs" />
-    <Compile Remove="CV\DAO\MyStatistic.cs" />
-    <Compile Remove="CV\DAO\MyTraining.cs" />
-    <Compile Remove="DOC\DAO\MyDocRef.cs" />
-    <Compile Remove="DOC\DAO\MyLinks.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -33,13 +22,6 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CV\DAO\" />
-    <Folder Include="CV\Entity\" />
-    <Folder Include="DOC\DAO\" />
-    <Folder Include="DOC\Entity\" />
   </ItemGroup>
 
 </Project>

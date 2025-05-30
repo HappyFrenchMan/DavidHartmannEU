@@ -25,16 +25,7 @@ namespace DHA.DAL.CrossRepo
             int pIntYearStart, int pIntMonthStart,
             int pIntYearEnd, int pIntMonthEnd,
             params int[] pIntTabActivities)
-        {
-            //         int lIntExperienceID =
-            // MyExperience.add(
-            //"SERVANTES",
-            //"Stage de DUT",
-            // 78220,
-            // lFirmServantes.ID,
-            // 2001, 3,
-            // 2001, 9);
-
+        {            
             //  Gest associated element
             CV_City lCity
                 = _myDbRef.CVCityRepository.FindOne(a => a.PostalCode == pIntCityCodePostal);
@@ -53,6 +44,7 @@ namespace DHA.DAL.CrossRepo
             __experiencePeriod.MonthEnd = pIntMonthEnd;
             lExperience.ExperiencePeriod = __experiencePeriod;
             lExperience.CityId = lCity.ID;
+            lExperience.FirmId = lFirm.ID;
 
             _myDbRef.CVExperienceRepository.Add(lExperience);
 

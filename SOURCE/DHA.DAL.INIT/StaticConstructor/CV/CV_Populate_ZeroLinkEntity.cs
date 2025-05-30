@@ -124,16 +124,16 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
         public static void Init_Firm(MyDb pMyDB)
         {
             string[] lStrTabFirm = new string[] {
-                    c.FI_SERVANTES_CODE+";SERVANTES;ESN" ,
-                    c.FI_BNPP_CODE+";BNP PARIBAS;IT" ,
-                    c.FI_W4_CODE+";W4;Editeur de logiciel",
-                    c.FI_SCPP_CODE+";SCPP;Droits musicaux" ,
-                    c.FI_MM_CODE+";MEDIAMOBILE;TELECOM",
-                    c.FI_AJILON_CODE+";AJILON;ESN",
-                    c.FI_LMSP_CODE+";Laboratoires Mayoly Spindler;Industrie Pharma." ,
-                    c.FI_MH_CODE+";Malakoff Humanis;Groupe de Protection sociale",
-                    c.FI_METSO_CODE+";METSO;Technologies pour l'Industrie Minière",
-                     c.FI_AGAP2_CODE+";AGAP2;ESN"};
+                    c.FI_SERVANTES_KEY+";SERVANTES;ESN" ,
+                    c.FI_BNPP_KEY+";BNP PARIBAS;IT" ,
+                    c.FI_W4_KEY+";W4;Editeur de logiciel",
+                    c.FI_SCPP_KEY+";SCPP;Droits musicaux" ,
+                    c.FI_MM_KEY+";MEDIAMOBILE;TELECOM",
+                    c.FI_AJILON_KEY+";AJILON;ESN",
+                    c.FI_LMSP_KEY+";Laboratoires Mayoly Spindler;Industrie Pharma." ,
+                    c.FI_MH_KEY+";Malakoff Humanis;Groupe de Protection sociale",
+                    c.FI_METSO_KEY+";METSO;Technologies pour l'Industrie Minière",
+                     c.FI_AGAP2_KEY+";AGAP2;ESN"};
             foreach (string lStrFirm in lStrTabFirm)
             {
                 string[] lTabFirm = lStrFirm.Split(";");

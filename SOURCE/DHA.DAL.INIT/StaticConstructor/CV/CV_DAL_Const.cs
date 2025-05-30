@@ -43,16 +43,16 @@
         public const string LG_GERMAN_CODE = "DE";
         public const string LG_GERMAN_LBL = "Allemand";
 
-        public const string FI_SERVANTES_CODE = "SERVANTES";
-        public const string FI_BNPP_CODE = "BNPP";
-        public const string FI_W4_CODE="W4";
-        public const string FI_SCPP_CODE = "SCPP";
-        public const string FI_MM_CODE = "MM";
-        public const string FI_AJILON_CODE = "AJILON";
-        public const string FI_LMSP_CODE = "LMSP";
-        public const string FI_MH_CODE = "MH";
-        public const string FI_METSO_CODE = "METSO";
-        public const string FI_AGAP2_CODE = "AGAP2";
+        public const string FI_SERVANTES_KEY = "SERVANTES";
+        public const string FI_BNPP_KEY = "BNPP";
+        public const string FI_W4_KEY="W4";
+        public const string FI_SCPP_KEY = "SCPP";
+        public const string FI_MM_KEY = "MM";
+        public const string FI_AJILON_KEY = "AJILON";
+        public const string FI_LMSP_KEY = "LMSP";
+        public const string FI_MH_KEY = "MH";
+        public const string FI_METSO_KEY = "METSO";
+        public const string FI_AGAP2_KEY = "AGAP2";
 
     }//class
 }//namespace
