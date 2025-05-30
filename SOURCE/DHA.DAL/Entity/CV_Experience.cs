@@ -25,7 +25,7 @@ namespace DHA.DAL.Entity
         [Unicode(true)]
         [MaxLength(255)]
         [Column("EXP_Description")]
-        public string? Description { get; set; }        
+        public string? Description { get; set; }
 
         public CV_ExperiencePeriod ExperiencePeriod { get; set; }
 
