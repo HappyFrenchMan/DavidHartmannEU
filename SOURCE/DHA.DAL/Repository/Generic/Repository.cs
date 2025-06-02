@@ -6,7 +6,7 @@ namespace DHA.DAL.Repository.Generic
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly Db_Context _myDBContext;
+        internal readonly Db_Context _myDBContext;
         public Repository(Db_Context pDBContext)
         {
             _myDBContext = pDBContext;
