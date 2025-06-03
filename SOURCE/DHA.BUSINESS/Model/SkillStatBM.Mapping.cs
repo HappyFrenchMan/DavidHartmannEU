@@ -1,6 +1,4 @@
-﻿using DHA.DAL.CV.Model;
-
-namespace DHA.BUSINESS.Model
+﻿namespace DHA.BUSINESS.Model
 {
     public partial class SkillStatBM
     {

@@ -36,6 +36,7 @@ namespace DAH.DAL
         private Lazy<USR_UserRepository> _lazy_USR_UserRepository;
 
         //crossrepo
+        private Lazy<CV_StatCR> _lazy_CVStatCR;
         private Lazy<CV_FeedCR> _lazy_CVFeedCR;
 
         public MyDb()
@@ -70,6 +71,7 @@ namespace DAH.DAL
 
             //crossrepo
             _lazy_CVFeedCR = new Lazy<CV_FeedCR>(() => new CV_FeedCR(this));
+            _lazy_CVStatCR = new Lazy<CV_StatCR>(() => new CV_StatCR(this));
         }//MyDatabase
 
         //repo
@@ -100,6 +102,6 @@ namespace DAH.DAL
 
         //crossrepo
         public CV_FeedCR  CVFeedCR { get { return _lazy_CVFeedCR.Value; } }
-
+        public CV_StatCR CVStatCR { get { return _lazy_CVStatCR.Value; } }
     }//class
 }//namespace

@@ -1,12 +1,10 @@
-﻿using DHA.DAL.CV.DAO;
-using DHA.DAL.CV.Model;
-using DHA.DAL.Entity;
+﻿using DHA.DAL.Entity;
 
 namespace DHA.BUSINESS.Model
 {
     public partial class ExperienceBM
     {
-        public static ExperienceBM ToExperienceBM(CV_Experience __experience)
+        public static ExperienceBM ToExperienceBM(CV_Experience __experience, List<CV_Job> pLstJob)
         {
             ExperienceBM __experienceBM = new ExperienceBM();
             __experienceBM.period =
@@ -28,9 +26,9 @@ namespace DHA.BUSINESS.Model
                 __ExperienceBM_Activities.subproj = __activite.SubProjectName;
 
                 // Job
-                CV_Job __jobDetail = MyJobs.select_job(__activite.JobId);
+                CV_Job __jobDetail = pLstJob.First(a => a.ID==__activite.JobId);
                 __ExperienceBM_Activities.job = __jobDetail.ToString();
-                __ExperienceBM_Activities.contract = __jobDetail.ContractType.Name;
+                __ExperienceBM_Activities.contract = __jobDetail.CV_ContractType.Name;
                 __ExperienceBM_Activities.keyrole = __jobDetail.JobKeyRolesToString();
 
                 // ExperienceM_Activities.tabStrDetail

@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DHA.DAL\DHA.DAL.csproj" />
+    <ProjectReference Include="..\DHA.BUSINESS\DHA.BUSINESS.csproj" />
     <ProjectReference Include="..\DHA.UTIL\DHA.UTIL.csproj" />
   </ItemGroup>
 

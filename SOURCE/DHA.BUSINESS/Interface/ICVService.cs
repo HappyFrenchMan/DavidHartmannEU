@@ -1,5 +1,4 @@
 ﻿using DHA.BUSINESS.Model;
-using DHA.DAL.CV.Model;
 
 namespace DHA.BUSINESS.Interface
 {

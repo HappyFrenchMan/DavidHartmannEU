@@ -14,7 +14,7 @@ namespace DHA.BUSINESS.Model
 
             TrainingBM __trainingM = new TrainingBM();
             __trainingM.year = pCVTraining.Year;
-            __trainingM.location = pCVTraining.Location.ToString();
+            __trainingM.location = pCVTraining.CV_City.ToString();
             __trainingM.details = __lstStringDetail.ToArray();
 
             return __trainingM;
