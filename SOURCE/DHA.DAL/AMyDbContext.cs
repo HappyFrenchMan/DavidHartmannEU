@@ -70,6 +70,7 @@ namespace DHA.DAL
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlite($"{sln_conf.Read(sln_conf.EN_APPS_KEY.DAL_STR_DATABASE_CONNECTION_STRING)}");
+            options.EnableSensitiveDataLogging();
             options.LogTo(this.Log, [RelationalEventId.CommandExecuted]);
         }//OnConfiguring
 

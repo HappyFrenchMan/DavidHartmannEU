@@ -1,4 +1,5 @@
 ﻿using DAH.DAL;
+using DHA.DAL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +31,14 @@ namespace DHA.DAL.INIT.StaticConstructor.DOC
                 string lStrCategorie = lStrTabInfo[0];
                 string lStrDescription = lStrTabInfo[1];
                 string lStrURL = lStrTabInfo[2];
-                pMyDB.RepoDOCUpdate.add_doc_link(lStrCategorie, lStrDescription, lStrURL);
+                UpdateResult __updateResult = pMyDB.RepoDOCUpdate.add_doc_link(lStrCategorie, lStrDescription, lStrURL);
+                if (__updateResult.EntityUpdated != 1)
+                {
+                    throw new Exception("Error while add link !");
+                }//if
             }//foreach
+
+
         }//Init_Link_Tab
 
     }//class

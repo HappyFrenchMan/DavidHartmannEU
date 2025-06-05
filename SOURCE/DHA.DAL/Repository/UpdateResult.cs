@@ -9,8 +9,10 @@ namespace DHA.DAL.Repository
     public class UpdateResult
     {
         private bool _success;
-        private int? _intEntityUpdated;
+        private int _intEntityUpdated;
         private Exception? _exception;
+
+        public int EntityUpdated { get { return _intEntityUpdated; }}
 
         private UpdateResult() 
         { 
