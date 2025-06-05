@@ -1,21 +1,11 @@
 ﻿using DAH.DAL;
 using DHA.DAL.Entity;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DHA.DAL.CrossRepo
+namespace DHA.DAL.Repository
 {
-    public class CV_FeedCR
-    {
-        private MyDb _myDbRef;
-
-        private CV_FeedCR() { }
-
-        public CV_FeedCR(MyDb pMyDb) { _myDbRef = pMyDb;  }
+    public class CV_Update_Repo : ARepo
+    {        
+        public CV_Update_Repo(MyDb pMyDb) : base(pMyDb) {   }
 
         public int add_experience(
             string pStrNameExperience,
@@ -25,12 +15,12 @@ namespace DHA.DAL.CrossRepo
             int pIntYearStart, int pIntMonthStart,
             int pIntYearEnd, int pIntMonthEnd,
             params int[] pIntTabActivities)
-        {            
+        {
             //  Gest associated element
             CV_City lCity
-                = _myDbRef.CVCityRepository.FindOne(a => a.PostalCode == pIntCityCodePostal);
+                = MyDatabase.Cities.First(a => a.PostalCode == pIntCityCodePostal);
             CV_Firm lFirm
-                = _myDbRef.CVFirmRepository.FindOne(a => a.Key == pStrFirmKey);
+                = MyDatabase.Firms.First(a => a.Key == pStrFirmKey);
 
             CV_Experience lExperience = new CV_Experience();
             lExperience.Name = pStrNameExperience;
@@ -46,14 +36,14 @@ namespace DHA.DAL.CrossRepo
             lExperience.CityId = lCity.ID;
             lExperience.FirmId = lFirm.ID;
 
-            _myDbRef.CVExperienceRepository.Add(lExperience);
+            MyDatabase.Experiences.Add(lExperience);
 
             return lExperience.ID;
         }//add
 
-        public void add_skill(string pStrSkillKey,string pStrSkillTypeKey,string pStrName,string pStrDetail = "")
+        public void add_skill(string pStrSkillKey, string pStrSkillTypeKey, string pStrName, string pStrDetail = "")
         {
-            CV_SkillType __cvSkillType =  _myDbRef.CVSkillTypeRepository.FindOne(a => a.Key == pStrSkillTypeKey);
+            CV_SkillType __cvSkillType = MyDatabase.Skill_Types.First(a => a.Key == pStrSkillTypeKey);
             CV_Skill lSkill = new CV_Skill()
             {
                 Key = pStrSkillKey,
@@ -61,34 +51,34 @@ namespace DHA.DAL.CrossRepo
                 Name = pStrName,
                 Detail = pStrDetail
             };
-            _myDbRef.CVSkillRepository.Add(lSkill);
+            MyDatabase.Skills.Add(lSkill);
         }//add_skill
 
-        public void add_training(int pIntCodePostal,int pIntYear,params string[] pStrTabDetail)
+        public void add_training(int pIntCodePostal, int pIntYear, params string[] pStrTabDetail)
         {
-            CV_City? __City = _myDbRef.CVCityRepository.Find(a => a.PostalCode==pIntCodePostal).FirstOrDefault();
-                         
+            CV_City? __City = MyDatabase.Cities.First(a => a.PostalCode == pIntCodePostal);
+
             CV_Training __Training = new CV_Training();
             __Training.Year = pIntYear;
             __Training.CV_CityId = __City.ID;
             List<CV_TrainingDetail> __listTD = new List<CV_TrainingDetail>();
-            _myDbRef.CVTrainingRepository.Add(__Training);
-            
+            MyDatabase.Trainings.Add(__Training);
+
             foreach (string lStrDetail in pStrTabDetail)
             {
-                    CV_TrainingDetail __TrainingDetail = new CV_TrainingDetail();
-                    __TrainingDetail.Detail = lStrDetail;
-                    __TrainingDetail.Training = __Training;
-                    _myDbRef.CVTrainingDetailRepository.Add(__TrainingDetail);            
+                CV_TrainingDetail __TrainingDetail = new CV_TrainingDetail();
+                __TrainingDetail.Detail = lStrDetail;
+                __TrainingDetail.Training = __Training;
+                MyDatabase.TrainingDetails.Add(__TrainingDetail);
             }//foreach                
 
-         }//add_training
+        }//add_training
 
         public int add_job(string pStrJobName,
                               string pStrContractTypeKey,
                               params string[] pStrTabKeyRole)
         {
-            CV_ContractType? lContractType = _myDbRef.CVContractTypeRepository.FindOne(a => a.Key==pStrContractTypeKey);
+            CV_ContractType? lContractType = MyDatabase.ContractTypes.First(a => a.Key == pStrContractTypeKey);
             if (lContractType == null)
             {
                 throw new Exception($"add / JobName : {pStrJobName} - ContractType : {pStrContractTypeKey}");
@@ -99,11 +89,11 @@ namespace DHA.DAL.CrossRepo
                 Name = pStrJobName,
                 CV_ContractTypeKey = lContractType.Key
             };
-            _myDbRef.CVJobRepository.Add(__Cv_Job);
-            
+            MyDatabase.Jobs.Add(__Cv_Job);
+
             foreach (string lStrkeyRole in pStrTabKeyRole)
             {
-                CV_KeyRole? lKeyRole = _myDbRef.CVKeyRoleRepository.FindOne(a => a.Key==lStrkeyRole);
+                CV_KeyRole? lKeyRole = MyDatabase.KeyRoles.First(a => a.Key == lStrkeyRole);
 
                 if (lKeyRole == null || lKeyRole == null)
                 {
@@ -114,7 +104,7 @@ namespace DHA.DAL.CrossRepo
                 __cvJobKeyRole.JobId = __Cv_Job.ID;
                 __cvJobKeyRole.KeyRoleKey = lKeyRole.Key;
 
-                _myDbRef.CVJobKeyRoleRepository.Add(__cvJobKeyRole);
+                MyDatabase.JobKeyRoles.Add(__cvJobKeyRole);
             }//foreach
 
 
@@ -138,7 +128,7 @@ namespace DHA.DAL.CrossRepo
                 ExperienceId = pIntExperienceId,
                 JobId = pIntJobId
             };
-            _myDbRef.CVActivityRepository.Add(lActivity);
+            MyDatabase.Activities.Add(lActivity);
 
             add_activity_detail(lActivity.ID, pStrActivityDetail);
 
@@ -156,7 +146,7 @@ namespace DHA.DAL.CrossRepo
                 CV_ActivityDetail lActivityDetail = new CV_ActivityDetail();
                 lActivityDetail.Detail = lStrDetail;
                 lActivityDetail.ActivityId = pIntActivityId;
-                _myDbRef.CVActivityDetailRepository.Add(lActivityDetail);
+                MyDatabase.ActivitiesDetail.Add(lActivityDetail);
             }//foreach
 
         }//add_activity_detail
@@ -165,11 +155,11 @@ namespace DHA.DAL.CrossRepo
             params string[] pStrTabSkillCode)
         {
             CV_Activity?
-                lActivity = _myDbRef.CVActivityRepository.FindOne(a=>a.ID==pIntActivityId);
+                lActivity = MyDatabase.Activities.First(a => a.ID == pIntActivityId);
 
             foreach (string lStrSkillCode in pStrTabSkillCode)
             {
-                CV_Skill? lSkill = _myDbRef.CVSkillRepository.FindOne(a=>a.Key==lStrSkillCode);
+                CV_Skill? lSkill = MyDatabase.Skills.First(a => a.Key == lStrSkillCode);
 
                 if (lActivity == null || lSkill == null)
                 {
@@ -182,7 +172,7 @@ namespace DHA.DAL.CrossRepo
                 lActivitySkill.ActivityId = pIntActivityId;
                 lActivitySkill.SkillId = lSkill.ID;
 
-                _myDbRef.CVActivitySkillRepository.Add(lActivitySkill);
+                MyDatabase.ActivitySkills.Add(lActivitySkill);
             }//foreach
         }//add_skill
 

@@ -11,7 +11,7 @@ using sln_conf = DHA.UTIL.appSettings.AppSettingsReader;
 
 namespace DHA.DAL
 {
-    public class Db_Context : DbContext
+    public abstract class AMyDbContext : DbContext
     {
         private static bool IS_DB_INIT = false;
 
@@ -44,8 +44,7 @@ namespace DHA.DAL
         public DbSet<USR_Role> Role { get; set; }
         public DbSet<USR_User> User { get; set; }
 
-        public Db_Context() : 
-            base( )
+        public AMyDbContext() : base()
         {
 
             if (sln_conf.ReadBool(sln_conf.EN_APPS_KEY.DAL_BOOL_EF_CORE_ENSURE_DELETED))
@@ -77,19 +76,7 @@ namespace DHA.DAL
         public void Log(string message)
         {
             sLog4NetLogger.Debug("##EFCORE##"+message);
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //modelBuilder.Entity<Activity>()
-            //    .HasMany(e => e.Skills)
-            //    .WithMany(e => e.Activities)
-            //    .UsingEntity(
-            //        "ActivitySkill",
-            //        l => l.HasOne(typeof(Skill)).WithMany().HasForeignKey("SkillsId").HasPrincipalKey(nameof(Skill.ID)),
-            //        r => r.HasOne(typeof(Activity)).WithMany().HasForeignKey("ActivitiesId").HasPrincipalKey(nameof(Activity.ID)),
-            //        j => j.HasKey("ActivitiesId", "SkillsId"));
-        }//OnModelCreating
+        }//Log
 
     }//class
 }//namespace

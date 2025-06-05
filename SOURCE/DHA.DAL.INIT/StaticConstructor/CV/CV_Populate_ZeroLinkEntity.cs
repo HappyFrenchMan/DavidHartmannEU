@@ -23,7 +23,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
             };
             foreach (KeyValuePair<string, string> keyValuePair in __dico)
             {
-                pMyDB.CVSkillTypeRepository.Add(
+                pMyDB.Skill_Types.Add(
                     new CV_SkillType() { Key = keyValuePair.Key, Description = keyValuePair.Value });
             }//foreach
         }//Init_SkillType
@@ -39,7 +39,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
             foreach (KeyValuePair<string, string> keyValuePair in __dico)
             {
-                pMyDB.CVKeyRoleRepository.Add(
+                pMyDB.KeyRoles.Add(
                    new CV_KeyRole() { Key = keyValuePair.Key, Name = keyValuePair.Value });
             }//foreach
         }//Init_KeyRole
@@ -56,25 +56,33 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
             foreach (KeyValuePair<string, string> keyValuePair in __dico)
             {
-                pMyDB.CVContractTypeRepository.Add(
+                pMyDB.ContractTypes.Add(
                     new CV_ContractType() { Key = keyValuePair.Key, Name = keyValuePair.Value });
             }//foreach
         }//Init_ContractType      
 
         public static void Init_LanguageSpoken(MyDb pMyDB)
         {
-            pMyDB.CVLanguageSpokenRepository.Add(
+            pMyDB.Languages.Add(
                     new CV_LanguageSpoken()
                     {
                         Code = c.LG_ENGLISH_CODE,
                         Name = c.LG_ENGLISH_LBL
                     });
-            pMyDB.CVLanguageSpokenRepository.Add(
-                    new CV_LanguageSpoken()
-                    {
-                        Code = c.LG_GERMAN_CODE,
-                        Name = c.LG_GERMAN_LBL
-                    });
+            //pMyDB.Languages.Add(
+            //        new CV_LanguageSpoken()
+            //        {
+            //            Code = c.LG_GERMAN_CODE,
+            //            Name = c.LG_GERMAN_LBL
+            //        });
+            CV_LanguageSpoken lsDE =
+                new CV_LanguageSpoken()
+                {
+                    Code = c.LG_GERMAN_CODE,
+                    Name = c.LG_GERMAN_LBL
+                };
+            //pMyDB.Add_Entity<CV_LanguageSpoken>(ref lsDE);
+            pMyDB.Add(lsDE);
         }//Init_Language
 
         public static void Init_City(MyDb pMyDB)
@@ -110,7 +118,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                 string[] lTabCity = lStrCity.Split(";");
                 int lIntCP = Convert.ToInt32(lTabCity[0]);
 
-                pMyDB.CVCityRepository.Add(
+                pMyDB.Cities.Add(
                     new CV_City()
                     {
                         PostalCode = lIntCP,
@@ -137,7 +145,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
             foreach (string lStrFirm in lStrTabFirm)
             {
                 string[] lTabFirm = lStrFirm.Split(";");
-                pMyDB.CVFirmRepository.Add(
+                pMyDB.Firms.Add(
                     new CV_Firm()
                     {
                         Key = lTabFirm[0],

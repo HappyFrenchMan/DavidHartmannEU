@@ -30,13 +30,7 @@ namespace DHA.DAL.INIT.StaticConstructor.DOC
                 string lStrCategorie = lStrTabInfo[0];
                 string lStrDescription = lStrTabInfo[1];
                 string lStrURL = lStrTabInfo[2];
-                pMyDB.DOCLinkRepository.Add(
-                    new Entity.DOC_Link()
-                    {
-                        Categorie = lStrCategorie,
-                        Description = lStrDescription,
-                        Url = lStrURL
-                    });
+                pMyDB.RepoDOCUpdate.add_doc_link(lStrCategorie, lStrDescription, lStrURL);
             }//foreach
         }//Init_Link_Tab
 
