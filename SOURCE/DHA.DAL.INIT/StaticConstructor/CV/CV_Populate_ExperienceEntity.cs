@@ -15,6 +15,8 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
 
         public static void Init(MyDb pMyDb)
         {
+            pMyDb.
+
             S_Int_JobID_StaigiaireDevASP = Init_Job_Stagiaire_DEV_ASP(pMyDb);
             S_Int_JobID_DevAlternant = Init_Job_Developpeur_Alternant(pMyDb);
             S_Int_JobID_DevStagiaire = Init_Job_Stagiaire_DEV(pMyDb);

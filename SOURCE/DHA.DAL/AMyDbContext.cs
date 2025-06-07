@@ -11,38 +11,38 @@ using sln_conf = DHA.UTIL.appSettings.AppSettingsReader;
 
 namespace DHA.DAL
 {
-    public abstract class AMyDbContext : DbContext
+    internal class MyDbContext : DbContext
     {
         private static bool IS_DB_INIT = false;
 
         // CV Ref
         public DbSet<CV_LanguageSpoken> Languages { get; set; }
-        public DbSet<CV_City> Cities { get; set; }
-        public DbSet<CV_SkillType> Skill_Types { get; set; }
-        public DbSet<CV_Skill> Skills { get; set; }
+        internal DbSet<CV_City> Cities { get; set; }
+        internal DbSet<CV_SkillType> Skill_Types { get; set; }
+        internal DbSet<CV_Skill> Skills { get; set; }
         // CV Fact        
-        public DbSet<CV_Training> Trainings { get; set; }
-        public DbSet<CV_TrainingDetail> TrainingDetails { get; set; }
-        public DbSet<CV_Firm> Firms { get; set; }
-        public DbSet<CV_Job> Jobs { get; set; }
-        public DbSet<CV_KeyRole> KeyRoles { get; set; }        
-        public DbSet<CV_ContractType> ContractTypes { get; set; }
-        public DbSet<CV_Activity> Activities { get; set; }        
-        public DbSet<CV_Experience> Experiences { get; set; }
-        public DbSet<CV_ActivityDetail> ActivitiesDetail { get; set; }
+        internal DbSet<CV_Training> Trainings { get; set; }
+        internal DbSet<CV_TrainingDetail> TrainingDetails { get; set; }
+        internal DbSet<CV_Firm> Firms { get; set; }
+        internal DbSet<CV_Job> Jobs { get; set; }
+        internal DbSet<CV_KeyRole> KeyRoles { get; set; }        
+        internal DbSet<CV_ContractType> ContractTypes { get; set; }
+        internal DbSet<CV_Activity> Activities { get; set; }        
+        internal DbSet<CV_Experience> Experiences { get; set; }
+        internal DbSet<CV_ActivityDetail> ActivitiesDetail { get; set; }
         // Join Table
-        public DbSet<CV_ActivitySkill> ActivitySkills { get; set; }
-        public DbSet<CV_JobKeyRole> JobKeyRoles { get; set; }
+        internal DbSet<CV_ActivitySkill> ActivitySkills { get; set; }
+        internal DbSet<CV_JobKeyRole> JobKeyRoles { get; set; }
         // DOC 
-        public DbSet<DOC_Link> Links { get; set; }
-        public DbSet<DOC_DocContentType> DocContentTypes { get; set; }
-        public DbSet<DOC_WebDocument> WebDocuments { get; set; }
-        public DbSet<DOC_DocumentContent> DocumentContents { get; set; }
-        public DbSet<DOC_SubTypeDocument> SubTypeDocuments { get; set; }
-        public DbSet<DOC_TypeDocument> TypeDocuments { get; set; }
+        internal DbSet<DOC_Link> Links { get; set; }
+        internal DbSet<DOC_DocContentType> DocContentTypes { get; set; }
+        internal DbSet<DOC_WebDocument> WebDocuments { get; set; }
+        internal DbSet<DOC_DocumentContent> DocumentContents { get; set; }
+        internal DbSet<DOC_SubTypeDocument> SubTypeDocuments { get; set; }
+        internal DbSet<DOC_TypeDocument> TypeDocuments { get; set; }
         // Role
-        public DbSet<USR_Role> Role { get; set; }
-        public DbSet<USR_User> User { get; set; }
+        internal DbSet<USR_Role> Role { get; set; }
+        internal DbSet<USR_User> User { get; set; }
 
         public AMyDbContext() : base()
         {

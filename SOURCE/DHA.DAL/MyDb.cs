@@ -5,8 +5,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace DAH.DAL
 {
-    public class MyDb : AMyDbContext
+    public class MyDb
     {
+        private MyDbContext _myDbContext;
+
         private Lazy<CV_Select_Repo> _lazy_CV_SelectRepo;
         private Lazy<CV_Update_Repo> _lazy_CV_UpdateRepo;
         private Lazy<DOC_Update_Repo > _lazy_DOC_UpdateRepo;
@@ -14,11 +16,13 @@ namespace DAH.DAL
         public CV_Update_Repo RepoCVUpdate { get { return _lazy_CV_UpdateRepo.Value; } }
         public DOC_Update_Repo RepoDOCUpdate { get { return _lazy_DOC_UpdateRepo.Value; } }
 
-        public MyDb() : base()
+        public MyDb()
         {
-            _lazy_CV_SelectRepo = new Lazy<CV_Select_Repo>(() => new CV_Select_Repo(this));
-            _lazy_CV_UpdateRepo = new Lazy<CV_Update_Repo>(() => new CV_Update_Repo(this));
-            _lazy_DOC_UpdateRepo = new Lazy<DOC_Update_Repo>(() => new DOC_Update_Repo(this));
+            _myDbContext = new MyDbContext();
+
+            _lazy_CV_SelectRepo = new Lazy<CV_Select_Repo>(() => new CV_Select_Repo(_myDbContext));
+            _lazy_CV_UpdateRepo = new Lazy<CV_Update_Repo>(() => new CV_Update_Repo(_myDbContext));
+            _lazy_DOC_UpdateRepo = new Lazy<DOC_Update_Repo>(() => new DOC_Update_Repo(_myDbContext));
         }//MyDb
 
     }//class

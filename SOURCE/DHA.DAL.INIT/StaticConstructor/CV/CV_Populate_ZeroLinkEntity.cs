@@ -1,5 +1,7 @@
 ﻿using DAH.DAL;
 using DHA.DAL.Entity;
+using DHA.DAL.Repository;
+
 //using DHA.DAL.CV.DAO;
 using c= DHA.DAL.INIT.StaticConstructor.CV.CV_DAL_Const;
 
@@ -23,8 +25,13 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
             };
             foreach (KeyValuePair<string, string> keyValuePair in __dico)
             {
-                pMyDB.Skill_Types.Add(
-                    new CV_SkillType() { Key = keyValuePair.Key, Description = keyValuePair.Value });
+                UpdateResult __updateResult = 
+                    pMyDB.RepoCVUpdate.add_entity(
+                        new CV_SkillType() { Key = keyValuePair.Key, Description = keyValuePair.Value });
+                if (__updateResult.EntityUpdated != 1)
+                {
+                    throw new Exception("Error while add skill type !");
+                }//if
             }//foreach
         }//Init_SkillType
 
@@ -39,8 +46,13 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
             foreach (KeyValuePair<string, string> keyValuePair in __dico)
             {
-                pMyDB.KeyRoles.Add(
-                   new CV_KeyRole() { Key = keyValuePair.Key, Name = keyValuePair.Value });
+                CV_KeyRole __cvKR = new CV_KeyRole() { Key = keyValuePair.Key, Name = keyValuePair.Value };
+                UpdateResult __updateResult =
+                    pMyDB.RepoCVUpdate.add_entity(__cvKR);
+                if (__updateResult.EntityUpdated != 1)
+                {
+                    throw new Exception("Error while add key role !");
+                }//if
             }//foreach
         }//Init_KeyRole
 
@@ -56,33 +68,38 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
             foreach (KeyValuePair<string, string> keyValuePair in __dico)
             {
-                pMyDB.ContractTypes.Add(
-                    new CV_ContractType() { Key = keyValuePair.Key, Name = keyValuePair.Value });
+                CV_ContractType __cvContractType = new CV_ContractType() { Key = keyValuePair.Key, Name = keyValuePair.Value };
+                UpdateResult __updateResult = pMyDB.RepoCVUpdate.add_entity(__cvContractType);
+                if (__updateResult.EntityUpdated != 1)
+                {
+                    throw new Exception("Error while add contract type !");
+                }//if
             }//foreach
         }//Init_ContractType      
 
         public static void Init_LanguageSpoken(MyDb pMyDB)
         {
-            pMyDB.Languages.Add(
+            List<CV_LanguageSpoken> __lstCLS =
+                new List<CV_LanguageSpoken>()
+                {
                     new CV_LanguageSpoken()
                     {
                         Code = c.LG_ENGLISH_CODE,
                         Name = c.LG_ENGLISH_LBL
-                    });
-            //pMyDB.Languages.Add(
-            //        new CV_LanguageSpoken()
-            //        {
-            //            Code = c.LG_GERMAN_CODE,
-            //            Name = c.LG_GERMAN_LBL
-            //        });
-            CV_LanguageSpoken lsDE =
-                new CV_LanguageSpoken()
-                {
-                    Code = c.LG_GERMAN_CODE,
-                    Name = c.LG_GERMAN_LBL
+                    },
+                    new CV_LanguageSpoken()
+                    {
+                        Code = c.LG_GERMAN_CODE,
+                        Name = c.LG_GERMAN_LBL
+                    }
                 };
-            //pMyDB.Add_Entity<CV_LanguageSpoken>(ref lsDE);
-            pMyDB.Add(lsDE);
+
+            UpdateResult __updateResult = pMyDB.RepoCVUpdate.add_entities(__lstCLS.ToArray());
+            if (__updateResult.EntityUpdated != __lstCLS.Count)
+            {
+                throw new Exception("Error while add lanuguage spoken !");
+            }//if
+
         }//Init_Language
 
         public static void Init_City(MyDb pMyDB)
@@ -113,12 +130,13 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                  $"94200;{CONST_VAL_DE_MARNE};{CONST_ILE_DE_FRANCE};Ivry-sur-Seine",
         $"92012;{CONST_HAUT_DE_SEINE};{CONST_ILE_DE_FRANCE};Boulogne Billancourt" };
 
+            List<CV_City> __lstCity = new List<CV_City>();
             foreach (string lStrCity in lStrTabCity)
             {
                 string[] lTabCity = lStrCity.Split(";");
                 int lIntCP = Convert.ToInt32(lTabCity[0]);
 
-                pMyDB.Cities.Add(
+                __lstCity.Add(
                     new CV_City()
                     {
                         PostalCode = lIntCP,
@@ -126,7 +144,14 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                         Area = lTabCity[2],
                         Department = lTabCity[3] 
                     });
-            }
+            }//foreach
+
+            UpdateResult __updateResult = pMyDB.RepoCVUpdate.add_entities(__lstCity.ToArray());
+            if (__updateResult.EntityUpdated != __lstCity.Count)
+            {
+                throw new Exception("Error while add cities !");
+            }//if
+
         }//Init_City
 
         public static void Init_Firm(MyDb pMyDB)
@@ -142,10 +167,12 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                     c.FI_MH_KEY+";Malakoff Humanis;Groupe de Protection sociale",
                     c.FI_METSO_KEY+";METSO;Technologies pour l'Industrie Minière",
                      c.FI_AGAP2_KEY+";AGAP2;ESN"};
+
+            List<CV_Firm> __lstFirms = new List<CV_Firm>();
             foreach (string lStrFirm in lStrTabFirm)
             {
                 string[] lTabFirm = lStrFirm.Split(";");
-                pMyDB.Firms.Add(
+                __lstFirms.Add(
                     new CV_Firm()
                     {
                         Key = lTabFirm[0],
@@ -153,6 +180,13 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                         Sector = lTabFirm[2]
                     });
             }//foreach
+
+            UpdateResult __updateResult = pMyDB.RepoCVUpdate.add_entities(__lstFirms.ToArray());
+            if (__updateResult.EntityUpdated != __lstFirms.Count)
+            {
+                throw new Exception("Error while add firms !");
+            }//if
+
         }//Init_Firm
 
     }//class

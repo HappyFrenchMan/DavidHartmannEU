@@ -12,6 +12,7 @@ namespace DHA.DAL.Repository
         private int _intEntityUpdated;
         private Exception? _exception;
 
+        public bool IsSuccess { get { return _success; } }
         public int EntityUpdated { get { return _intEntityUpdated; }}
 
         private UpdateResult() 
@@ -29,6 +30,13 @@ namespace DHA.DAL.Repository
             _success = false;
             _intEntityUpdated = -1;
             _exception = exception;
+        }//UpdateResult
+
+        public UpdateResult(string pStrMessage)
+        {
+            _success = false;
+            _intEntityUpdated = -1;
+            _exception = new Exception(pStrMessage);
         }//UpdateResult
     }//class
 }//namespace

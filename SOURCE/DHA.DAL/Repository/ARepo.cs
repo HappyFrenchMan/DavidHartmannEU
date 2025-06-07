@@ -11,36 +11,40 @@ namespace DHA.DAL.Repository
 {
     public abstract class ARepo
     {
-        private MyDb _myDbRef;
+        private MyDbContext _myDbCxt;
 
-        protected ARepo(MyDb pMyDb)
+        internal ARepo(MyDbContext pMyDbCtx)
         {
-            _myDbRef = pMyDb;
+            _myDbCxt = pMyDbCtx;
         }//ARepo
 
-        protected MyDb MyDatabase
+        internal MyDbContext MyDbCtx
         {
             get
             {
-                return _myDbRef;
+                return _myDbCxt;
             }//get
         }//MyDatabase
 
-        protected UpdateResult Commit_Add(object anEntity)
+        public UpdateResult add_entity(object pObject)
+        {
+            return add_entities(new object[] { pObject });
+        }//add_entity
+
+        public UpdateResult add_entities(object[] pTabObject)
         {
             try
-            {                
-                MyDatabase.Add(anEntity);
+            {
+                MyDatabase.Add(pTabObject);
+
                 int __intRowsUpdated = MyDatabase.SaveChanges();
 
                 return new UpdateResult(true, __intRowsUpdated);
-            }
+            }//try
             catch (Exception __ex)
             {
                 return new UpdateResult(__ex);
             }//catch
-
-        }//Commit_Add
-
+        }//add_entities
     }//class
 }//namespace

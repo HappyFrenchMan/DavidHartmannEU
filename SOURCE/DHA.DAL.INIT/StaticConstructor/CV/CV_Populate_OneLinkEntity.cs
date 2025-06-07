@@ -1,5 +1,6 @@
 ﻿using DAH.DAL;
 using DHA.DAL.INIT.StaticConstructor.CV;
+using DHA.DAL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,59 +13,87 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
     {
         public static void Init_Skill(MyDb pMyDB)
         {         
-            pMyDB.RepoCVUpdate.add_skill("W2000", "OS", "Windows 2000", "");
-            pMyDB.RepoCVUpdate.add_skill("W2000","OS","Windows 2000","" );
-            pMyDB.RepoCVUpdate.add_skill("WXP","OS","Windows XP","" );
-            pMyDB.RepoCVUpdate.add_skill("SQLS","DEVSQL","Sql Server","" );
-            pMyDB.RepoCVUpdate.add_skill("ORACLE", "DEVSQL","Oracle","PL\\SQL" );
-            pMyDB.RepoCVUpdate.add_skill("ACCESS","DEVSQL","ACCESS","" );
-            pMyDB.RepoCVUpdate.add_skill("SSIS", "DEVSQL","SSIS","" );
-            pMyDB.RepoCVUpdate.add_skill("OLAP", "DEVSQL","OLAP","" );
-            pMyDB.RepoCVUpdate.add_skill("SSRS", "DEVSQL","SQL Server Reporting Services","" );
-            pMyDB.RepoCVUpdate.add_skill("ASP", "DEVW","ASP","" );
-            pMyDB.RepoCVUpdate.add_skill("ASP.NET", "DEVW","ASP.NET","" );
-            pMyDB.RepoCVUpdate.add_skill("WEBSERVICE", "DEVW","Web Service","" );
-            pMyDB.RepoCVUpdate.add_skill("C#", "DEV","C#","" );
-            pMyDB.RepoCVUpdate.add_skill("DOTNET", "DEV",".NET","" );
-            pMyDB.RepoCVUpdate.add_skill("WINFORM", "DEV",".NET Winform","WinForm" );
-            pMyDB.RepoCVUpdate.add_skill("SERVICESDOTNET", "DEV", "Service Windows .NET", "");
-            pMyDB.RepoCVUpdate.add_skill("CR9", "DEV","Crystal Report 9","" );
-            pMyDB.RepoCVUpdate.add_skill("VSS", "DEVSOURCE", "VISUAL SOURCE SAFE","" );
-            pMyDB.RepoCVUpdate.add_skill("GIT", "DEVSOURCE", "GIT", "");
-            pMyDB.RepoCVUpdate.add_skill("TFS", "DEVSOURCE", "TFS","" );
-            pMyDB.RepoCVUpdate.add_skill("VBNET", "DEV","VB.NET","" );
-            pMyDB.RepoCVUpdate.add_skill("VB", "DEV","VISUAL BASIC","" );
-            pMyDB.RepoCVUpdate.add_skill("JAVA", "DEV","JAVA","" );
-            pMyDB.RepoCVUpdate.add_skill("JUNIT", "DEV","JUNIT","" );
-            pMyDB.RepoCVUpdate.add_skill("ECLIPSE", "DEV","ECLIPSE","" );
-            pMyDB.RepoCVUpdate.add_skill("XML", "DEV","XML","" );
-            pMyDB.RepoCVUpdate.add_skill("DAX", "ERP","Dynamics AX","" );
-            pMyDB.RepoCVUpdate.add_skill("AZURE", "CLOUD", "Microsoft Azure Platform");
+            add_skill(pMyDB,"W2000", "OS", "Windows 2000", "");
+            add_skill(pMyDB,"W2000","OS","Windows 2000","" );
+            add_skill(pMyDB,"WXP","OS","Windows XP","" );
+            add_skill(pMyDB,"SQLS","DEVSQL","Sql Server","" );
+            add_skill(pMyDB,"ORACLE", "DEVSQL","Oracle","PL\\SQL" );
+            add_skill(pMyDB,"ACCESS","DEVSQL","ACCESS","" );
+            add_skill(pMyDB,"SSIS", "DEVSQL","SSIS","" );
+            add_skill(pMyDB,"OLAP", "DEVSQL","OLAP","" );
+            add_skill(pMyDB,"SSRS", "DEVSQL","SQL Server Reporting Services","" );
+            add_skill(pMyDB,"ASP", "DEVW","ASP","" );
+            add_skill(pMyDB,"ASP.NET", "DEVW","ASP.NET","" );
+            add_skill(pMyDB,"WEBSERVICE", "DEVW","Web Service","" );
+            add_skill(pMyDB,"C#", "DEV","C#","" );
+            add_skill(pMyDB,"DOTNET", "DEV",".NET","" );
+            add_skill(pMyDB,"WINFORM", "DEV",".NET Winform","WinForm" );
+            add_skill(pMyDB,"SERVICESDOTNET", "DEV", "Service Windows .NET", "");
+            add_skill(pMyDB,"CR9", "DEV","Crystal Report 9","" );
+            add_skill(pMyDB,"VSS", "DEVSOURCE", "VISUAL SOURCE SAFE","" );
+            add_skill(pMyDB,"GIT", "DEVSOURCE", "GIT", "");
+            add_skill(pMyDB,"TFS", "DEVSOURCE", "TFS","" );
+            add_skill(pMyDB,"VBNET", "DEV","VB.NET","" );
+            add_skill(pMyDB,"VB", "DEV","VISUAL BASIC","" );
+            add_skill(pMyDB,"JAVA", "DEV","JAVA","" );
+            add_skill(pMyDB,"JUNIT", "DEV","JUNIT","" );
+            add_skill(pMyDB,"ECLIPSE", "DEV","ECLIPSE","" );
+            add_skill(pMyDB,"XML", "DEV","XML","" );
+            add_skill(pMyDB,"DAX", "ERP","Dynamics AX","" );
+            add_skill(pMyDB,"AZURE", "CLOUD", "Microsoft Azure Platform");
 
+            
         }//Init_Skill
+
+        private static void add_skill(MyDb pMyDb,string pStrSkillKey, string pStrSkillTypeKey, string pStrName, string pStrDetail = "")
+        {
+            UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_skill(pStrSkillKey, pStrSkillTypeKey, pStrName, pStrDetail);
+            if (__updateResult.EntityUpdated != 1)
+            {
+                throw new Exception("Error while add skill !");
+            }//if
+        }//add_skill
 
         public static void Init_Training(MyDb pMyDb)
         {
-            pMyDb.RepoCVUpdate.add_training(91600, 1999,
-                "BAC ES  - Spécialité Mathématiques");
+            string __errorMsg = "Error while add training !";
 
-            pMyDb.RepoCVUpdate.add_training(78140, 2001,
+            UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_training(91600, 1999,
+                "BAC ES  - Spécialité Mathématiques");
+            if (!__updateResult.IsSuccess)
+            {
+                throw new Exception(__errorMsg);
+            }//if
+
+            __updateResult = pMyDb.RepoCVUpdate.add_training(78140, 2001,
                 "DUT (Diplôme universitaire de technologie) informatique",
                 "Projet d'étude : Progiciel de gestion en Java");
+            if (!__updateResult.IsSuccess)
+            {
+                throw new Exception(__errorMsg);
+            }//if
 
-            pMyDb.RepoCVUpdate.add_training(91000, 2003,
+            __updateResult = pMyDb.RepoCVUpdate.add_training(91000, 2003,
                 "Licence et Maîtrise MIAGE",
                 "(Méthodes informatiques appliquées à la gestion)",
                 "Formation en alternance. ",
                 "( Rythme de l’alternance 1 mois / 1 mois )",
                 "Entreprise: Servantès(78)");
+            if (!__updateResult.IsSuccess)
+            {
+                throw new Exception(__errorMsg);
+            }//if
 
-            pMyDb.RepoCVUpdate.add_training(91000, 2004,
+            __updateResult = pMyDb.RepoCVUpdate.add_training(91000, 2004,
                 "DESS Documentaire et Multimédia",
                 "Nouvelles technologies (XML,XSL)",
                 "Gestion Documentaire (Workflow,Gestion de contenu)",
                 "Multimédia et Réseau (Streaming,TCP/IP)",
                 "Projet d’étude : La plateforme J2EE JBoss");
+            if (!__updateResult.IsSuccess)
+            {
+                throw new Exception(__errorMsg);
+            }//if
 
         }//Init_Training
 

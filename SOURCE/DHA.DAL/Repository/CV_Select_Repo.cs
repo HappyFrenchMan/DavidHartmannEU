@@ -7,7 +7,7 @@ namespace DHA.DAL.Repository
 {
     public class CV_Select_Repo : ARepo
     {
-        public CV_Select_Repo(MyDb pMyDb) : base(pMyDb) { }
+        public CV_Select_Repo(MyDbContext pMyDbCtx) : base(pMyDbCtx) { }
 
         /// <summary>
         /// Stat
@@ -18,10 +18,10 @@ namespace DHA.DAL.Repository
             List<(string name_desc, TimeSpan duration, string experience)> __tupleResult 
                 = new List<(string name_desc, TimeSpan duration, string experience)>();
 
-            List<CV_Skill> __lstSkill = MyDatabase.Skills.Include(a => a.Type).AsNoTracking().ToList();
-            List<CV_ActivitySkill> __lstActivitySkill = MyDatabase.ActivitySkills.AsNoTracking().ToList();
-            List<CV_Activity> __lstActivity = MyDatabase.Activities.AsNoTracking().ToList();
-            List<CV_Experience> __lstExperience = MyDatabase.Experiences.AsNoTracking().ToList();
+            List<CV_Skill> __lstSkill = MyDbCtx.Skills.Include(a => a.Type).AsNoTracking().ToList();
+            List<CV_ActivitySkill> __lstActivitySkill = MyDbCtx.ActivitySkills.AsNoTracking().ToList();
+            List<CV_Activity> __lstActivity = MyDbCtx.Activities.AsNoTracking().ToList();
+            List<CV_Experience> __lstExperience = MyDbCtx.Experiences.AsNoTracking().ToList();
             List<int> __listIdExperienceFound = new List<int>();
 
             foreach (CV_Skill __skill in __lstSkill)
@@ -67,7 +67,7 @@ namespace DHA.DAL.Repository
         public List<CV_Experience> select_experiences_with_activities()
         {
             return
-                    MyDatabase.Experiences
+                    MyDbCtx.Experiences
                     .Include(exp => exp.City)
                     .Include(exp => exp.Firm)
                     .Include(exp => exp.Activities)
@@ -81,7 +81,7 @@ namespace DHA.DAL.Repository
 
         public List<CV_Skill> Read_All_Skill_With_Type(bool pBoolTracking = true)
         {
-            var __iqa = MyDatabase.Skills.Include(a => a.Type);
+            var __iqa = MyDbCtx.Skills.Include(a => a.Type);
             if (!pBoolTracking)
             {
                 return __iqa.AsNoTracking().ToList();
@@ -91,7 +91,7 @@ namespace DHA.DAL.Repository
 
         public List<CV_Training> select_training_with_details_and_city(bool pBoolTracking = true)
         {
-            IQueryable<CV_Training> __iqa = MyDatabase.Trainings;
+            IQueryable<CV_Training> __iqa = MyDbCtx.Trainings;
             __iqa.Include("TrainingDetails").Include("CV_City");
             if (!pBoolTracking)
             {
