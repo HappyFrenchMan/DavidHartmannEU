@@ -1,11 +1,6 @@
 ﻿using DAH.DAL;
 using DHA.DAL.Entity;
-using DHA.DAL.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DHA.DAL.QueryResult;
 
 namespace DHA.DAL.INIT.StaticConstructor.DOC
 {

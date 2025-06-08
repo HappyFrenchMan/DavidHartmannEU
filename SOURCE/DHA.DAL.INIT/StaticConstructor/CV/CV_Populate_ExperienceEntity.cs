@@ -1,5 +1,6 @@
 ﻿using DAH.DAL;
 using DHA.DAL.Entity;
+using DHA.DAL.QueryResult;
 using c = DHA.DAL.INIT.StaticConstructor.CV.CV_DAL_Const;
 
 namespace DHA.DAL.INIT.StaticConstructor.CV
@@ -15,8 +16,6 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
 
         public static void Init(MyDb pMyDb)
         {
-            pMyDb.
-
             S_Int_JobID_StaigiaireDevASP = Init_Job_Stagiaire_DEV_ASP(pMyDb);
             S_Int_JobID_DevAlternant = Init_Job_Developpeur_Alternant(pMyDb);
             S_Int_JobID_DevStagiaire = Init_Job_Stagiaire_DEV(pMyDb);
@@ -42,54 +41,106 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
 
         private static int Init_Job_Stagiaire_DEV_ASP(MyDb pMyDb)
         {
-            return pMyDb.RepoCVUpdate.add_job(
+            int __intJobId = -1;
+            UpdateResult __updateResult =  pMyDb.RepoCVUpdate.add_job(
+                out __intJobId,
                 "Stagiaire Développeur ASP",
                 CV_DAL_Const.CT_STAGIAIRE_CODE,
                 CV_DAL_Const.KR_DEVELOPPEUR_CODE);
+            if (__updateResult.EntityUpdated != 1)
+            {
+                throw new Exception("Error while Init_Job_Stagiaire_DEV_ASP !");
+            }//if
+
+            return __intJobId;
         }//Init_Job_Stagiaire_DEV_ASP
 
         private static int Init_Job_Stagiaire_DEV(MyDb pMyDb)
         {
-            return pMyDb.RepoCVUpdate.add_job(
-                "Stagiaire Développeur",
+            int __intJobId = -1;
+            UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_job(
+                 out __intJobId,
+                 "Stagiaire Développeur",
                 CV_DAL_Const.CT_STAGIAIRE_CODE,
                 CV_DAL_Const.KR_DEVELOPPEUR_CODE);
+            if (__updateResult.EntityUpdated != 1)
+            {
+                throw new Exception("Error while Init_Job_Stagiaire_DEV !");
+            }//if
+
+            return __intJobId;
         }//Init_Job_Stagiaire_DEV
 
         private static int Init_Job_Developpeur_Alternant(MyDb pMyDb)
         {
-            return pMyDb.RepoCVUpdate.add_job(
+            int __intJobId = -1;
+            UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_job(
+                out __intJobId,
                 "Développeur ( Contrat d'apprentissage en alternance )",
                 CV_DAL_Const.CT_ALTERNANT_CODE,
                 CV_DAL_Const.KR_DEVELOPPEUR_CODE);
+            if (__updateResult.EntityUpdated != 1)
+            {
+                throw new Exception("Error while Init_Job_Developpeur_Alternant !");
+            }//if
+
+            return __intJobId;
         }//Init_Job_Developpeur_Alternant
 
         private static int Init_Job_Dev_Expert_Technique_Prestataire(MyDb pMyDb)
         {
-            return pMyDb.RepoCVUpdate.add_job(
+            int __intJobId = -1;
+            UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_job(
+                out __intJobId,
                 "Développeur et Expert Technique",
                 CV_DAL_Const.CT_PRESTA_CODE,
                 CV_DAL_Const.KR_DEVELOPPEUR_CODE,
                 CV_DAL_Const.KR_EXPERTTECH_CODE);
+            if (__updateResult.EntityUpdated != 1)
+            {
+                throw new Exception("Error while Init_Job_Dev_Expert_Technique_Prestataire !");
+            }//if
+
+            return __intJobId;
+
         }//Init_Job_Dev_Expert_Technique_Prestataire
 
         private static int Init_Job_Dev_Analyse_Prestataire(MyDb pMyDb)
         {
-            return pMyDb.RepoCVUpdate.add_job(
+            int __intJobId = -1;
+            UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_job(
+                out __intJobId,
                 "Développeur et Analyste",
                 CV_DAL_Const.CT_PRESTA_CODE,
                 CV_DAL_Const.KR_DEVELOPPEUR_CODE,
                 CV_DAL_Const.KR_ANALYST_CODE);
+            if (__updateResult.EntityUpdated != 1)
+            {
+                throw new Exception("Error while Init_Job_Dev_Analyse_Prestataire !");
+            }//if
+
+            return __intJobId;
+
+
         }//Init_Job_Dev_Analyse_Prestataire
 
         private static int Init_Job_Expert_Technique_Interne(MyDb pMyDb)
         {
-            return pMyDb.RepoCVUpdate.add_job(
+            int __intJobId = -1;
+            UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_job(
+                out __intJobId,
                 "Expert Technique Interne",
                 CV_DAL_Const.CT_EMPLOYE_CODE,
                 CV_DAL_Const.KR_DEVELOPPEUR_CODE,
                 CV_DAL_Const.KR_ANALYST_CODE,
                 CV_DAL_Const.KR_EXPERTTECH_CODE);
+
+            if (__updateResult.EntityUpdated != 1)
+            {
+                throw new Exception("Error while Init_Job_Dev_Analyse_Prestataire !");
+            }//if
+
+            return __intJobId;
         }//Init_Job_Expert_Technique_Interne
 
         private static int Init_Experience_Servantes_DUT(MyDb pMyDb)
@@ -453,12 +504,13 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
 
         static CV_Firm Get_Firm(MyDb pMyDb, string pStrFirmKey)
         {
-            CV_Firm? lFirm = pMyDb.Firms.First(a => a.Key == pStrFirmKey);
+            SelectResult oSelectResult = null;
+            CV_Firm lFirm = pMyDb.RepoCVSelect.select_firm(pStrFirmKey,out oSelectResult);
 
-            if (lFirm == null)
+            if (oSelectResult.IsSuccess == false || lFirm == null)
             {
                 throw new Exception($"{pStrFirmKey} not found !");
-            }
+            }//if
 
             return lFirm;
         }//Get_Firm

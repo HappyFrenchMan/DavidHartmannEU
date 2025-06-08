@@ -10,7 +10,7 @@ namespace DHA.DAL.Repository
         public int add_experience(
 
             //a finir
-
+            out UpdateResult oUpdateResult,
             string pStrNameExperience,
             string? pStrDescription,
             int pIntCityCodePostal,
@@ -19,29 +19,42 @@ namespace DHA.DAL.Repository
             int pIntYearEnd, int pIntMonthEnd,
             params int[] pIntTabActivities)
         {
-            //  Gest associated element
-            CV_City lCity
-                = MyDbCtx.Cities.First(a => a.PostalCode == pIntCityCodePostal);
-            CV_Firm lFirm
-                = MyDbCtx.Firms.First(a => a.Key == pStrFirmKey);
+            try
+            {
+                //  Gest associated element
+                CV_City lCity
+                    = MyDbCtx.Cities.First(a => a.PostalCode == pIntCityCodePostal);
+                CV_Firm lFirm
+                    = MyDbCtx.Firms.First(a => a.Key == pStrFirmKey);
 
-            CV_Experience lExperience = new CV_Experience();
-            lExperience.Name = pStrNameExperience;
-            lExperience.Description = pStrDescription;
-            // owned by CV_Experience
-            CV_ExperiencePeriod __experiencePeriod =
-                new CV_ExperiencePeriod();
-            __experiencePeriod.YearStart = pIntYearStart;
-            __experiencePeriod.MonthStart = pIntMonthStart;
-            __experiencePeriod.YearEnd = pIntYearEnd;
-            __experiencePeriod.MonthEnd = pIntMonthEnd;
-            lExperience.ExperiencePeriod = __experiencePeriod;
-            lExperience.CityId = lCity.ID;
-            lExperience.FirmId = lFirm.ID;
+                CV_Experience lExperience = new CV_Experience();
+                lExperience.Name = pStrNameExperience;
+                lExperience.Description = pStrDescription;
+                // owned by CV_Experience
+                CV_ExperiencePeriod __experiencePeriod =
+                    new CV_ExperiencePeriod();
+                __experiencePeriod.YearStart = pIntYearStart;
+                __experiencePeriod.MonthStart = pIntMonthStart;
+                __experiencePeriod.YearEnd = pIntYearEnd;
+                __experiencePeriod.MonthEnd = pIntMonthEnd;
+                lExperience.ExperiencePeriod = __experiencePeriod;
+                lExperience.CityId = lCity.ID;
+                lExperience.FirmId = lFirm.ID;
 
-            MyDbCtx.Experiences.Add(lExperience);
+                MyDbCtx.Experiences.Add(lExperience);
 
-            return lExperience.ID;
+                int __intEntityUpdated = MyDbCtx.SaveChanges();
+
+                oUpdateResult = new UpdateResult(true, __intEntityUpdated);
+
+                return lExperience.ID;
+            }//if
+            catch (Exception ex)
+            {
+                oUpdateResult= new UpdateResult(ex);
+                return -1;
+            }//catch
+
         }//add
 
         public UpdateResult add_skill(string pStrSkillKey, string pStrSkillTypeKey, string pStrName, string pStrDetail = "")

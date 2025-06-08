@@ -99,6 +99,27 @@ namespace DHA.DAL.Repository
 
         }//select_experiences_with_activities
 
+
+        public CV_Firm select_firm(string pStrKey,out SelectResult oOutSelectResult)
+        {
+            oOutSelectResult = new SelectResult(true);
+            try
+            {
+                return
+                        MyDbCtx.Firms
+                        .Where(a => a.Key==pStrKey)
+                        .AsNoTracking() /* don't track all database info ! */
+                        .ToList()[0];
+            }//try
+            catch (Exception ex)
+            {
+                oOutSelectResult = new SelectResult(ex);
+                return null;
+            }//catch
+
+        }//select_firm
+
+
         public List<CV_Skill> Read_All_Skill_With_Type(out SelectResult oOutSelectResult, bool pBoolTracking = true)
         {
             oOutSelectResult = new SelectResult(true);

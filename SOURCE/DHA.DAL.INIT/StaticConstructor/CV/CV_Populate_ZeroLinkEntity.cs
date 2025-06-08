@@ -1,5 +1,6 @@
 ﻿using DAH.DAL;
 using DHA.DAL.Entity;
+using DHA.DAL.QueryResult;
 using DHA.DAL.Repository;
 
 //using DHA.DAL.CV.DAO;

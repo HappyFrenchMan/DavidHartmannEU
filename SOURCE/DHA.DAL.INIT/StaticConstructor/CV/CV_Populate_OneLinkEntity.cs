@@ -1,5 +1,6 @@
 ﻿using DAH.DAL;
 using DHA.DAL.INIT.StaticConstructor.CV;
+using DHA.DAL.QueryResult;
 using DHA.DAL.Repository;
 using System;
 using System.Collections.Generic;
