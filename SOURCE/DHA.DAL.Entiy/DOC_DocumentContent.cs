@@ -19,6 +19,7 @@ namespace DHA.DAL.Entity
         [Unicode(true)]
         [MaxLength(8192)]
         [Column("DCC_Sequence")]
+        [Required]
         public short Sequence { get; set; }
 
         [Column("FK_DocId")]

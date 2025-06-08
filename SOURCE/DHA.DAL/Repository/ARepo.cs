@@ -1,11 +1,4 @@
-﻿using DAH.DAL;
-using DHA.DAL.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DHA.DAL.QueryResult;
 
 namespace DHA.DAL.Repository
 {
@@ -35,9 +28,9 @@ namespace DHA.DAL.Repository
         {
             try
             {
-                MyDatabase.Add(pTabObject);
+                MyDbCtx.Add(pTabObject);
 
-                int __intRowsUpdated = MyDatabase.SaveChanges();
+                int __intRowsUpdated = MyDbCtx.SaveChanges();
 
                 return new UpdateResult(true, __intRowsUpdated);
             }//try

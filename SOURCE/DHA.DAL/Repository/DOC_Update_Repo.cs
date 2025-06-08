@@ -5,7 +5,7 @@ namespace DHA.DAL.Repository
 {
     public class DOC_Update_Repo : ARepo
     {
-        public DOC_Update_Repo(MyDb pMyDb) : base(pMyDb) { }
+        internal DOC_Update_Repo(MyDbContext pMyDbCtx) : base(pMyDbCtx) { }
 
     }//class
 }//namespace

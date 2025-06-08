@@ -21,7 +21,7 @@ namespace DHA.DAL.Entity
         [Column("ACT_ProjectName")]
         public string ProjectName { get; set; }
 
-        [Unicode(true)]
+        [Unicode(true),Required]
         [MaxLength(255)]
         [Column("ACT_SubProjectName")]
         public string SubProjectName { get; set; }

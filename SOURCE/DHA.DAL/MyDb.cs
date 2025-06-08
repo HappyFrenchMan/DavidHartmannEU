@@ -1,7 +1,5 @@
 ﻿using DHA.DAL;
 using DHA.DAL.Repository;
-using Microsoft.EntityFrameworkCore.Metadata;
-using System.Diagnostics.CodeAnalysis;
 
 namespace DAH.DAL
 {

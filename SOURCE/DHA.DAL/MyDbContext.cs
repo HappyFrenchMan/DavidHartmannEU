@@ -16,7 +16,7 @@ namespace DHA.DAL
         private static bool IS_DB_INIT = false;
 
         // CV Ref
-        public DbSet<CV_LanguageSpoken> Languages { get; set; }
+        internal DbSet<CV_LanguageSpoken> Languages { get; set; }
         internal DbSet<CV_City> Cities { get; set; }
         internal DbSet<CV_SkillType> Skill_Types { get; set; }
         internal DbSet<CV_Skill> Skills { get; set; }
@@ -44,7 +44,7 @@ namespace DHA.DAL
         internal DbSet<USR_Role> Role { get; set; }
         internal DbSet<USR_User> User { get; set; }
 
-        public AMyDbContext() : base()
+        public MyDbContext() : base()
         {
 
             if (sln_conf.ReadBool(sln_conf.EN_APPS_KEY.DAL_BOOL_EF_CORE_ENSURE_DELETED))

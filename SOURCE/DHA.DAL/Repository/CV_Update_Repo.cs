@@ -1,12 +1,11 @@
-﻿using DAH.DAL;
-using DHA.DAL.Entity;
-using System.Collections.Generic;
+﻿using DHA.DAL.Entity;
+using DHA.DAL.QueryResult;
 
 namespace DHA.DAL.Repository
 {
     public class CV_Update_Repo : ARepo
-    {        
-        public CV_Update_Repo(MyDbContext pMyDbCtx) : base(pMyDbCtx) {   }
+    {
+        internal CV_Update_Repo(MyDbContext pMyDbCtx) : base(pMyDbCtx) {   }
 
         public int add_experience(
 
