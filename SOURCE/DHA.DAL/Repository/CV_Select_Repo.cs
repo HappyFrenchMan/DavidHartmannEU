@@ -139,8 +139,11 @@ namespace DHA.DAL.Repository
             }//catch
         }//Read_All_Skill_With_Type
 
-        public List<CV_Training> select_training_with_details_and_city(bool pBoolTracking = true)
+        public List<CV_Training> select_training_with_details_and_city(out SelectResult oOutSelectResult, bool pBoolTracking = true)
         {
+            oOutSelectResult = new SelectResult(true);
+            try
+            {
             IQueryable<CV_Training> __iqa = MyDbCtx.Trainings;
             __iqa.Include("TrainingDetails").Include("CV_City");
             if (!pBoolTracking)
