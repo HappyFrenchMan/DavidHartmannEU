@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DHA.DAL.Initializer.StaticConstructor.CV
 {
-    class CV_Populate_OneLinkEntity
+    class CV_Populate_OneLinkEntity : ACVPopulate
     {
         public static void Init_Skill(MyDb pMyDB)
         {         
@@ -49,10 +49,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
         private static void add_skill(MyDb pMyDb,string pStrSkillKey, string pStrSkillTypeKey, string pStrName, string pStrDetail = "")
         {
             UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_skill(pStrSkillKey, pStrSkillTypeKey, pStrName, pStrDetail);
-            if (__updateResult.EntityUpdated != 1)
-            {
-                throw new Exception("Error while add skill !");
-            }//if
+            AssertEntityUpdated(__updateResult, 1, "Error while add skill !");
         }//add_skill
 
         public static void Init_Training(MyDb pMyDb)
@@ -61,18 +58,12 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
 
             UpdateResult __updateResult = pMyDb.RepoCVUpdate.add_training(91600, 1999,
                 "BAC ES  - Spécialité Mathématiques");
-            if (!__updateResult.IsSuccess)
-            {
-                throw new Exception(__errorMsg);
-            }//if
+            AssertIsSuccess(__updateResult);
 
             __updateResult = pMyDb.RepoCVUpdate.add_training(78140, 2001,
                 "DUT (Diplôme universitaire de technologie) informatique",
                 "Projet d'étude : Progiciel de gestion en Java");
-            if (!__updateResult.IsSuccess)
-            {
-                throw new Exception(__errorMsg);
-            }//if
+            AssertIsSuccess(__updateResult);
 
             __updateResult = pMyDb.RepoCVUpdate.add_training(91000, 2003,
                 "Licence et Maîtrise MIAGE",
@@ -80,10 +71,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                 "Formation en alternance. ",
                 "( Rythme de l’alternance 1 mois / 1 mois )",
                 "Entreprise: Servantès(78)");
-            if (!__updateResult.IsSuccess)
-            {
-                throw new Exception(__errorMsg);
-            }//if
+            AssertIsSuccess(__updateResult);
 
             __updateResult = pMyDb.RepoCVUpdate.add_training(91000, 2004,
                 "DESS Documentaire et Multimédia",
@@ -91,10 +79,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                 "Gestion Documentaire (Workflow,Gestion de contenu)",
                 "Multimédia et Réseau (Streaming,TCP/IP)",
                 "Projet d’étude : La plateforme J2EE JBoss");
-            if (!__updateResult.IsSuccess)
-            {
-                throw new Exception(__errorMsg);
-            }//if
+            AssertIsSuccess(__updateResult);
 
         }//Init_Training
 

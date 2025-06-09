@@ -1,5 +1,6 @@
 ﻿using DAH.DAL;
 using DHA.DAL.Entity;
+using DHA.DAL.INIT.StaticConstructor.CV;
 using DHA.DAL.QueryResult;
 using DHA.DAL.Repository;
 
@@ -8,7 +9,7 @@ using c= DHA.DAL.INIT.StaticConstructor.CV.CV_DAL_Const;
 
 namespace DHA.DAL.Initializer.StaticConstructor.CV
 {
-    class CV_Populate_ZeroLinkEntity
+    class CV_Populate_ZeroLinkEntity : ACVPopulate
     {
         public static void Init_SkillType(MyDb pMyDB)
         {
@@ -29,10 +30,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                 UpdateResult __updateResult = 
                     pMyDB.RepoCVUpdate.add_entity(
                         new CV_SkillType() { Key = keyValuePair.Key, Description = keyValuePair.Value });
-                if (__updateResult.EntityUpdated != 1)
-                {
-                    throw new Exception("Error while add skill type !");
-                }//if
+                AssertEntityUpdated(__updateResult, 1, "Error while add skill type !");
             }//foreach
         }//Init_SkillType
 
@@ -50,10 +48,7 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                 CV_KeyRole __cvKR = new CV_KeyRole() { Key = keyValuePair.Key, Name = keyValuePair.Value };
                 UpdateResult __updateResult =
                     pMyDB.RepoCVUpdate.add_entity(__cvKR);
-                if (__updateResult.EntityUpdated != 1)
-                {
-                    throw new Exception("Error while add key role !");
-                }//if
+                AssertEntityUpdated(__updateResult, 1, "Error while add key role !");
             }//foreach
         }//Init_KeyRole
 
@@ -71,10 +66,8 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
             {
                 CV_ContractType __cvContractType = new CV_ContractType() { Key = keyValuePair.Key, Name = keyValuePair.Value };
                 UpdateResult __updateResult = pMyDB.RepoCVUpdate.add_entity(__cvContractType);
-                if (__updateResult.EntityUpdated != 1)
-                {
-                    throw new Exception("Error while add contract type !");
-                }//if
+
+                AssertEntityUpdated(__updateResult, 1, "Error while add contract type !");
             }//foreach
         }//Init_ContractType      
 
@@ -96,10 +89,8 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
                 };
 
             UpdateResult __updateResult = pMyDB.RepoCVUpdate.add_entities(__lstCLS.ToArray());
-            if (__updateResult.EntityUpdated != __lstCLS.Count)
-            {
-                throw new Exception("Error while add lanuguage spoken !");
-            }//if
+
+            AssertEntityUpdated(__updateResult, __lstCLS.Count, "Error while add Language !");
 
         }//Init_Language
 
@@ -148,10 +139,8 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
             }//foreach
 
             UpdateResult __updateResult = pMyDB.RepoCVUpdate.add_entities(__lstCity.ToArray());
-            if (__updateResult.EntityUpdated != __lstCity.Count)
-            {
-                throw new Exception("Error while add cities !");
-            }//if
+
+            AssertEntityUpdated(__updateResult, __lstCity.Count, "Error while add cities !");
 
         }//Init_City
 
@@ -183,10 +172,8 @@ namespace DHA.DAL.Initializer.StaticConstructor.CV
             }//foreach
 
             UpdateResult __updateResult = pMyDB.RepoCVUpdate.add_entities(__lstFirms.ToArray());
-            if (__updateResult.EntityUpdated != __lstFirms.Count)
-            {
-                throw new Exception("Error while add firms !");
-            }//if
+
+            AssertEntityUpdated(__updateResult,__lstFirms.Count, "Error while add firms !");
 
         }//Init_Firm
 
