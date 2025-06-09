@@ -9,7 +9,7 @@
 
   <!-- LOG ALL VERS DHA.log -->
   <appender name="RollingFileMain" type="log4net.Appender.RollingFileAppender">
-    <file value="D:\\git_repository\\DavidHartmannEU\\dev\\run\\logs\\ALL.log" />
+    <file value="/home/dada/__DEV/DavidHartmannEU/run/logs/ALL.log" />
     <appendToFile value="true" />
     <maximumFileSize value="100KB" />
     <maxSizeRollBackups value="2" />
@@ -24,7 +24,7 @@
       <stringToMatch value="REQUEST_PATH"/>
     </filter>
     <filter type="log4net.Filter.DenyAllFilter" />
-    <file value="D:\\git_repository\\DavidHartmannEU\\dev\\run\\logs\\FILTER_REQUEST.log" />
+    <file value="/home/dada/__DEV/DavidHartmannEU/run/logs/FILTER_REQUEST.log" />
     <appendToFile value="true" />
     <maximumFileSize value="100KB" />
     <maxSizeRollBackups value="2" />
@@ -39,7 +39,7 @@
       <stringToMatch value="APP_CRASH"/>
     </filter>
     <filter type="log4net.Filter.DenyAllFilter" />
-    <file value="D:\\git_repository\\DavidHartmannEU\\dev\\run\\logs\\FILTER_APP_CRASH.log" />
+    <file value="/home/dada/__DEV/DavidHartmannEU/run/logs/FILTER_APP_CRASH.log" />
     <appendToFile value="true" />
     <maximumFileSize value="100KB" />
     <maxSizeRollBackups value="2" />
@@ -54,7 +54,7 @@
       <stringToMatch value="##EFCORE##"/>
     </filter>
     <filter type="log4net.Filter.DenyAllFilter" />
-    <file value="D:\\git_repository\\DavidHartmannEU\\dev\\run\\logs\\FILTER_EF.log" />
+    <file value="/home/dada/__DEV/DavidHartmannEU/run/logs/FILTER_EF.log" />
     <appendToFile value="true" />
     <maximumFileSize value="100KB" />
     <maxSizeRollBackups value="2" />
@@ -66,7 +66,7 @@
   <!-- Set root logger level to DEBUG and its only appender to A1 -->
   <root>
     <level value="DEBUG" />
-    <appender-ref ref="ConsoleLog" />
+    <!--<appender-ref ref="ConsoleLog" />-->
     <appender-ref ref="RollingFileMain" />
     <appender-ref ref="RollingFile_Request" />
     <appender-ref ref="RollingFile_AppCrash" />

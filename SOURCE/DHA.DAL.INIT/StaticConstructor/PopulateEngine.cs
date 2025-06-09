@@ -41,6 +41,8 @@ namespace DHA.DAL.INIT.StaticConstructor
         {
             _intCurrentStep++;
 
+            Console.WriteLine(((STEP)_intCurrentStep).ToString());
+
             switch (_intCurrentStep)
             {
                 case (int)STEP.INIT_MYDB: _myDb = new MyDb(); break;
@@ -49,9 +51,9 @@ namespace DHA.DAL.INIT.StaticConstructor
                 case (int)STEP.Init_KeyRole: CV_Populate_ZeroLinkEntity.Init_KeyRole(_myDb); break;
                 case (int)STEP.Init_SkillType: CV_Populate_ZeroLinkEntity.Init_SkillType(_myDb); break;
                 case (int)STEP.Init_LanguageSpoken: CV_Populate_ZeroLinkEntity.Init_LanguageSpoken(_myDb); break;
-                case (int)STEP.Init_City:CV_Populate_ZeroLinkEntity.Init_City(_myDb); break;
-                case (int)STEP.Init_Firm:CV_Populate_ZeroLinkEntity.Init_Firm(_myDb); break;
-                case (int)STEP.Init_Skill:CV_Populate_OneLinkEntity.Init_Skill(_myDb); break;
+                case (int)STEP.Init_City: CV_Populate_ZeroLinkEntity.Init_City(_myDb); break;
+                case (int)STEP.Init_Firm: CV_Populate_ZeroLinkEntity.Init_Firm(_myDb); break;
+                case (int)STEP.Init_Skill: CV_Populate_OneLinkEntity.Init_Skill(_myDb); break;
                 case (int)STEP.Init_Training: CV_Populate_OneLinkEntity.Init_Training(_myDb); break;
                 case (int)STEP.Init_ExperienceEntity: CV_Populate_ExperienceEntity.Init(_myDb); break;
             }//switch

@@ -176,11 +176,12 @@ namespace DHA.DAL.Repository
                     JobId = pIntJobId
                 };
                 MyDbCtx.Activities.Add(lActivity);
+                int __intRowsUpdated = MyDbCtx.SaveChanges();
 
-                add_activity_detail(lActivity.ID, pStrActivityDetail);
+                __intRowsUpdated += add_activity_detail(lActivity.ID, pStrActivityDetail);
 
                 oOutActivityId = lActivity.ID;
-                int __intRowsUpdated = MyDbCtx.SaveChanges();
+               
                 return new UpdateResult(true, __intRowsUpdated);
             }//try
             catch (Exception __ex)
@@ -191,7 +192,7 @@ namespace DHA.DAL.Repository
 
         }//add_activity
 
-        private void add_activity_detail(
+        private int add_activity_detail(
             int pIntActivityId,
             params string[] pStrActivityDetail)
         {
@@ -206,6 +207,8 @@ namespace DHA.DAL.Repository
                 lActivityDetail.ActivityId = pIntActivityId;
                 MyDbCtx.ActivitiesDetail.Add(lActivityDetail);
             }//foreach
+
+            return MyDbCtx.SaveChanges();
 
         }//add_activity_detail
 

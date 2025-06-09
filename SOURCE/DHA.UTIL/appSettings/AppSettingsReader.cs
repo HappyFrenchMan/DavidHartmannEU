@@ -18,7 +18,7 @@ namespace DHA.UTIL.appSettings
     // ex for boolean KEY : DAL_BOOL_EF_CORE_ENSURE_CREATED (TRUE or FALSE)
     public class AppSettingsReader
     {
-        private const string APP_SETTINGS_FILE_NAME = "appSettings.json";
+        private const string APP_SETTINGS_FILE_NAME = "appsettings.json";
 
         public enum EN_APPS_KEY
         {
