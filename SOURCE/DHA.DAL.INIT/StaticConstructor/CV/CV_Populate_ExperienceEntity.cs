@@ -343,7 +343,7 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
 
             __updateResult = pMyDb.RepoCVUpdate.add_activity(out lIntActivityId, lIntExperienceID,
                S_Int_JobID_DevAnalystePresta,
-               "CONFIDENTIEL", "Développement d'un service Web", "",
+               "CONFIDENTIEL", "Développement d'un service Web", "", 
                "Spécifications fonctionnelles détaillées",
                "Spécifications techniques détaillées",
                 "Analyse et développement d'un service Web",

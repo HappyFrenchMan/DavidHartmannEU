@@ -144,13 +144,19 @@ namespace DHA.DAL.Repository
             oOutSelectResult = new SelectResult(true);
             try
             {
-            IQueryable<CV_Training> __iqa = MyDbCtx.Trainings;
-            __iqa.Include("TrainingDetails").Include("CV_City");
-            if (!pBoolTracking)
+                IQueryable<CV_Training> __iqa = MyDbCtx.Trainings;
+                __iqa.Include("TrainingDetails").Include("CV_City");
+                if (!pBoolTracking)
+                {
+                    return __iqa.AsNoTracking().ToList();
+                }
+                return __iqa.ToList();
+            }//try
+            catch (Exception ex)
             {
-                return __iqa.AsNoTracking().ToList();
-            }
-            return __iqa.ToList();
+                oOutSelectResult = new SelectResult(ex);
+                return null;
+            }//catch
         }//select_training_with_details
 
     }//class
