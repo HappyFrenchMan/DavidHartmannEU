@@ -124,6 +124,7 @@ namespace DHA.DAL.Repository
                     CV_ContractTypeKey = lContractType.Key
                 };
                 MyDbCtx.Jobs.Add(__Cv_Job);
+                int __intRowsUpdated = MyDbCtx.SaveChanges();
 
                 foreach (string lStrkeyRole in pStrTabKeyRole)
                 {
@@ -137,12 +138,12 @@ namespace DHA.DAL.Repository
                     CV_JobKeyRole __cvJobKeyRole = new CV_JobKeyRole();
                     __cvJobKeyRole.JobId = __Cv_Job.ID;
                     __cvJobKeyRole.KeyRoleKey = lKeyRole.Key;
-
                     MyDbCtx.JobKeyRoles.Add(__cvJobKeyRole);
+
+                    __intRowsUpdated += MyDbCtx.SaveChanges();
                 }//foreach
 
-                // Commit
-                int __intRowsUpdated = MyDbCtx.SaveChanges();
+                // Commit                
                 oOutJobId = __Cv_Job.ID;
                 return new UpdateResult(true, __intRowsUpdated);
 

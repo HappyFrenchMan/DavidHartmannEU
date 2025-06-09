@@ -28,7 +28,7 @@ namespace DHA.DAL.Repository
         {
             try
             {
-                MyDbCtx.Add(pTabObject);
+                MyDbCtx.AddRange(pTabObject);
 
                 int __intRowsUpdated = MyDbCtx.SaveChanges();
 
