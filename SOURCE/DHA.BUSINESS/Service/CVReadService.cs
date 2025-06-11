@@ -4,45 +4,117 @@ using DHA.DAL.Entity;
 using DAH.DAL;
 using System.Diagnostics;
 using System.Text;
-using DHA.DAL.Repository.Generic;
+using DHA.DAL.QueryResult;
+using DHA.BUSINESS.Result;
 
 namespace DHA.BUSINESS.Service
 {
     public class CVReadService : ADALService,ICVService
     {
-        public List<TrainingBM> readTrainingM()
+        public List<TrainingBM> readTrainingM(out BusinessResult oBusinessResult)
         {
-            List<TrainingBM> __lstTrainingM = new List<TrainingBM>();
-            foreach (CV_Training __CV_Training in MyDatabase.CVTrainingRepository.select_training_with_details_and_city())
-            {               
-                __lstTrainingM.Add(TrainingBM.ToTrainingBM(__CV_Training));
-            }//foreach 
+            // Read Entities from DAL
+            SelectResult oSelectResult = null;
+            List<CV_Training> __lstCVTraining =
+                MyDatabase.RepoCVSelect.select_training_with_details_and_city(out oSelectResult, false);
+            if (!oSelectResult.IsSuccess)
+            {
+                oBusinessResult = new BusinessResult(oSelectResult);
+                return null;
+            }//if
 
-            return __lstTrainingM;
+            // Convert it to Training BM
+            try
+            {
+                List<TrainingBM> __lstTrainingM = new List<TrainingBM>();
+                foreach (CV_Training __CV_Training in __lstCVTraining)
+                {
+                    __lstTrainingM.Add(TrainingBM.ToTrainingBM(__CV_Training));
+                }//foreach 
+
+                oBusinessResult = new BusinessResult(false);
+                return __lstTrainingM;
+            }//try
+            catch (Exception __ex)
+            {
+                oBusinessResult = new BusinessResult(true,"Error while building Training BM!", __ex);
+                return null;
+            }//catch
+            
         }//readTrainingM
 
-        public List<SkillStatBM> readSkillStatM()
+        public List<SkillStatBM> readSkillStatM(out BusinessResult oBusinessResult)
         {
-            List<SkillStatBM> __lstSkillStatM = new List<SkillStatBM>();
-            foreach (Tuple<string, TimeSpan, string> skillstat in
-                MyDatabase.CVStatCR.select_skill_by_duration())
+            // Read Entities from DAL
+            SelectResult oSelectResult = null;
+            List<(string name_desc, TimeSpan duration, string experience)>
+                __lstStat = 
+                MyDatabase.RepoCVSelect.select_skill_by_duration(out oSelectResult);
+            if (!oSelectResult.IsSuccess)
             {
-                __lstSkillStatM.Add(SkillStatBM.ToSkillStatBM(skillstat));
-            }//foreach
+                oBusinessResult = new BusinessResult(oSelectResult);
+                return null;
+            }//if
 
-            return __lstSkillStatM;
+            // Convert it to Training BM
+            try
+            {
+                List<SkillStatBM> __lstSkillStatM = new List<SkillStatBM>();
+                foreach ((string name_desc, TimeSpan duration, string experience) skillstat in __lstStat)
+                {
+                    __lstSkillStatM.Add(SkillStatBM.ToSkillStatBM(skillstat));
+                }//foreach
+                oBusinessResult = new BusinessResult(false);
+
+                return __lstSkillStatM;
+            }//try
+            catch (Exception __ex)
+            {
+                oBusinessResult = new BusinessResult(true, "Error in readSkillStatM!", __ex);
+                return null;
+            }//catch
+
+
+
         }//readSkillStat
 
-        public List<ExperienceBM> readExperienceM()
+        public List<ExperienceBM> readExperienceM(BusinessResult oBusinessResult)
         {
-            List<CV_Job> __listJob = MyDatabase.CVJobRepository.GetAll(new FindOptions() { IsAsNoTracking = true }).ToList();
-
-            List<ExperienceBM> __lstExpM_Result = new List<ExperienceBM>();
-            foreach (CV_Experience __experience in MyDatabase.CVExperienceRepository.select_experiences_with_activities())
+            // Read Entities from DAL
+            SelectResult oSelectResult = null;
+            List<CV_Experience> __lstExperience =
+                MyDatabase.RepoCVSelect.select_experiences_with_activities(out oSelectResult);
+            if (!oSelectResult.IsSuccess)
             {
-                __lstExpM_Result.Add(ExperienceBM.ToExperienceBM(__experience, __listJob));
-            }//foreach
-            return __lstExpM_Result;
+                oBusinessResult = new BusinessResult(oSelectResult);
+                return null;
+            }//if
+            List<CV_Job> __lstJobs =
+                MyDatabase.RepoCVSelect.Read_All_Job_With_Contract_And_KeyRoles(out oSelectResult);
+            if (!oSelectResult.IsSuccess)
+            {
+                oBusinessResult = new BusinessResult(oSelectResult);
+                return null;
+            }//if
+
+            // Convert it to ExperienceBM
+            try
+            { 
+                List<ExperienceBM> __lstExpM_Result = new List<ExperienceBM>();
+                foreach (CV_Experience __experience in __lstExperience)
+                {
+                    __lstExpM_Result.Add(ExperienceBM.ToExperienceBM(__experience, __lstJobs));
+                }//foreach
+                oBusinessResult = new BusinessResult(false);
+
+                return __lstExpM_Result;                
+            }//try
+            catch (Exception __ex)
+            {
+                oBusinessResult = new BusinessResult(true, "Error in readExperienceM!", __ex);
+                return null;
+            }//catch
+
         }//readExperienceM
 
     }//class

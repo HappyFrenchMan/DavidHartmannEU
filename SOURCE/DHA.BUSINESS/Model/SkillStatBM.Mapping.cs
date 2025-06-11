@@ -2,13 +2,13 @@
 {
     public partial class SkillStatBM
     {
-        public static SkillStatBM ToSkillStatBM(Tuple<string, TimeSpan, string> skillstat)
+        public static SkillStatBM ToSkillStatBM((string name_desc, TimeSpan duration, string experience) skillstat)
         {
             SkillStatBM __skillStatBM = new SkillStatBM();
-            __skillStatBM.skill = skillstat.Item1.Split("[##]")[0];
-            __skillStatBM.skilltype = skillstat.Item1.Split("[##]")[1];
-            __skillStatBM.skillduration = skillstat.Item2;
-            __skillStatBM.associatedexperience = skillstat.Item3.Split("##");
+            __skillStatBM.skill = skillstat.name_desc.Split("[##]")[0];
+            __skillStatBM.skilltype = skillstat.name_desc.Split("[##]")[1];
+            __skillStatBM.skillduration = skillstat.duration;
+            __skillStatBM.associatedexperience = skillstat.experience.Split("##");
             return __skillStatBM;
         }//ToSkillStatBM
     }//class

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAH.DAL;
+using DHA.DAL.QueryResult;
 
 namespace DHA.BUSINESS.Service
 {
@@ -12,7 +13,7 @@ namespace DHA.BUSINESS.Service
 
         private static Lazy<MyDb> s_lazyMyDb = new Lazy<MyDb>(); 
 
-        public ADALService() {}//ADALService
+        public ADALService() { }//ADALService        
 
         internal static MyDb MyDatabase
         {
@@ -21,5 +22,7 @@ namespace DHA.BUSINESS.Service
                 return s_lazyMyDb.Value;
             }//get
         }//MyDb
+
+        
     }//class
 }//namespace

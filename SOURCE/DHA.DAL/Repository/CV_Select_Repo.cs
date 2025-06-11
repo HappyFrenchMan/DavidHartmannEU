@@ -159,6 +159,23 @@ namespace DHA.DAL.Repository
             }//catch
         }//select_training_with_details
 
+        public List<CV_Job> Read_All_Job_With_Contract_And_KeyRoles(out SelectResult oOutSelectResult)
+        {
+            oOutSelectResult = new SelectResult(true);
+            try
+            {
+                var __iqa = MyDbCtx.Jobs.Include(a => a.CV_ContractType).Include(b => b.JobKeyRoles);
+                return __iqa.AsNoTracking().ToList();
+                
+            }//try
+            catch (Exception ex)
+            {
+                oOutSelectResult = new SelectResult(ex);
+                return null;
+            }//catch
+        }//Read_All_Skill_With_Type
+
+
     }//class
 
 }//namespace
