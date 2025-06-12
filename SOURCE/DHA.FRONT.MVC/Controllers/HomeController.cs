@@ -1,14 +1,9 @@
-﻿using DHA.DAL.CV.Model;
-using DHA.DAL.CV.DAO;
-using DHA.DAL.CV.Entity;
-using DHA.FRONT.MVC.Models;
+﻿using DHA.FRONT.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using sys_diag_act = System.Diagnostics.Activity;
 using DHA.UTIL.Log4Net;
 using Microsoft.AspNetCore.Diagnostics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using DHA.DAL.DOC.DAO;
-using DHA.DAL.CV.DA;
 using DHA.BUSINESS.Interface;
 using DHA.BUSINESS.Result;
 using DHA.BUSINESS.Model;
@@ -74,11 +69,6 @@ namespace DHA.FRONT.MVC.Controllers
             return View();
         }   
 
-        public IActionResult Link()
-        {
-            SetTitrePage("Mes Liens");            
-            return View(MyLinks.select_all_link());
-        }
 
         public IActionResult ErrorTest()
         {

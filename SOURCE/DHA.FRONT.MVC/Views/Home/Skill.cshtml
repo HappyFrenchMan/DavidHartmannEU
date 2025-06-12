@@ -1,5 +1,5 @@
-﻿@using DHA.DAL.CV.Model
-@model List<SkillStatM>;
+﻿@using DHA.BUSINESS.Model
+@model List<SkillStatBM>;
 
 <h1>Mes Compétences</h1>
 <br />
@@ -11,7 +11,7 @@
 }
 
 <div class="accordion accordion-flush" id="accordionExample">
-    @foreach (SkillStatM __SkillStatM in Model)
+    @foreach (SkillStatBM __SkillStatM in Model)
     {
 
         __noLigne = __noLigne + 1;

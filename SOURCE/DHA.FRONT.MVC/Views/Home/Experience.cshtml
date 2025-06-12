@@ -1,5 +1,5 @@
-﻿@using DHA.DAL.CV.Model
-@model List<ExperienceM>;
+﻿@using DHA.BUSINESS.Model
+@model List<ExperienceBM>;
 
 <h1>Mes Expériences</h1>
 <br />
@@ -11,7 +11,7 @@
 }
 
 <div class="accordion accordion-flush" id="accordionExample">
-    @foreach (ExperienceM __experienceM in Model)
+    @foreach (ExperienceBM __experienceM in Model)
     {
 
         __noLigne = __noLigne + 1;
@@ -44,7 +44,7 @@
                     <u>Durée :</u>&nbsp;@__experienceM.period<br /><br />
                     <u>Lieu :</u>&nbsp;@__experienceM.cityinfo<br /><br />
                     <u>Client ou Employeur :</u>&nbsp;@__experienceM.firmname<br /><br />
-                    @foreach (ExperienceM_Activities __activite in __experienceM.tabActivities)
+                    @foreach (ExperienceBM_Activities __activite in __experienceM.tabActivities)
                     {
                         <div class="card">
                             <div class="card-header">

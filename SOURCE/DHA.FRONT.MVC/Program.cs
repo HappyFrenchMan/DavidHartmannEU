@@ -1,6 +1,5 @@
 using DHA.BUSINESS.Interface;
 using DHA.BUSINESS.Service;
-using DHA.FRONT.MVC.Config;
 using DHA.FRONT.MVC.CustomMiddleWare;
 using DHA.UTIL.Log4Net;
 

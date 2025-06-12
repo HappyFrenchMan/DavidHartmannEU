@@ -1,11 +1,11 @@
-﻿@using DHA.DAL.CV.Entity
-@using DHA.DAL.DOC.Entity
-@model List<Link>;
+﻿@using DHA.DAL.Entity
+
+@model List<DOC_Link>
 
 @{
     List<string> __listCategorie = new List<string>();
-    List<Link> __listMyLink = new List<Link>();
-    foreach (Link __myLink in Model)
+    List<DOC_Link> __listMyLink = new List<DOC_Link>();
+    foreach (DOC_Link __myLink in Model)
     {
         __listMyLink.Add(__myLink);
         if (!__listCategorie.Contains(__myLink.Categorie))
@@ -25,7 +25,7 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        @foreach (Link __link in __listMyLink.Where(a => a.Categorie==__strCategorie).ToArray())
+                        @foreach (DOC_Link __link in __listMyLink.Where(a => a.Categorie == __strCategorie).ToArray())
                         {
                             <li class="list-group-item">
                                 <h3><a href="@__link.Url" target="_blank">@__link.Description</a></h3>
