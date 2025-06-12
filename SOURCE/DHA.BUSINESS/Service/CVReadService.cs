@@ -9,7 +9,7 @@ using DHA.BUSINESS.Result;
 
 namespace DHA.BUSINESS.Service
 {
-    public class CVReadService : ADALService,ICVService
+    public class CVReadService : ADALService,ICVReadService
     {
         public List<TrainingBM> readTrainingM(out BusinessResult oBusinessResult)
         {
@@ -78,7 +78,7 @@ namespace DHA.BUSINESS.Service
 
         }//readSkillStat
 
-        public List<ExperienceBM> readExperienceM(BusinessResult oBusinessResult)
+        public List<ExperienceBM> readExperienceM(out BusinessResult oBusinessResult)
         {
             // Read Entities from DAL
             SelectResult oSelectResult = null;

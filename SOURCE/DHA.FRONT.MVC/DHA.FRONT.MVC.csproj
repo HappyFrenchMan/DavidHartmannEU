@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DHA.BUSINESS\DHA.BUSINESS.csproj" />
+    <ProjectReference Include="..\DHA.DAL.Entiy\DHA.DAL.Entiy.csproj" />
     <ProjectReference Include="..\DHA.UTIL\DHA.UTIL.csproj" />
   </ItemGroup>
 

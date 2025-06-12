@@ -10,8 +10,10 @@ namespace DAH.DAL
         private Lazy<CV_Select_Repo> _lazy_CV_SelectRepo;
         private Lazy<CV_Update_Repo> _lazy_CV_UpdateRepo;
         private Lazy<DOC_Update_Repo > _lazy_DOC_UpdateRepo;
+        private Lazy<DOC_Select_Repo> _lazy_DOC_SelectRepo;
         public CV_Select_Repo RepoCVSelect { get { return _lazy_CV_SelectRepo.Value; } }
         public CV_Update_Repo RepoCVUpdate { get { return _lazy_CV_UpdateRepo.Value; } }
+        public DOC_Select_Repo RepoDocSelect { get { return _lazy_DOC_SelectRepo.Value; } }
         public DOC_Update_Repo RepoDOCUpdate { get { return _lazy_DOC_UpdateRepo.Value; } }
 
         public MyDb()
@@ -21,6 +23,7 @@ namespace DAH.DAL
             _lazy_CV_SelectRepo = new Lazy<CV_Select_Repo>(() => new CV_Select_Repo(_myDbContext));
             _lazy_CV_UpdateRepo = new Lazy<CV_Update_Repo>(() => new CV_Update_Repo(_myDbContext));
             _lazy_DOC_UpdateRepo = new Lazy<DOC_Update_Repo>(() => new DOC_Update_Repo(_myDbContext));
+            _lazy_DOC_SelectRepo = new Lazy<DOC_Select_Repo>(() => new DOC_Select_Repo(_myDbContext));
         }//MyDb
 
     }//class

@@ -1,5 +1,9 @@
+using DHA.BUSINESS.Interface;
+using DHA.BUSINESS.Service;
 using DHA.FRONT.MVC.Config;
 using DHA.FRONT.MVC.CustomMiddleWare;
+using DHA.UTIL.Log4Net;
+
 
 //using DHA.ErrorHandling;
 using log4net;
@@ -8,15 +12,17 @@ using log4net.Config;
 public class Program
 {
     public static void Main(string[] args)
-    {
-        // Init EF and LoG4net
-        DHAConfig.Init();
+    {        
+        // Init Log4Net with his config file
+        sLog4NetLogger.sInitConfig();
 
         // Configuration du Generateur d'application hôte 
         // Ajout des services pour l injection de dépendaance
         // On souhaite uniquement du MVC avec des vues
         WebApplicationBuilder wab = WebApplication.CreateBuilder(args);        
-        wab.Services.AddControllersWithViews();       
+        wab.Services.AddControllersWithViews();
+        wab.Services.AddSingleton<ICVReadService, CVReadService>();
+        wab.Services.AddSingleton<IDOCReadService, DOCReadService>();
 
         //  Application web utilisée pour configurer le pipeline HTTP et les itinéraires.
         WebApplication wa = wab.Build();
