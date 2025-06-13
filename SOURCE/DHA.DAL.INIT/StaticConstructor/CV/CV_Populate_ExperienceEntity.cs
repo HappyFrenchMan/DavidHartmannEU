@@ -7,7 +7,7 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
 {
     class CV_Populate_ExperienceEntity : ACVPopulate
     {           
-        private static int S_Int_JobID_StaigiaireDevASP;
+        private static int S_Int_JobID_StagiaireDevASP;
         private static int S_Int_JobID_DevAlternant;
         private static int S_Int_JobID_DevStagiaire;
         private static int S_Int_JobID_DevExpertTechPresta;
@@ -16,7 +16,7 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
 
         public static void Init(MyDb pMyDb)
         {
-            S_Int_JobID_StaigiaireDevASP = Init_Job_Stagiaire_DEV_ASP(pMyDb);
+            S_Int_JobID_StagiaireDevASP = Init_Job_Stagiaire_DEV_ASP(pMyDb);
             S_Int_JobID_DevAlternant = Init_Job_Developpeur_Alternant(pMyDb);
             S_Int_JobID_DevStagiaire = Init_Job_Stagiaire_DEV(pMyDb);
             S_Int_JobID_DevExpertTechPresta = Init_Job_Dev_Expert_Technique_Prestataire(pMyDb);
@@ -143,7 +143,7 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
                 2001, 9);
             AssertIsSuccess(__updateResult, "Error while add_experience !");
 
-            __updateResult = pMyDb.RepoCVUpdate.add_activity(out lIntActivityId, lIntExperienceID, S_Int_JobID_StaigiaireDevASP,
+            __updateResult = pMyDb.RepoCVUpdate.add_activity(out lIntActivityId, lIntExperienceID, S_Int_JobID_StagiaireDevASP,
                 "ELECTRE", "Réalisation d’un site intranet de gestion des congés Payés.", "",
                     "Apprentissage de l'ASP.");
             AssertIsSuccess(__updateResult, "Error while add_activity !");
@@ -151,7 +151,7 @@ namespace DHA.DAL.INIT.StaticConstructor.CV
             __updateResult = pMyDb.RepoCVUpdate.add_skills(lIntActivityId, "SQLS", "W2000", "ASP");
             AssertIsSuccess(__updateResult, "Error while add_skills !");
 
-            __updateResult = pMyDb.RepoCVUpdate.add_activity(out lIntActivityId, lIntExperienceID, S_Int_JobID_StaigiaireDevASP,
+            __updateResult = pMyDb.RepoCVUpdate.add_activity(out lIntActivityId, lIntExperienceID, S_Int_JobID_StagiaireDevASP,
                         "PROJ", "Réalisation d'un site intranet pour la gestion de projet", "",
                             "Définition des besoins.",
                             "Réalisation de la charte graphique.",

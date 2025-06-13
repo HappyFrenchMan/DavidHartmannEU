@@ -26,37 +26,6 @@ namespace DHA.FRONT.MVC.Controllers
             return View();
         }//Index
 
-        public IActionResult Training()
-        {
-            BusinessResult oBusinessResult;
-            List<TrainingBM> trainingBMs = _icvReadService.readTrainingM(out oBusinessResult);
-            RedirectToErrorPageIfBusinessError(oBusinessResult);
-            
-
-            SetTitrePage("Mon parcours universitaire");
-            return View(trainingBMs);
-        }//Formation
-
-        public IActionResult Experience()
-        {
-            BusinessResult oBusinessResult;
-            List<ExperienceBM> experienceBMs = _icvReadService.readExperienceM(out oBusinessResult);
-            RedirectToErrorPageIfBusinessError(oBusinessResult);
-
-            SetTitrePage("Mes expériences");            
-            return View(experienceBMs);
-        }//Experiences
-
-        public IActionResult Skill()
-        {
-            BusinessResult oBusinessResult;
-            List<SkillStatBM> skillStatBMs = _icvReadService.readSkillStatM(out oBusinessResult);
-            RedirectToErrorPageIfBusinessError(oBusinessResult);
-
-            SetTitrePage("Mes compétences");            
-            return View(skillStatBMs);
-        }//Competences
-
         public IActionResult About()
         {
             SetTitrePage("About");            

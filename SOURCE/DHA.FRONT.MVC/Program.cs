@@ -26,16 +26,16 @@ public class Program
         //  Application web utilisée pour configurer le pipeline HTTP et les itinéraires.
         WebApplication wa = wab.Build();
         // En production uniquement -> page d'erreur
-        if (wa.Environment.IsDevelopment())
-        {
-            wa.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            // Adds a middleware to the pipeline that will catch exceptions
-            // log them, reset the request path, and re-execute the request.
-            wa.UseExceptionHandler("/Home/Error");
-        }
+        //if (wa.Environment.IsDevelopment())
+        //{
+        //    wa.UseDeveloperExceptionPage();
+        //}
+        //else
+        //{
+        //    // Adds a middleware to the pipeline that will catch exceptions
+        //    // log them, reset the request path, and re-execute the request.
+        //    wa.UseExceptionHandler("/Home/Error");
+        //}
 
         wa.UseHttpsRedirection();
 

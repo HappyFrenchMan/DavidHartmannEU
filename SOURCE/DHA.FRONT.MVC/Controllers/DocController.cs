@@ -12,8 +12,7 @@ namespace DHA.FRONT.MVC.Controllers
         public DocController(IDOCReadService pIDocReadService)
         {
             _idocReadService = pIDocReadService;
-        }
-    
+        }    
 
         public IActionResult Link()
         {
@@ -25,14 +24,6 @@ namespace DHA.FRONT.MVC.Controllers
             
             return View(__lstDocLink);
         }
-
-        public IActionResult ErrorTest()
-        {
-            throw new Exception();
-        }
-
-      
-
       
     }
 }

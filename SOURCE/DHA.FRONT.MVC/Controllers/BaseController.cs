@@ -18,7 +18,7 @@ namespace DHA.FRONT.MVC.Controllers
             {
                 if (!pBusinessResult.IsSuccess)
                 {
-                    Response.Redirect("Error?message=Error in Business Layer :");
+                    Response.Redirect("Home/Error?message=Error in Business Layer :");
                 }
             }
         }
